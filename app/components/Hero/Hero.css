@@ -1,0 +1,29 @@
+#hero{
+    margin: 220px auto 180px auto;
+}
+#hero .container{
+    display: flex;
+    justify-content: center;
+}
+#hero .container-trusted{
+    width: 100%;    
+    position: relative;
+}
+#hero .container-image{
+    width: 100%;
+    max-width: 1260px;
+    height: 267px;
+    position: relative;
+}
+#hero .container-image img{
+    width: 100%;    
+    object-fit: contain;
+}
+#hero .container-tagline{
+    width: 100%;   
+    padding: 20px;
+    font-size: 2rem;
+    line-height: 1;    
+    font-weight: 900;
+    text-align: center;
+}

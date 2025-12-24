@@ -1,0 +1,30 @@
+#portfolio .container{
+    display: flex;
+    flex-direction: column;    
+    gap: 40px;
+}
+
+#portfolio .project{
+    width: 100%;
+}
+#portfolio .project .row{
+    border: 1px solid green;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+#portfolio .project .row .col-1{
+    position: relative;
+    width: 100%;   
+    aspect-ratio: 16 / 9;
+    border: 1px solid red;
+}
+#portfolio .project .row .col-1 img{
+    object-fit: contain;    
+}
+
+#portfolio .project .row .col-2{
+    width: 100%;
+    border: 1px solid blue;
+}

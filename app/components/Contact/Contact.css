@@ -1,0 +1,16 @@
+#contact{
+    max-width: 850px;
+    background: var(--black);
+    padding: 45px 25PX;
+    margin: 0 auto 80px auto;
+    border-radius: 20px;
+    color: #fff;
+    text-align: center;
+}
+
+#contact h2{
+    font-size: 3rem;
+    text-align: center;
+    max-width: 350PX;
+    line-height: 1;
+}

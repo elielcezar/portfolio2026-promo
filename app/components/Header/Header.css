@@ -1,0 +1,50 @@
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+}
+header .container{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: 1.5rem;
+    padding-left: 1.5rem;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 80rem;
+    height: 4rem;
+    box-shadow: rgba(3, 7, 18, 0.2) 0 1.125rem 1.5rem -1.5rem;    
+}
+header .container-logo{
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;    
+}
+header .container-logo h1{
+    text-transform:lowercase;
+    font-size: 2.7rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin: -10px 0 0 0;
+    color: var(--black);
+}
+header nav ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    gap: 3rem;   
+}
+header nav ul li a{
+    font-weight: 900;
+    color: var(--black);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;    
+}

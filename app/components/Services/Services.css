@@ -1,0 +1,145 @@
+#services{
+    background: var(--black);
+    padding: 0 0 80px 0;
+    margin-top: 80px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.tech-scroll-1 {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 60px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(to bottom, #fff 51%, var(--black) 49%);
+}
+
+.tech-scroll-1 .tech-scroll-content {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 60s linear infinite;
+    gap: 4rem;
+}
+
+.tech-scroll-1 .tech-word {
+    font-size: 7rem;
+    font-weight: 900;
+    text-transform: uppercase;    
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    background: linear-gradient(to bottom, #000 51%, #fff 49%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;    
+    font-weight: 700;
+}
+
+.tech-scroll-2 {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    margin-bottom: -6px;
+}
+
+.tech-scroll-2 .tech-scroll-content {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll-reverse 80s linear infinite;
+    gap: 4rem;
+}
+
+.tech-scroll-2 .tech-word {
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 900;
+    text-transform: uppercase;    
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;  
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: -1px;
+}
+
+.tech-scroll-3 {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-bottom: 60px;    
+    display: flex;
+    align-items: center;
+    background: var(--black);
+}
+
+.tech-scroll-3 .tech-scroll-content {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 180s linear infinite;
+    gap: 4rem;
+}
+
+.tech-scroll-3 .tech-word {
+    font-size: 8rem;
+    line-height: 1;
+    font-weight: 900;
+    text-transform: uppercase;    
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;  
+    font-weight: 900;
+    color: #222;
+    letter-spacing: -3px;
+}
+
+.services-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.services-item{
+    display: flex;    
+    gap: 2rem;
+    width: 48%;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scroll-reverse {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .tech-word {
+        font-size: 5rem;
+    }
+    
+    .tech-scroll {
+        height: 120px;
+    }
+    
+    .tech-scroll-content {
+        gap: 2rem;
+    }
+}
