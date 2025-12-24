@@ -1,8 +1,8 @@
 #services{
     background: var(--black);
-    padding: 0 0 80px 0;
+    padding: 0 0 120px 0;
     margin-top: 80px;
-    color: #fff;
+    color: #f5f5f5;
     position: relative;
     overflow: hidden;
 }
@@ -46,7 +46,7 @@
     display: flex;
     align-items: center;
     background: #fff;
-    margin-bottom: -6px;
+    margin-bottom: -7px;
 }
 
 .tech-scroll-2 .tech-scroll-content {
@@ -64,7 +64,7 @@
     position: relative;
     display: inline-block;
     flex-shrink: 0;  
-    font-weight: 700;
+    font-weight: 900;
     color: var(--black);
     letter-spacing: -1px;
 }
@@ -87,7 +87,7 @@
 }
 
 .tech-scroll-3 .tech-word {
-    font-size: 6rem;
+    font-size: 8rem;
     line-height: 1;
     font-weight: 900;
     text-transform: uppercase;    
@@ -95,20 +95,69 @@
     display: inline-block;
     flex-shrink: 0;  
     font-weight: 900;
-    color: #222;
+    color: #1f1f1f;
+   
+   
     letter-spacing: -3px;
+}
+
+#services p{
+    font-size: 1.2rem;
+    margin: 0;
+    font-weight: 300;
+}
+
+#services p strong{
+    font-weight: 900;
+}
+
+.services-header{
+ margin-bottom: 60px;
+}
+.services-header h2{
+    font-size: 3rem;
+    line-height: 1;
+    margin: 0 0 60px 0;
+    max-width: 700px;
 }
 
 .services-container{
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 2rem;    
 }
 
 .services-item{
     display: flex;    
-    gap: 2rem;
+    gap: 1rem;
     width: 48%;
+}
+
+.services-item img{
+    max-width: 70px;
+}
+
+.services-item .services-item-icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.services-item .services-item-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.5rem;
+}
+.services-item h3{
+    font-size: 1.75rem;
+    margin: 0;
+    color: rgb(255, 255, 255);    
+}
+.services-item:hover h3{
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(45deg, rgb(136, 138, 255) 5%,rgb(215, 68, 255) 30%) text;
+    transition: all 0.3s ease;
 }
 
 @keyframes scroll {

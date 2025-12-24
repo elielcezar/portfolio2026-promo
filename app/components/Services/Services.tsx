@@ -1,7 +1,7 @@
 import Image from "next/image";
 import "./Services.css";
 
-const techWords = ["Sites","E-commerce","Apps","Wordpress","Landing Pages","Anúncios no Google","Sites","E-commerce","Apps","Wordpress","Landing Pages","Anúncios no Google"];
+const techWords = ["Sites","E-commerce","Apps","Wordpress","Landing Pages","Google Ads","Sites","E-commerce","Apps","Wordpress","Landing Pages","Google Ads"];
 
 const services = [
     {
@@ -10,12 +10,12 @@ const services = [
         "icon": "/icon-code.svg"
     },
     {
-        "title": "Criação",
-        "description": "de identidade visual e design para seu site",
+        "title": "Design Gráfico",
+        "description": "criação de identidade visual e design para seu site",
         "icon": "/icon-creation.svg"
     },
     {
-        "title": "SEO",
+        "title": "SEO / Google",
         "description": "melhoria de desempenho e posicionamento do seu site nos resultados do Google",
         "icon": "/icon-seo.svg"
     },
@@ -62,11 +62,8 @@ export default function Services() {
 
             <div className="container">
                 <div className="services-header">                    
-                    <h2>O pacote completo de serviços para melhorar o desempenho do seu site ou app.<br/>
-                    Seu site no ar em poucos dias.</h2>
-                </div>
-                <div className="services-text">
-                    <p>Sou formado em Design Gráfico pela UTFPR, possuo pós-graduação em Engenharia de Software para Dispositivos Móveis e trabalho há 10 anos com desenvolvimento para a web. Posso ajudar sua empresa com os seguintes serviços:</p>
+                    <h2>O pacote completo de serviços para melhorar o desempenho do seu site ou app</h2>
+                    <p>Sou formado em <strong>Design Gráfico</strong> pela <strong>UTFPR</strong>, possuo pós-graduação em <strong>Engenharia de Software</strong> para Dispositivos Móveis e trabalho há 10 anos com desenvolvimento para a web. Posso ajudar sua empresa com os seguintes serviços:</p>
                 </div>
                 <div className="services-container">
                     {services.map((service, i) => (

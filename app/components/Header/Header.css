@@ -17,7 +17,7 @@ header .container{
     margin-left: auto;
     max-width: 80rem;
     height: 4rem;
-    box-shadow: rgba(3, 7, 18, 0.2) 0 1.125rem 1.5rem -1.5rem;    
+    box-shadow: rgba(3, 7, 18, 0.3) 0 1.125rem 1.5rem -1.5rem;    
 }
 header .container-logo{
     display: flex;
@@ -37,7 +37,7 @@ header nav ul{
     justify-content: center;
     align-items: center;
     list-style: none;
-    gap: 2rem;   
+    gap: .5rem;   
 }
 header nav ul li a{
     font-weight: 900;
@@ -47,4 +47,17 @@ header nav ul li a{
     font-size: 1rem;
     letter-spacing: 1px;
     transition: all 0.3s ease;    
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+header nav ul li a:hover{
+    background-color: var(--black);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+
+header nav ul li a:hover svg{
+    fill: #fff;
+    transition: all 0.3s ease;
 }

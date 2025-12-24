@@ -23,6 +23,13 @@
     line-height: 4rem;
     max-width: 350px;
     font-weight: 900;
+    transition: all 0.3s ease;
+}
+
+#clients h2:hover{
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(45deg, rgb(136, 138, 255) 5%,rgb(215, 68, 255) 30%, rgb(16, 0, 196) 80%) text;
+    transition: all 0.3s ease;
 }
 
 #clients .clients-container{
