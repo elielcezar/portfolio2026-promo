@@ -5,26 +5,89 @@
 }
 
 #portfolio .project{
-    width: 100%;
+    width: 100%;    
+    border-radius: 10px;
+    border: 4px solid var(--black);
+    background: #fff;
+    color: var(--black);
+    margin-bottom: 40px;
+    transition: all 0.3s ease-in-out;
 }
-#portfolio .project .row{
-    border: 1px solid green;
+
+#portfolio .project:hover{        
+    box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.15);
+    background: var(--project-color);
+    color: #fff;    
+    border-color: var(--project-color);
+}
+
+#portfolio .project:nth-child(odd){
+    padding: 20px 0 0 40px;       
+} 
+#portfolio .project:nth-child(even){
+    padding: 20px 40px 0 0;       
+} 
+
+#portfolio .project:nth-child(odd) .row{
+    flex-direction: row-reverse;     
+} 
+
+#portfolio .project .row{    
     width: 100%;
     display: flex;
     gap: 20px;
 }
-
 #portfolio .project .row .col-1{
     position: relative;
     width: 100%;   
-    aspect-ratio: 16 / 9;
-    border: 1px solid red;
+    aspect-ratio: 16 / 9;    
+    margin: -50px 0 10px 0;
 }
 #portfolio .project .row .col-1 img{
     object-fit: contain;    
+    transition: transform 0.3s ease-in-out;
+}
+#portfolio .project:hover .row .col-1 img{
+    transform: scale(1.05);
+   
+}
+#portfolio .project .row .col-2{
+    width: 100%;    
+    padding-bottom: 40px;
+}
+#portfolio .project .row .col-2 h2{
+    font-size: 2.5rem;
+}
+#portfolio .project .row .col-2 .cta a{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: var(--black);
+    font-weight: 600;
+    font-size: 1.2rem;
+    padding: 10px 20px;
+    border-radius: 5px;    
+    border: 3px solid var(--black);
+    width: 132px;
+    transition: all 0.1s ease-in-out;
 }
 
-#portfolio .project .row .col-2{
-    width: 100%;
-    border: 1px solid blue;
+#portfolio .project:hover .row .col-2 .cta a svg{
+    fill: #fff;
+}
+
+#portfolio .project:hover .row .col-2 .cta a{    
+    color: #fff;
+    border-color: #fff;
+}
+
+#portfolio .project:hover .row .col-2 .cta a:hover svg{
+    fill: var(--project-color);
+}
+
+#portfolio .project:hover .row .col-2 .cta a:hover{    
+    color: var(--project-color);
+    border-color: #fff;
+    background: #fff;
 }

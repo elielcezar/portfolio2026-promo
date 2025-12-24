@@ -37,7 +37,7 @@ header nav ul{
     justify-content: center;
     align-items: center;
     list-style: none;
-    gap: 3rem;   
+    gap: 2rem;   
 }
 header nav ul li a{
     font-weight: 900;
