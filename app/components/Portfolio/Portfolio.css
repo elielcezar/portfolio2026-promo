@@ -1,5 +1,5 @@
 #portfolio{
-    margin-bottom: 120px;
+    margin-bottom: 60px;
 }
 #portfolio .container{
     display: flex;
@@ -10,7 +10,7 @@
 #portfolio .project{
     width: 100%;    
     border-radius: 10px;
-    border: 4px solid var(--black);
+    border: 3px solid var(--black);
     background: #fff;
     color: var(--black);
     margin-bottom: 40px;
