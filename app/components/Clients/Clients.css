@@ -1,55 +1,50 @@
-#clients{
-    padding: 0 0 80px 0;    
+#clients {
+    padding: 0 0 80px 0;
 }
 
-#clients .container{
+#clients .container {
     max-width: 900px;
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;
     gap: 2rem;
 }
 
 #clients .col-1,
-#clients .col-2{
+#clients .col-2 {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     justify-content: center;
-    
+
 }
 
-#clients h2{
+#clients h2 {
     width: 100%;
     font-size: 4.5rem;
     line-height: 4rem;
     max-width: 350px;
-    font-weight: 900;
+    font-weight: 700;
     transition: all 0.3s ease;
+    letter-spacing: -2px;
 }
 
-#clients h2:hover{
-    -webkit-text-fill-color: transparent;
-    background: -webkit-linear-gradient(45deg, rgb(136, 138, 255) 5%,rgb(215, 68, 255) 30%, rgb(16, 0, 196) 80%) text;
-    transition: all 0.3s ease;
-}
-
-#clients .clients-container{
+#clients .clients-container {
     width: 100%;
-    display: flex;    
+    display: flex;
     flex-wrap: wrap;
-    gap: 2rem;    
+    gap: 2rem;
     justify-content: END;
 }
 
-#clients .client{
+#clients .client {
     position: relative;
     width: 33%;
-    height: 120px;   
+    height: 120px;
     display: flex;
     align-items: center;
-    justify-content: center;         
+    justify-content: center;
 }
 
-#clients .client-image{
+#clients .client-image {
     object-fit: contain;
-        
+
 }

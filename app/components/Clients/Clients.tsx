@@ -4,27 +4,27 @@ import "./Clients.css";
 const clients = [
     {
         "name": "Assaí",
-        "image": "/clients/assai.png"
+        "image": "/clients/logo-assai.png"
     },
     {
         "name": "McDonald's ",
-        "image": "/clients/mc.png"
+        "image": "/clients/logo-mc4.png"
     },
     {
         "name": "Buscapé",
-        "image": "/clients/buscape.png"
-    },
-    {
-        "name": "Gazeta do Povo",
-        "image": "/clients/gazeta.png"
+        "image": "/clients/logo-buscape.png"
     },
     {
         "name": "Subway",
-        "image": "/clients/sub.png"
+        "image": "/clients/logo-sub.png"
+    },
+    {
+        "name": "Gazeta do Povo",
+        "image": "/clients/logo-gazeta.png"
     },
     {
         "name": "Uninter",
-        "image": "/clients/uninter.png"
+        "image": "/clients/logo-uninter.png"
     }
 ]
 export default function Clients() {
@@ -39,17 +39,17 @@ export default function Clients() {
                         <div className="clients-container">
                             {clients.map((client) => (
                                 <div key={client.name} className="client">
-                                    <Image 
-                                        src={client.image} 
-                                        alt={client.name} 
-                                        width={140}
-                                        height={70}
+                                    <Image
+                                        src={client.image}
+                                        alt={client.name}
+                                        width={145}
+                                        height={85}
                                         className="client-image" />
                                 </div>
                             ))}
                         </div>
                     </div>
-                </div>                
+                </div>
             </div>
         </section>
     );

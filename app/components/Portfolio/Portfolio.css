@@ -1,67 +1,77 @@
-#portfolio{
+#portfolio {
     margin-bottom: 60px;
 }
-#portfolio .container{
+
+#portfolio .container {
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
     gap: 40px;
 }
 
-#portfolio .project{
-    width: 100%;    
-    border-radius: 10px;
-    border: 3px solid var(--black);
+#portfolio .project {
+    width: 100%;
+    /*border-radius: 10px;
+    border: 3px solid var(--black);*/
     background: #fff;
     color: var(--black);
-    margin-bottom: 40px;
+    margin-bottom: 120px;
     transition: all 0.3s ease-in-out;
 }
 
-#portfolio .project:hover{        
+#portfolio .project:hover {
     box-shadow: 0 10px 15px 0 rgba(0, 0, 0, 0.15);
     background: var(--project-color);
-    color: #fff;    
+    color: #fff;
     border-color: var(--project-color);
 }
 
-#portfolio .project:nth-child(odd){
-    padding: 20px 0 0 40px;       
-} 
-#portfolio .project:nth-child(even){
-    padding: 20px 40px 0 0;       
-} 
 
-#portfolio .project:nth-child(odd) .row{
-    flex-direction: row-reverse;     
-} 
+#portfolio .project:nth-child(odd) .row {
+    flex-direction: row-reverse;
+}
 
-#portfolio .project .row{    
+#portfolio .project .row {
     width: 100%;
     display: flex;
-    gap: 20px;
+    gap: 60px;
 }
-#portfolio .project .row .col-1{
+
+#portfolio .project .row .col-1 {
     position: relative;
-    width: 100%;   
-    aspect-ratio: 16 / 9;    
-    margin: -50px 0 10px 0;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: -20px 0 10px 0;
 }
-#portfolio .project .row .col-1 img{
-    object-fit: contain;    
-    transition: transform 0.3s ease-in-out;
+
+#portfolio .project .row .col-1 img {
+    object-fit: contain;
+    transition: transform 0.2s ease-in-out;
 }
-#portfolio .project:hover .row .col-1 img{
-    transform: scale(1.05);
-   
+
+#portfolio .project:hover .row .col-1 img {
+    transform: scale(1.075);
+
 }
-#portfolio .project .row .col-2{
-    width: 100%;    
-    padding-bottom: 40px;
+
+#portfolio .project .row .col-2 {
+    width: 100%;
+    padding-bottom: 80px;
 }
-#portfolio .project .row .col-2 h2{
+
+#portfolio .project .row .col-2 h2 {
     font-size: 2.5rem;
+    font-family: var(--font-space-grotesk);
 }
-#portfolio .project .row .col-2 .cta a{
+
+#portfolio .project .row .col-2 p {
+    font-size: 1.3rem;
+}
+
+#portfolio .project .row .col-2 .cta {
+    margin-top: 30px;
+}
+
+#portfolio .project .row .col-2 .cta a {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -70,26 +80,26 @@
     font-weight: 600;
     font-size: 1.2rem;
     padding: 10px 20px;
-    border-radius: 5px;    
-    border: 3px solid var(--black);
-    width: 132px;
+    border-radius: 2px;
+    border: 2px solid var(--black);
+    width: 152px;
     transition: all 0.1s ease-in-out;
 }
 
-#portfolio .project:hover .row .col-2 .cta a svg{
+#portfolio .project:hover .row .col-2 .cta a svg {
     fill: #fff;
 }
 
-#portfolio .project:hover .row .col-2 .cta a{    
+#portfolio .project:hover .row .col-2 .cta a {
     color: #fff;
     border-color: #fff;
 }
 
-#portfolio .project:hover .row .col-2 .cta a:hover svg{
+#portfolio .project:hover .row .col-2 .cta a:hover svg {
     fill: var(--project-color);
 }
 
-#portfolio .project:hover .row .col-2 .cta a:hover{    
+#portfolio .project:hover .row .col-2 .cta a:hover {
     color: var(--project-color);
     border-color: #fff;
     background: #fff;

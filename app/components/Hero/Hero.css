@@ -1,29 +1,55 @@
-#hero{
-    margin: 240px auto 240px auto;
+#hero {
+    margin: 22vh auto 11vh auto;
 }
-#hero .container{
+
+#hero .container {
     display: flex;
     justify-content: center;
 }
-#hero .container-trusted{
-    width: 100%;    
-    position: relative;
-}
-#hero .container-image{
+
+#hero .container-image {
     width: 100%;
     max-width: 1260px;
-    height: 267px;
+    height: auto;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
-#hero .container-image img{
-    width: 100%;    
-    object-fit: contain;
+
+#hero img {
+    max-width: 100%;
+    height: auto;
 }
-#hero .container-tagline{
-    width: 100%;   
+
+#hero .tagline {
+    width: 100%;
     padding: 20px;
     font-size: 2rem;
-    line-height: 1;    
+    line-height: 1;
     font-weight: 900;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#hero .tagline a:hover {
+    background: transparent;
+}
+
+#hero .tagline svg {
+    fill: var(--black);
+    transition: all 0.3s ease;
+}
+
+#hero .tagline svg:hover {
+    transform: translateY(15px);
+}
+
+#hero .link:hover {
+    background-color: var(--black);
+    color: #fff;
+    transition: all 0.3s ease;
 }

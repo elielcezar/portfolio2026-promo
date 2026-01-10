@@ -1,4 +1,4 @@
-#services{    
+#services {
     padding: 0 0 120px 0;
     margin: 0;
     color: #f5f5f5;
@@ -6,10 +6,10 @@
     overflow: hidden;
 }
 
-#services .container{
+#services .container {
     background: #141414;
-    padding: 100px 50px 70px 50px;
-    border-radius: 20px;
+    padding: 70px 50px;
+    border-radius: 10px;
 }
 
 .tech-scroll-1 {
@@ -33,14 +33,14 @@
 .tech-scroll-1 .tech-word {
     font-size: 7rem;
     font-weight: 900;
-    text-transform: uppercase;    
+    text-transform: uppercase;
     position: relative;
     display: inline-block;
     flex-shrink: 0;
     background: linear-gradient(to bottom, #000 51%, #fff 49%);
     -webkit-background-clip: text;
     background-clip: text;
-    -webkit-text-fill-color: transparent;    
+    -webkit-text-fill-color: transparent;
     font-weight: 700;
 }
 
@@ -65,10 +65,10 @@
     font-size: 2rem;
     line-height: 1;
     font-weight: 900;
-    text-transform: uppercase;    
+    text-transform: uppercase;
     position: relative;
     display: inline-block;
-    flex-shrink: 0;  
+    flex-shrink: 0;
     font-weight: 900;
     color: #3f3f3f;
     letter-spacing: -1px;
@@ -78,9 +78,9 @@
     width: 100%;
     overflow: hidden;
     position: relative;
-    margin-bottom: 60px;    
+    margin-bottom: 60px;
     display: flex;
-    align-items: center;    
+    align-items: center;
     margin-bottom: 90px;
 }
 
@@ -95,80 +95,94 @@
     font-size: 4rem;
     line-height: 1;
     font-weight: 900;
-    text-transform: uppercase;    
+    text-transform: uppercase;
     position: relative;
     display: inline-block;
-    flex-shrink: 0;  
+    flex-shrink: 0;
     font-weight: 900;
     color: #f0f0f0;
-   
-   
+
+
     letter-spacing: -3px;
 }
 
-#services p{
-    font-size: 1.2rem;
+#services p {
+    font-size: 1.3rem;
     margin: 0;
     font-weight: 300;
 }
 
-#services p strong{
+#services p strong {
     font-weight: 900;
 }
 
-.services-header{
- margin-bottom: 60px;
+.services-header {
+    margin-bottom: 60px;
 }
-.services-header h2{
+
+.services-header h2 {
     font-size: 3rem;
     line-height: 1;
     margin: 0 0 60px 0;
-    max-width: 700px;
+    max-width: 800px;
 }
 
-.services-container{
+.services-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;    
+    gap: 2rem;
 }
 
-.services-item{
-    display: flex;    
+.services-item {
+    display: flex;
     gap: 1rem;
-    width: 48%;
+    width: 44%;
+    border: 2px solid var(--black);
+    padding: 5px 25px 5px 20px;
+    border-radius: 10px;
+    transition: all 0.3s
 }
 
-.services-item img{
+.services-item:hover {
+    border-color: #fff;
+    cursor: pointer;
+}
+
+.services-item img {
     max-width: 70px;
 }
 
-.services-item .services-item-icon{
+.services-item .services-item-icon {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.services-item .services-item-content{
+.services-item .services-item-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 0.5rem;
 }
-.services-item h3{
+
+
+.services-item h3 {
     font-size: 1.5rem;
     margin: 0;
-    color: rgb(255, 255, 255);    
+    color: rgb(255, 255, 255);
 }
-.services-item:hover h3{
+
+/*.services-item:hover h3 {
     -webkit-text-fill-color: transparent;
-    background: -webkit-linear-gradient(45deg, rgb(136, 138, 255) 5%,rgb(215, 68, 255) 30%) text;
+    background: -webkit-linear-gradient(45deg, rgb(136, 138, 255) 5%, rgb(215, 68, 255) 30%) text;
     transition: all 0.3s ease;
-}
+}*/
 
 @keyframes scroll {
     0% {
         transform: translateX(0);
     }
+
     100% {
         transform: translateX(-50%);
     }
@@ -178,6 +192,7 @@
     0% {
         transform: translateX(-50%);
     }
+
     100% {
         transform: translateX(0);
     }
@@ -188,11 +203,11 @@
     .tech-word {
         font-size: 5rem;
     }
-    
+
     .tech-scroll {
         height: 120px;
     }
-    
+
     .tech-scroll-content {
         gap: 2rem;
     }

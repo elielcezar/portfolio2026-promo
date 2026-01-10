@@ -1,12 +1,12 @@
 import Image from "next/image";
 import "./Services.css";
 
-const techWords = ["Sites","E-commerce","Apps","Wordpress","Landing Pages","Google Ads","Sites","E-commerce","Apps","Wordpress","Landing Pages","Google Ads"];
+const techWords = ["Sites", "E-commerce", "Apps", "Wordpress", "Landing Pages", "Google Ads", "Sites", "E-commerce", "Apps", "Wordpress", "Landing Pages", "Google Ads"];
 
 const services = [
     {
         "title": "Programação",
-        "description": "de sites, blogs, landing pages e e-commerce",
+        "description": "de sites, blogs, landing pages, aplicativos e e-commerce",
         "icon": "/icon-code.svg"
     },
     {
@@ -20,7 +20,7 @@ const services = [
         "icon": "/icon-seo.svg"
     },
     {
-        "title": "Correção de Problemas",
+        "title": "Correção de Bugs",
         "description": "análise técnica e plano de melhorias em sites desenvolvidos por terceiros",
         "icon": "/icon-bug.svg"
     }
@@ -29,16 +29,6 @@ const services = [
 export default function Services() {
     return (
         <section id="services">
-            {/*<div className="tech-scroll-1">
-                <div className="tech-scroll-content">
-                    {techWords.map((word, i) => (
-                        <span key={i} className="tech-word">{word}</span>
-                    ))}
-                    {techWords.map((word, i) => (
-                        <span key={`duplicate-${i}`} className="tech-word">{word}</span>
-                    ))}
-                </div>
-            </div>*/}
             <div className="tech-scroll-2">
                 <div className="tech-scroll-content">
                     {techWords.map((word, i) => (
@@ -61,9 +51,9 @@ export default function Services() {
             </div>
 
             <div className="container">
-                <div className="services-header">                    
+                <div className="services-header">
                     <h2>O pacote completo de serviços para melhorar o desempenho do seu site ou app</h2>
-                    <p>Sou formado em <strong>Design Gráfico</strong> pela <strong>UTFPR</strong>, possuo pós-graduação em <strong>Engenharia de Software</strong> para Dispositivos Móveis e trabalho há 10 anos com desenvolvimento para a web. Posso ajudar sua empresa com os seguintes serviços:</p>
+                    <p>Sou formado em <strong>Design Gráfico</strong> pela <strong>UTFPR</strong>, possuo pós-graduação em <strong>Engenharia de Software</strong> para Dispositivos Móveis e trabalho há 15 anos com desenvolvimento para a web. Posso ajudar sua empresa com os seguintes serviços:</p>
                 </div>
                 <div className="services-container">
                     {services.map((service, i) => (
@@ -78,7 +68,7 @@ export default function Services() {
                         </div>
                     ))}
                 </div>
-            </div>        
-    </section> 
-  );
+            </div>
+        </section>
+    );
 }

@@ -1,4 +1,4 @@
-header{
+header {
     position: fixed;
     top: 0;
     left: 0;
@@ -6,7 +6,8 @@ header{
     z-index: 1000;
     background-color: rgba(255, 255, 255, 0.95);
 }
-header .container{
+
+header .container {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
@@ -15,49 +16,57 @@ header .container{
     padding-left: 1.5rem;
     margin-right: auto;
     margin-left: auto;
-    max-width: 80rem;
     height: 4rem;
-    box-shadow: rgba(3, 7, 18, 0.3) 0 1.125rem 1.5rem -1.5rem;    
+    box-shadow: rgba(3, 7, 18, 0.3) 0 1.125rem 1.5rem -1.5rem;
 }
-header .container-logo{
+
+header .container-logo {
     display: flex;
     align-items: center;
-    gap: 0.25rem;    
+    gap: 0.25rem;
 }
-header .container-logo h1{
-    text-transform:lowercase;
+
+header .container-logo img {
+    margin-bottom: 4px;
+}
+
+header .container-logo h1 {
+    text-transform: lowercase;
     font-size: 2.7rem;
     font-weight: 900;
     letter-spacing: -1px;
     margin: -10px 0 0 0;
     color: var(--black);
 }
-header nav ul{
+
+header nav ul {
     display: flex;
     justify-content: center;
     align-items: center;
     list-style: none;
-    gap: .5rem;   
+    gap: .5rem;
 }
-header nav ul li a{
+
+header nav ul li a {
     font-weight: 900;
     color: var(--black);
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1rem;
     letter-spacing: 1px;
-    transition: all 0.3s ease;    
+    transition: all 0.3s ease;
     display: inline-block;
     padding: 10px 20px;
-    border-radius: 5px;
+    border-radius: 2px;
 }
-header nav ul li a:hover{
+
+header nav ul li a:hover {
     background-color: var(--black);
     color: #fff;
     transition: all 0.3s ease;
 }
 
-header nav ul li a:hover svg{
+header nav ul li a:hover svg {
     fill: #fff;
     transition: all 0.3s ease;
 }
@@ -177,7 +186,7 @@ header nav ul li a:hover svg{
     .desktop-nav {
         display: none;
     }
-    
+
     .menu-toggle {
         display: flex;
     }
@@ -188,7 +197,7 @@ header nav ul li a:hover svg{
     .mobile-menu {
         display: none;
     }
-    
+
     .menu-overlay {
         display: none;
     }

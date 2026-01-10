@@ -1,36 +1,34 @@
-@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
-
-
-:root {    
+:root {
   --black: #111;
 }
 
-body{
-  font-family: 'Hanken Grotesk', sans-serif; 
+body {
+  /*font-family: 'Hanken Grotesk', sans-serif; */
+  font-family: var(--font-space-grotesk);
+  margin: 0;
   /*font-family: "Bricolage Grotesque", sans-serif;*/
 }
 
-.container{
+.container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0;  
+  padding: 0;
   display: flex;
   justify-content: space-between;
-  align-items: center;  
+  align-items: center;
   flex-direction: column;
 }
 
-.row{
+.row {
   display: flex;
   flex-direction: row;
   gap: 2rem;
 }
 
-.col-1{
+.col-1 {
   width: 50%;
 }
 
-.col-2{
+.col-2 {
   width: 50%;
 }

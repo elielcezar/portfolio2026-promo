@@ -1,14 +1,14 @@
-#contact{
+#contact {
     max-width: 850px;
     background: var(--black);
     padding: 65px 25PX;
     margin: 0 auto 80px auto;
-    border-radius: 20px;
+    border-radius: 10px;
     color: #fff;
     text-align: center;
 }
 
-#contact h2{
+#contact h2 {
     font-size: 3rem;
     text-align: center;
     max-width: 450px;
@@ -16,7 +16,7 @@
     margin: 0 auto 3rem auto;
 }
 
-#contact p{
+#contact p {
     font-size: 1.5rem;
     text-align: center;
     max-width: 350PX;
@@ -27,5 +27,3 @@
     justify-content: center;
     gap: 1rem;
 }
-
-
