@@ -3,7 +3,7 @@ module.exports = {
     {
       name: "portfolio",
       script: "npm",
-      args: "start",
+      args: "start -- -p 3011",
       env: {
         NODE_ENV: "production",
       },
