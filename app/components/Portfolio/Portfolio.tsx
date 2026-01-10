@@ -83,8 +83,6 @@ const projectsRandom = shuffleArray(projects);
 export default function Portfolio() {
   return (
     <section id="portfolio">
-
-
       {projectsRandom.map((project) => (
         <div key={project.nid} className="project" style={{ '--project-color': project.background_color } as React.CSSProperties}>
           <div className="container">
