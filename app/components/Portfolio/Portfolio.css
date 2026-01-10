@@ -53,12 +53,13 @@
 
 #portfolio .project .row .col-2 {
     width: 100%;
-    padding-bottom: 80px;
+    padding-bottom: 40px;
 }
 
 #portfolio .project .row .col-2 h2 {
     font-size: 2.5rem;
     font-family: var(--font-space-grotesk);
+    margin-bottom: 0;
 }
 
 #portfolio .project .row .col-2 p {
@@ -80,7 +81,8 @@
     padding: 10px 20px;
     border-radius: 2px;
     border: 2px solid var(--black);
-    width: 152px;
+    width: 100%;
+    max-width: 185px;
     transition: all 0.1s ease-in-out;
 }
 

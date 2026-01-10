@@ -59,6 +59,11 @@ export default function Header() {
             height={43}
             className="logo-image" />
           <h1>ElielCezar</h1>
+          {/*<Image src="/logo5.png"
+            alt="Logo"
+            width={232}
+            height={51}
+            className="logo-image" />*/}
         </div>
         <nav className="desktop-nav">
           <ul>
