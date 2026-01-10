@@ -10,8 +10,6 @@
 
 #portfolio .project {
     width: 100%;
-    /*border-radius: 10px;
-    border: 3px solid var(--black);*/
     background: #fff;
     color: var(--black);
     margin-bottom: 120px;
@@ -103,4 +101,40 @@
     color: var(--project-color);
     border-color: #fff;
     background: #fff;
+}
+
+
+@media(orientation: portrait) {
+    #portfolio .project .row {
+        flex-direction: column !important;
+    }
+
+    #portfolio .project {
+        padding-bottom: 40px;
+        margin-bottom: 80px;
+    }
+
+    #portfolio .project:last-child {
+        margin-bottom: 0;
+    }
+
+    #portfolio .project .row {
+        gap: 0;
+    }
+
+    #portfolio .project .row .col-2 {
+        padding: 0 7%;
+    }
+
+    #portfolio .project .row .col-2 h2 {
+        margin: 0;
+    }
+
+    #portfolio .project .row .col-2 .cta a {
+        width: 100%;
+    }
+
+    #portfolio .services {
+        overflow-x: hidden;
+    }
 }

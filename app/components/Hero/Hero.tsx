@@ -28,32 +28,37 @@ export default function Hero() {
   return (
     <section id="hero">
       <div className="container">
-        <div className="container-trusted">
-          <div className="container-image">
-            <Image src="/trusted.jpg"
-              alt="Hero"
-              width={493}
-              height={49}
-            />
-            <Image src="/hero3.png"
-              alt="Hero"
-              width={1188}
-              height={229}
-              className="hero-image" />
-            <div className="tagline">
 
-              <Link href="/portfolio" onClick={(event) => handleLinkClick(event, 'portfolio')} className="link">
+        <div className="container-image">
+          <Image src="/trusted.jpg"
+            alt="Hero"
+            width={493}
+            height={49}
+          />
+          <Image src="/hero3.png"
+            alt="Hero"
+            width={1188}
+            height={229}
+            className="hero-image desktop" />
+          <Image src="/hero3-mob.png"
+            alt="Hero"
+            width={1188}
+            height={229}
+            className="hero-image mobile" />
+          <div className="tagline">
 
-                <svg fill="#000000" width="48" height="48" viewBox="0 0 24 24" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                  <title>down</title>
-                  <path d="M11.125 16.313l7.688-7.688 3.594 3.719-11.094 11.063-11.313-11.313 3.5-3.531z"></path>
-                </svg>
+            <Link href="/portfolio" onClick={(event) => handleLinkClick(event, 'portfolio')} className="link">
 
-              </Link>
+              <svg fill="#000000" width="48" height="48" viewBox="0 0 24 24" fill="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                <title>down</title>
+                <path d="M11.125 16.313l7.688-7.688 3.594 3.719-11.094 11.063-11.313-11.313 3.5-3.531z"></path>
+              </svg>
 
-            </div>
+            </Link>
+
           </div>
         </div>
+
       </div>
     </section>
   );

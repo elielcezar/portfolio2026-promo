@@ -9,7 +9,7 @@ const projects = [
     "title": "DH Law",
     "field_image": "/portfolio/dhlaw.png",
     "field_link": "https://dhlaw.com.br/",
-    "field_descricao_curta": "Reformulação de site para o escritório de advocacia Domingues &amp; Herold. O projeto também contou com uma nova área exclusiva para clientes acompanharem o status de seus processos.",
+    "field_descricao_curta": "Reformulação de site para o escritório de advocacia Domingues & Herold. O projeto também contou com uma nova área exclusiva para clientes acompanharem o status de seus processos.",
     "field_tipo": "Site",
     "background_color": "#364b9b"
   },
@@ -17,8 +17,8 @@ const projects = [
     "nid": "53",
     "title": "Fora dos Autos",
     "field_image": "/portfolio/fora.png",
-    "field_link": "https://eliel.dev/projects/fora-dos-autos/",
-    "field_descricao_curta": "Reformulação de site para o escritório de advocacia Domingues &amp; Herold. O projeto também contou com uma nova área exclusiva para clientes acompanharem o status de seus processos.",
+    "field_link": "https://especiais.gazetadopovo.com.br/lp/fora-dos-autos/",
+    "field_descricao_curta": "Landing page para lançamento do programa Fora dos Autos, da RPC/Gazeta do Povo, com entrevistas e debates sobre política e ativismo judiciário.",
     "field_tipo": "Site",
     "background_color": "#ff9b00"
   },
@@ -27,7 +27,7 @@ const projects = [
     "title": "Churrasco Assaí",
     "field_image": "/portfolio/churrasco.png",
     "field_link": "https://assai.com.br/churrascoassai",
-    "field_descricao_curta": "Reformulação do site da rede de supermercados Assaí.\r\n\r\nO site possui conteúdos direcionados para cada região do país, além de ofertas, localização de lojas, blog, cadastro de clientes etc.",
+    "field_descricao_curta": "O site faz parte de uma campanha focada na venda de produtos de açougue, e conta com área de notícias e uma calculadora que ajuda os usuários a planjarem o churrasco.",
     "field_tipo": "Site",
     "background_color": "#411700"
   },
@@ -44,7 +44,7 @@ const projects = [
     "nid": "84",
     "title": "Assaí Retail Media",
     "field_image": "/portfolio/assai-retail.png",
-    "field_link": "https://megamidiagroup.com.br/portalretailmediaassai/",
+    "field_link": "https://megamidiagroup.com.br/retailmedia10/",
     "field_descricao_curta": "Portal para a rede de supermercados Assaí demonstrando as diversas possibilidades de veiculação de mídia dentro das lojas e também no ambiente digital.",
     "field_tipo": "Site",
     "background_color": "#006caf"

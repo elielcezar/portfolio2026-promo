@@ -46,5 +46,39 @@
 
 #clients .client-image {
     object-fit: contain;
+}
+
+#clients .clients-container .client img {
+    max-width: 140px;
+    max-height: 80px;
+}
+
+
+@media(orientation: portrait) {
+    #clients {
+        padding: 0 7% 7% 7%;
+        margin-bottom: 40px;
+    }
+
+    #clients .col-1,
+    #clients .col-2 {
+        width: 100%;
+    }
+
+    #clients h2 {
+        font-size: 3rem;
+        line-height: 1;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    #clients .container .row {
+        flex-direction: column;
+    }
+
+    #clients .clients-container .client {
+        width: 45%;
+        padding: 5%;
+    }
 
 }

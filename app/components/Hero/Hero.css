@@ -17,7 +17,12 @@
     gap: 20px;
 }
 
-#hero img {
+#hero img.desktop {
+    max-width: 100%;
+    height: auto;
+}
+
+#hero img.mobile {
     max-width: 100%;
     height: auto;
 }
@@ -52,4 +57,21 @@
     background-color: var(--black);
     color: #fff;
     transition: all 0.3s ease;
+}
+
+@media(orientation: landscape) {
+    #hero img.mobile {
+        display: none;
+    }
+}
+
+@media(orientation: portrait) {
+    #hero {
+        padding: 0 7%;
+        margin: 34vh auto 25vh;
+    }
+
+    #hero img.desktop {
+        display: none;
+    }
 }

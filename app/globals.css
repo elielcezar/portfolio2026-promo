@@ -9,6 +9,10 @@ body {
   /*font-family: "Bricolage Grotesque", sans-serif;*/
 }
 
+* {
+  box-sizing: border-box;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -31,4 +35,9 @@ body {
 
 .col-2 {
   width: 50%;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

@@ -83,6 +83,9 @@ header nav ul li a:hover svg {
     cursor: pointer;
     padding: 0;
     z-index: 1001;
+    position: absolute;
+    right: 7%;
+    top: 16px;
 }
 
 .menu-toggle span {
@@ -146,6 +149,10 @@ header nav ul li a:hover svg {
 
 .mobile-menu nav {
     padding: 5rem 2rem 2rem 2rem;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .mobile-menu nav ul {
@@ -165,7 +172,7 @@ header nav ul li a:hover svg {
     color: var(--black);
     text-decoration: none;
     text-transform: uppercase;
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     letter-spacing: 1px;
     padding: 15px 20px;
     border-radius: 5px;
@@ -179,6 +186,7 @@ header nav ul li a:hover svg {
 
 .mobile-menu nav ul li a:hover svg {
     stroke: #fff;
+    width: 2rem;
 }
 
 /* Responsividade - Esconder menu desktop no mobile */
@@ -200,5 +208,20 @@ header nav ul li a:hover svg {
 
     .menu-overlay {
         display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    header .container-logo {
+        margin-top: 5px;
+    }
+
+    header .container-logo img {
+        max-width: 30px;
+        margin-bottom: 5px;
+    }
+
+    header .container-logo h1 {
+        font-size: 2rem;
     }
 }
