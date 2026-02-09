@@ -121,12 +121,17 @@
 @media (max-width: 768px) {
   #portfolio h2{
     padding-left: 7%;
+    margin-bottom: 0;
   }
   #portfolio .embla__container{
     padding-left: 1rem;
   }
   #portfolio .embla__container .item{
     max-width: 80%;
+  }
+  #portfolio .embla__prev,
+  #portfolio .embla__next {
+    display: none;
   }
 }
 

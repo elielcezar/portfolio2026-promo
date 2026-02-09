@@ -140,7 +140,7 @@
 
 @media(orientation: portrait) {
     #hero {
-        padding: 200px 7% 7% 7%;
+        padding: 150px 7% 100px 7%;
     }
     #hero img.desktop,
     #hero .selo {
@@ -148,7 +148,7 @@
     }
     #hero .tagline {
         flex-direction: column;
-        margin: 0;
+        margin: 40px 0 0 0;
         width: 100%;
     }
     #hero .tagline .col-1,
@@ -156,6 +156,25 @@
         width: 100%;
         border-right: none;
         padding: 0;
+    }
+
+    #hero .tagline .col-1 p strong.number{
+        font-size: 58px;
+        color: #b8e900;
+        stroke: none;
+        -webkit-text-stroke-width: 0;
+    }
+
+    #hero .tagline .col-1 p {
+        margin-bottom: 16px;
+    }
+
+    #hero .tagline .col-1 p span{
+        font-size: 17px;
+    }
+
+    #hero .tagline .col-2 p {     
+        line-height: 34px;
     }
 }
 

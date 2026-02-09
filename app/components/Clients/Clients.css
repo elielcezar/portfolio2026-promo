@@ -37,7 +37,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    justify-content: END;
+    justify-content: end;
 }
 
 #clients .client {
@@ -81,8 +81,10 @@
     }
 
     #clients .clients-container .client {
-        width: 45%;
+        width: 40%;
         padding: 5%;
     }
-
+    #clients .clients-container {
+        justify-content: space-around;
+    }
 }

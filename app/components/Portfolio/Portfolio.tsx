@@ -1,6 +1,7 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import useEmblaCarousel from 'embla-carousel-react';
 import { useCallback } from 'react';
@@ -17,63 +18,49 @@ const projects = [
     "title": "DH Law",
     "field_image": "/portfolio/dhlaw.png",
     "field_link": "https://dhlaw.com.br/",
-    "field_descricao_curta": "Reformulação de site para o escritório de advocacia Domingues & Herold. O projeto também contou com uma nova área exclusiva para clientes acompanharem o status de seus processos.",
-    "field_tipo": "Site",
-    "background_color": "#364b9b"
+    "field_descricao_curta": "Reformulação de site para o escritório de advocacia Domingues & Herold. O projeto também contou com uma nova área exclusiva para clientes acompanharem o status de seus processos."
   },
   {
     "nid": "53",
     "title": "Fora dos Autos",
     "field_image": "/portfolio/fora.png",
     "field_link": "https://especiais.gazetadopovo.com.br/lp/fora-dos-autos/",
-    "field_descricao_curta": "Landing page para lançamento do programa Fora dos Autos, da RPC/Gazeta do Povo, com entrevistas e debates sobre política e ativismo judiciário.",
-    "field_tipo": "Site",
-    "background_color": "#ff9b00"
+    "field_descricao_curta": "Landing page para lançamento do programa Fora dos Autos, da RPC/Gazeta do Povo, com entrevistas e debates sobre política e ativismo judiciário."
   },
   {
     "nid": "92",
     "title": "Churrasco Assaí",
     "field_image": "/portfolio/churrasco.png",
     "field_link": "https://assai.com.br/churrascoassai",
-    "field_descricao_curta": "O site faz parte de uma campanha focada na venda de produtos de açougue, e conta com área de notícias e uma calculadora que ajuda os usuários a planjarem o churrasco.",
-    "field_tipo": "Site",
-    "background_color": "#411700"
+    "field_descricao_curta": "O site faz parte de uma campanha focada na venda de produtos de açougue, e conta com área de notícias e uma calculadora que ajuda os usuários a planjarem o churrasco."
   },
   {
     "nid": "57",
     "title": "Assaí",
     "field_image": "/portfolio/assai.png",
     "field_link": "https://assai.com.br/",
-    "field_descricao_curta": "Reformulação do site da rede de supermercados Assaí.\r\n\r\nO site possui conteúdos direcionados para cada região do país, além de ofertas, localização de lojas, blog, cadastro de clientes etc.",
-    "field_tipo": "Site",
-    "background_color": "#1f3a81"
+    "field_descricao_curta": "Reformulação do site da rede de supermercados Assaí.\r\n\r\nO site possui conteúdos direcionados para cada região do país, além de ofertas, localização de lojas, blog, cadastro de clientes etc."
   },
   {
     "nid": "84",
     "title": "Assaí Retail Media",
     "field_image": "/portfolio/assai-retail.png",
     "field_link": "https://megamidiagroup.com.br/retailmedia10/",
-    "field_descricao_curta": "Portal para a rede de supermercados Assaí demonstrando as diversas possibilidades de veiculação de mídia dentro das lojas e também no ambiente digital.",
-    "field_tipo": "Site",
-    "background_color": "#006caf"
+    "field_descricao_curta": "Portal para a rede de supermercados Assaí demonstrando as diversas possibilidades de veiculação de mídia dentro das lojas e também no ambiente digital."    
   },
   {
     "nid": "83",
     "title": "Fort Atacadista",
     "field_image": "/portfolio/fort.png",
     "field_link": "https://www.amigotododia.com.br/",
-    "field_descricao_curta": "Site promocional para a rede de supermercados Fort Atacadista. O objetivo é fornecer conteúdos de interesse para pequenos empreendedores e captar leads para as demais campanhas da rede.",
-    "field_tipo": "Site",
-    "background_color": "#870e12"
+    "field_descricao_curta": "Site promocional para a rede de supermercados Fort Atacadista. O objetivo é fornecer conteúdos de interesse para pequenos empreendedores e captar leads para as demais campanhas da rede."
   },
   {
     "nid": "8",
     "title": "Psicodelia",
     "field_image": "/portfolio/psicodelia.png",
     "field_link": "https://psicodelia.org/loja/",
-    "field_descricao_curta": "Site de notícias sobre música eletrônica com e-commerce integrado. Fui responsável pela identidade visual, projeto gráfico e desenvolvimento da plataforma usando Wordpress e Woocommerce.",
-    "field_tipo": "Site",
-    "background_color": "#140044"
+    "field_descricao_curta": "Site de notícias sobre música eletrônica com e-commerce integrado. Fui responsável pela identidade visual, projeto gráfico e desenvolvimento da plataforma usando Wordpress e Woocommerce."    
   }
 ];
 
@@ -130,7 +117,9 @@ const scrollNext = useCallback(() => {
                   
                   {projectsRandom.map((project, index) => (
                     <div key={index} className="embla__slide item">
-                      <Image src={project.field_image} alt={project.title} width={420} height={280} /> 
+                      <Link href={project.field_link} target="_blank">
+                        <Image src={project.field_image} alt={project.title} width={420} height={280} /> 
+                      </Link>
                     </div>
                   ))}
                   
