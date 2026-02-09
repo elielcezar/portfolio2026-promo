@@ -1,42 +1,23 @@
 header {
     position: fixed;
-    top: 0;
-    left: 0;
+    top: 10px;    
+    left: 50%;
     width: 100%;
+    max-width: 900px;
     z-index: 1000;
-    background-color: rgba(255, 255, 255, 0.95);
-}
-
-header .container {
-    flex-direction: row;
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(14px);
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    padding-right: 1.5rem;
-    padding-left: 1.5rem;
-    margin-right: auto;
-    margin-left: auto;
-    height: 4rem;
-    box-shadow: rgba(3, 7, 18, 0.3) 0 1.125rem 1.5rem -1.5rem;
+    padding: 5px 5px 7px 15px;
+    gap: 1.5rem;    
+    border-radius: 50px;    
+    margin: 0 0 0 -450px;
 }
 
-header .container-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-header .container-logo img {
-    margin-bottom: 4px;
-}
-
-header .container-logo h1 {
-    text-transform: lowercase;
-    font-size: 2.7rem;
-    font-weight: 900;
-    letter-spacing: -1px;
-    margin: -10px 0 0 0;
-    color: var(--black);
+header .logo {
+    padding: 2px 0 0 5px;
 }
 
 header nav ul {
@@ -45,30 +26,30 @@ header nav ul {
     align-items: center;
     list-style: none;
     gap: .5rem;
+    margin: 0;
+    padding: 0;
 }
 
 header nav ul li a {
-    font-weight: 900;
-    color: var(--black);
+    font-weight: 800;
+    color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1rem;
     letter-spacing: 1px;
     transition: all 0.3s ease;
     display: inline-block;
-    padding: 10px 20px;
-    border-radius: 2px;
+    padding: 5px 15px;
+    border-radius: 50px;   
+    font-size: 14px; 
+    border: 3px solid transparent;
 }
 
 header nav ul li a:hover {
-    background-color: var(--black);
-    color: #fff;
+    background: var(--green)    ;
+    color: #000;
     transition: all 0.3s ease;
-}
-
-header nav ul li a:hover svg {
-    fill: #fff;
-    transition: all 0.3s ease;
+    border-color: #fff;    
 }
 
 /* Botão Hamburger */
@@ -76,22 +57,22 @@ header nav ul li a:hover svg {
     display: none;
     flex-direction: column;
     justify-content: space-around;
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
     z-index: 1001;
     position: absolute;
-    right: 7%;
-    top: 16px;
+    right: 18px;
+    top: 9px;
 }
 
 .menu-toggle span {
     width: 100%;
     height: 3px;
-    background-color: var(--black);
+    background-color: var(--green);
     border-radius: 3px;
     transition: all 0.3s ease;
     transform-origin: center;
@@ -104,7 +85,6 @@ header nav ul li a:hover svg {
 .menu-toggle.active span:nth-child(2) {
     opacity: 0;
 }
-
 .menu-toggle.active span:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -7px);
 }
@@ -135,12 +115,13 @@ header nav ul li a:hover svg {
     left: 0;
     width: 90%;
     height: 100vh;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: var(--black);
     transform: translateX(-100%);
     transition: transform 0.3s ease;
     z-index: 1002;
     overflow-y: auto;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    border-right: 2px solid var(--green);
 }
 
 .mobile-menu.open {
@@ -169,7 +150,7 @@ header nav ul li a:hover svg {
     align-items: center;
     gap: 1rem;
     font-weight: 900;
-    color: var(--black);
+    color: #fff;
     text-decoration: none;
     text-transform: uppercase;
     font-size: 1.8rem;
@@ -212,16 +193,19 @@ header nav ul li a:hover svg {
 }
 
 @media (max-width: 768px) {
-    header .container-logo {
-        margin-top: 5px;
+    header {
+        top: 8px;
+        left: 7%;
+        width: 86%;
+        margin: 0;
+        padding-top: 9px;
+        padding-bottom: 9px;
+        background: rgba(255, 255, 255, 0.15);
+        
     }
-
-    header .container-logo img {
-        max-width: 30px;
-        margin-bottom: 5px;
+    header .logo {
     }
-
-    header .container-logo h1 {
-        font-size: 2rem;
+    header .logo img {
+        max-width: 150px;
     }
 }

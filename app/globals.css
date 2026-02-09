@@ -1,12 +1,12 @@
 :root {
-  --black: #111;
+  --black: #181818;
+  --green: #B8E900;
 }
 
 body {
-  /*font-family: 'Hanken Grotesk', sans-serif; */
-  font-family: var(--font-space-grotesk);
+  font-family: var(--font-plus-jakarta-sans);
   margin: 0;
-  /*font-family: "Bricolage Grotesque", sans-serif;*/
+  background-color: #111;
 }
 
 * {

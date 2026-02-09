@@ -50,20 +50,14 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className={isMenuOpen ? 'menu-open' : ''}>
-      <div className="container">
-        <div className="container-logo">
-          <Image src="/logo.png"
+    <>
+      <header className={isMenuOpen ? 'menu-open' : ''}>
+        <div className="logo">
+          <Image src="/logo-elielcezar.webp"
             alt="Logo"
-            width={39}
-            height={43}
+            width={180}
+            height={26}
             className="logo-image" />
-          <h1>ElielCezar</h1>
-          {/*<Image src="/logo5.png"
-            alt="Logo"
-            width={232}
-            height={51}
-            className="logo-image" />*/}
         </div>
         <nav className="desktop-nav">
           <ul>
@@ -98,8 +92,7 @@ export default function Header() {
           <span></span>
           <span></span>
         </button>
-      </div>
-
+      </header>
       {/* Overlay */}
       <div
         className={`menu-overlay ${isMenuOpen ? 'active' : ''}`}
@@ -132,6 +125,6 @@ export default function Header() {
           </ul>
         </nav>
       </div>
-    </header>
+    </>
   );
 }

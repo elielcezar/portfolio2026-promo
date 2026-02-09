@@ -5,6 +5,8 @@ import Services from "./components/Services/Services";
 import Clients from "./components/Clients/Clients";
 import Contact from "./components/Contact/Contact";
 import WhatsappButton from "./components/WhatsappButton/WhatsappButton";
+import Ribbon from "./components/Ribbon/Ribbon";
+import CTA from "./components/CTA/CTA";
 
 
 export default function Home() {
@@ -12,9 +14,11 @@ export default function Home() {
     <>
       <Header />    
       <Hero />
-      <Portfolio />
-      <Services />
+      <Ribbon />
+      <Services />      
+      <Portfolio />            
       <Clients />
+      <CTA />
       <Contact />
       <WhatsappButton />
     </>

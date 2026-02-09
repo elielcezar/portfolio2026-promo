@@ -1,5 +1,5 @@
 #clients {
-    padding: 0 0 80px 0;
+    padding: 120px 0;
 }
 
 #clients .container {
@@ -25,6 +25,11 @@
     font-weight: 700;
     transition: all 0.3s ease;
     letter-spacing: -2px;
+    color: var(--green);
+}
+
+#clients h2 strong {    
+    color: #fff;    
 }
 
 #clients .clients-container {
@@ -68,8 +73,7 @@
     #clients h2 {
         font-size: 3rem;
         line-height: 1;
-        margin-bottom: 0;
-        text-align: center;
+        margin-bottom: 0;        
     }
 
     #clients .container .row {

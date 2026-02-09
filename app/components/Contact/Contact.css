@@ -1,38 +1,82 @@
 #contact {
     max-width: 900px;
     background: var(--black);
-    padding: 65px 25PX;
+    padding: 85px 15px;
     margin: 0 auto 80px auto;
-    border-radius: 10px;
+    border-radius: 20px;
     color: #fff;
     text-align: center;
+    margin-top: 80px;
+    position: relative;
+    background-image: linear-gradient(#0e0e0e 0%, #181818 100%);
 }
 
-#contact h2 {
-    font-size: 3rem;
-    text-align: center;
-    max-width: 450px;
-    line-height: 1;
-    margin: 0 auto 3rem auto;
+#contact .container {
+    display: flex;
+    flex-direction: row;
+    gap: 4rem;
+    justify-content: center;
 }
 
-#contact p {
-    font-size: 1.5rem;
+#contact .btn {
+    font-size: 1.15rem;
     text-align: center;
     max-width: 350PX;
     line-height: 1;
-    margin: 0 0 1rem 0;
+    margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 15px;
+    color: #fff;
+    background: rgb(255, 255, 255, 0.2);
+    padding: 7px 20px 7px 8px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;    
+}    
+
+#contact .btn:hover {
+    background: var(--green);
+    color: #000;
+    
+}
+
+#contact .btn .icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: var(--green);
+    border-radius: 50%;
+    padding: 10px;
+}
+
+#contact .btn:hover .icon-container {
+    background: #fff;    
+}
+
+#contact .hello {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 @media(orientation: portrait) {
     #contact {
-        padding: 7%;
-        margin: 7%;
+        margin-top: 80px;
+        padding: 7%;        
         margin-bottom: 80px;
+    }
+
+    #contact .container {
+        flex-direction: column;
+        gap: 2rem;
     }
 
     #contact h2 {
@@ -44,4 +88,6 @@
     #contact p {
         font-size: 1.3rem;
     }
+
+    
 }

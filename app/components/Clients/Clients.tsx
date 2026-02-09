@@ -4,27 +4,27 @@ import "./Clients.css";
 const clients = [
     {
         "name": "Assaí",
-        "image": "/clients/logo-assai.png"
+        "image": "/clients/logo-assai.webp"
     },
     {
         "name": "McDonald's ",
-        "image": "/clients/logo-mc4.png"
+        "image": "/clients/logo-mc4.webp"
     },
     {
         "name": "Buscapé",
-        "image": "/clients/logo-buscape.png"
+        "image": "/clients/logo-buscape.webp"
     },
     {
         "name": "Subway",
-        "image": "/clients/logo-sub.png"
+        "image": "/clients/logo-sub.webp"
     },
     {
         "name": "Gazeta do Povo",
-        "image": "/clients/logo-gazeta.png"
+        "image": "/clients/logo-gazeta.webp"
     },
     {
         "name": "Uninter",
-        "image": "/clients/logo-uninter.png"
+        "image": "/clients/logo-uninter.webp"
     }
 ]
 export default function Clients() {
@@ -33,7 +33,7 @@ export default function Clients() {
             <div className="container">
                 <div className="row">
                     <div className="col-1">
-                        <h2>Já desenvolvi projetos para marcas como:</h2>
+                        <h2>Já desenvolvi projetos para <strong>grandes marcas</strong></h2>
                     </div>
                     <div className="col-2">
                         <div className="clients-container">

@@ -1,6 +1,14 @@
+'use client';
+
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from 'embla-carousel-react';
+import { useCallback } from 'react';
+import AutoPlay from 'embla-carousel-autoplay';
+
+
 import "./Portfolio.css";
-import Link from "next/link";
+
 
 const projects = [
 
@@ -80,38 +88,62 @@ function shuffleArray<T>(array: T[]): T[] {
 
 const projectsRandom = shuffleArray(projects);
 
+
+
 export default function Portfolio() {
+
+  // Configuração do Embla Carousel
+const [emblaRef, emblaApi] = useEmblaCarousel(
+  {
+    loop: true,
+    align: 'center',
+    slidesToScroll: 1    
+  },
+  [
+    AutoPlay({
+      delay: 2500,
+      stopOnInteraction: true,
+      stopOnMouseEnter: false,
+    })
+  ]
+);
+
+// Funções de navegação
+const scrollPrev = useCallback(() => {
+  if (emblaApi) emblaApi.scrollPrev();
+}, [emblaApi]);
+
+const scrollNext = useCallback(() => {
+  if (emblaApi) emblaApi.scrollNext();
+}, [emblaApi]);
+
   return (
-    <section id="portfolio">
-      {projectsRandom.map((project) => (
-        <div key={project.nid} className="project" style={{ '--project-color': project.background_color } as React.CSSProperties}>
-          <div className="container">
-            <div className="row">
-              <div className="col-1">
-                <Link href={project.field_link} target="_blank">
-                  <Image
-                    src={project.field_image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="project-image" />
-                </Link>
-              </div>
-              <div className="col-2">
-                <h2>{project.title}</h2>
-                <p>{project.field_descricao_curta}</p>
-                <div className="cta">
-                  <Link href={project.field_link} target="_blank">
-                    Ver projeto
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-move-right"><path d="M18 8L22 12L18 16"></path><path d="M2 12H22"></path></svg>
-                  </Link>
+    <section id="portfolio">     
+    
+      <div className="container">           
+          <h2>Portfólio</h2>      
+      </div>
+
+        <div className="embla">
+              <div className="embla__viewport" ref={emblaRef}>
+                <div className="embla__container">
+                  
+                  {projectsRandom.map((project, index) => (
+                    <div key={index} className="embla__slide item">
+                      <Image src={project.field_image} alt={project.title} width={420} height={280} /> 
+                    </div>
+                  ))}
+                  
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      ))}
 
+              <button type="button" className="embla__prev" onClick={scrollPrev} aria-label="Slide anterior">
+                <ChevronLeft size={24} />
+              </button>
+              <button type="button" className="embla__next" onClick={scrollNext} aria-label="Próximo slide">
+                <ChevronRight size={24} />
+              </button>
+            </div>
 
     </section>
   );

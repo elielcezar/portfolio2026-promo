@@ -1,0 +1,110 @@
+#ribbon {    
+    margin: 0;
+    color: #f5f5f5;
+    position: relative;
+    overflow: hidden;
+    background: #111;
+}
+
+.tech-scroll-2 {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 5px 0 15px 0;
+    margin-bottom: -7px;
+}
+
+.tech-scroll-2 .tech-scroll-content {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll-reverse 80s linear infinite;
+    gap: 4rem;
+}
+
+.tech-scroll-2 .tech-word {
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 900;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    font-weight: 900;
+    color: #000;
+    letter-spacing: -1px;
+}
+
+.tech-scroll-3 {
+    width: 100%;
+    overflow: hidden;
+    position: relative;    
+    display: flex;
+    align-items: center;    
+    background: var(--green);
+    padding: 5px 0;
+}
+
+.tech-scroll-3 .tech-scroll-content {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 180s linear infinite;
+    gap: 4rem;
+}
+
+.tech-scroll-3 .tech-word {
+    font-size: 4rem;
+    line-height: 1;
+    font-weight: 900;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    font-weight: 900;
+    color: #000;
+
+
+    letter-spacing: -3px;
+}
+
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes scroll-reverse {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .tech-word {
+        font-size: 5rem;
+    }
+
+    .tech-scroll {
+        height: 120px;
+    }
+
+    .tech-scroll-content {
+        gap: 2rem;
+    }
+
+    .tech-scroll-3 {
+        margin-bottom: 45px;
+    }
+}

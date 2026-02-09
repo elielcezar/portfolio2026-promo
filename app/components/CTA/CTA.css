@@ -1,0 +1,86 @@
+.tech-scroll {
+    width: 100%;
+    overflow: hidden;
+    position: relative;    
+    display: flex;
+    align-items: center;        
+    padding: 5px 0;
+}
+
+.tech-scroll .tech-scroll-content {
+    display: flex;
+    white-space: nowrap;
+    animation: scroll 30s linear infinite;
+    gap: 1rem;
+}
+
+.tech-scroll .tech-word {
+    font-size: 3.25rem;
+    line-height: 1;
+    font-weight: 900;    
+    position: relative;
+    display: inline-block;
+    flex-shrink: 0;
+    font-weight: 900;
+    color: #f0f0f0;
+    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.tech-scroll .marquee-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;    
+    height: 60px;
+    background-color: rgb(44, 44, 44);
+    border-radius: 100%;
+    margin: 0px 20px;
+    padding: 10px;
+    animation: 7s linear 0s infinite normal none running spin;
+}
+
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes scroll-reverse {
+    0% {
+        transform: translateX(-50%);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .tech-word {
+        font-size: 5rem;
+    }
+
+    .tech-scroll {
+        height: 120px;
+    }
+
+    .tech-scroll-content {
+        gap: 2rem;
+    }
+}

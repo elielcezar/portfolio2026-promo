@@ -4,16 +4,20 @@ import "./Contact.css";
 export default function Contact() {
     return (
         <section id="contact">
-            <div className="container">
-                <h2>Vamos tirar seu projeto do papel?</h2>
-                <p>
-                    <Image src="/icon-wpp.svg" alt="WhatsApp" width={24} height={24} />
-                    <span>+55 (41) 99963-1609</span>
-                </p>
-                <p>
-                <Image src="/icon-email.svg" alt="Email" width={24} height={24} />
+            <Image src="/hello2.png" alt="Contact" width={130} height={50} className="hello" />
+            <div className="container">                
+                <div className="btn">
+                    <div className="icon-container">
+                        <Image src="/icon-wpp.svg" alt="WhatsApp" width={40} height={40} />
+                    </div>
+                    <span>+55 41 99963.1609</span>
+                </div>
+                <div className="btn">
+                    <div className="icon-container">    
+                        <Image src="/icon-email.svg" alt="Email" width={40} height={40} />
+                    </div>
                     <span>elielcezar@gmail.com</span>
-                </p>
+                </div>
             </div>
             
         </section>

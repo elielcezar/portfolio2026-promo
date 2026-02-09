@@ -1,8 +1,9 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
+import { Star } from 'lucide-react';
 import "./Hero.css";
+
 
 export default function Hero() {
 
@@ -21,40 +22,66 @@ export default function Hero() {
     }
   };
 
-  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    scrollToSection(event, sectionId);
-  };
-
   return (
     <section id="hero">
       <div className="container">
-
-        <div className="container-image">
-          <Image src="/trusted.jpg"
+        <div className="container-image">         
+          <Image src="/hero.webp"
             alt="Hero"
-            width={493}
-            height={49}
-          />
-          <Image src="/hero3.png"
-            alt="Hero"
-            width={1188}
+            width={974}
             height={229}
             className="hero-image desktop" />
-          <Image src="/hero3-mob.png"
+          <Image src="/hero-mob.webp"
             alt="Hero"
-            width={1188}
-            height={229}
+            width={315}
+            height={161}
             className="hero-image mobile" />
+
+          <div className="selo">
+            <Image src="/selo.webp"
+              alt="Selo"
+              width={170}
+              height={170}
+              className="selo-image" />
+            <Image src="/e.png"
+              alt="Selo"
+              width={109}
+              height={109}
+              className="e-bg" />
+          </div>
+          
           <div className="tagline">
 
-            <Link href="/portfolio" onClick={(event) => handleLinkClick(event, 'portfolio')} className="link">
+            <div className="col-1">
+              <p>
+                <strong className="number">258+</strong>
+                <span>Clientes Satisfeitos</span>
+              </p>
 
-              <svg fill="#000000" width="48" height="48" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                <title>down</title>
-                <path d="M11.125 16.313l7.688-7.688 3.594 3.719-11.094 11.063-11.313-11.313 3.5-3.531z"></path>
-              </svg>
+              <div className="people">
+                <div className="people-image">
+                  <Image src="/people.png"
+                    alt="Hero"
+                    width={108}
+                    height={50}
+                  />
+                </div>
+                <div className="rating">
+                  <div className="stars">
+                    <Star fill="#ffd800" strokeWidth="0" />
+                    <Star fill="#ffd800" strokeWidth="0" />
+                    <Star fill="#ffd800" strokeWidth="0" />
+                    <Star fill="#ffd800" strokeWidth="0" />
+                    <Star fill="#ffd800" strokeWidth="0" />
+                  </div>
+                  <p className="rating-value"><strong>4.8</strong>/5.0</p>
+                </div>
+              </div>
 
-            </Link>
+            </div>
+            <div className="col-2">
+            <p>Olá! Meu nome é Eliel, sou formado em <strong>Design Gráfico</strong> com pós-graduação em <strong>Engenharia de Software</strong> e trabalho há 15 anos com desenvolvimento para a web</p>
+            </div>
 
           </div>
         </div>
