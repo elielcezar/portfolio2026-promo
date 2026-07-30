@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: '/portfolio/:path*',
+        source: '/images/portfolio/:path*',
         headers: [
           {
             key: 'Cache-Control',

@@ -5,49 +5,38 @@ import "./Hero.css";
 
 export default function Hero() {
 
-  const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    event.preventDefault();
-    const section = document.getElementById(sectionId);
-    if (section) {
-      const elementPosition = section.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset;
-      const offset = 150;
-
-      window.scrollTo({
-        top: offsetPosition - offset,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
     <section id="hero">
-      <div className="container">
-        <div className="container-image">         
-          <Image src="/hero.webp"
-            alt="Hero"
-            width={974}
-            height={229}
-            className="hero-image desktop" />
-          <Image src="/hero-mob.webp"
-            alt="Hero"
-            width={315}
-            height={161}
-            className="hero-image mobile" />
+      <div className="hero-inner">
+
+        <div className="hero-photo">
+          <Image src="/images/eliel.webp"
+            alt="Eliel Cezar"
+            width={859}
+            height={812}
+            priority />
+        </div>
+
+        <div className="hero-content">
 
           <div className="selo">
             <Image src="/selo.webp"
-              alt="Selo"
+              alt=""
               width={170}
-              height={170}
+              height={171}
               className="selo-image" />
             <Image src="/e.png"
-              alt="Selo"
+              alt=""
               width={109}
               height={109}
               className="e-bg" />
           </div>
-          
+
+          <h1 className="hero-title">
+            Designer &amp;<br />
+            <span className="highlight">Programador</span> Web
+          </h1>
+
           <div className="tagline">
 
             <div className="col-1">
@@ -59,7 +48,7 @@ export default function Hero() {
               <div className="people">
                 <div className="people-image">
                   <Image src="/people.png"
-                    alt="Hero"
+                    alt=""
                     width={108}
                     height={50}
                   />
@@ -78,7 +67,7 @@ export default function Hero() {
 
             </div>
             <div className="col-2">
-            <p>Olá! Meu nome é Eliel, sou formado em <strong>Design Gráfico</strong> com pós-graduação em <strong>Engenharia de Software</strong> e trabalho há 15 anos com desenvolvimento para a web</p>
+              <p>Olá! Meu nome é Eliel, sou formado em <strong>Design Gráfico</strong> com pós-graduação em <strong>Engenharia de Software</strong> e trabalho há 15 anos com desenvolvimento para a web</p>
             </div>
 
           </div>

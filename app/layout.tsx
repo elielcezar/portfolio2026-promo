@@ -82,7 +82,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-BR">
       <body className={`${plusJakartaSans.variable} ${inter.variable}`}>
         {/* Google Analytics */}
         <Script
@@ -94,7 +94,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', G-X9E0GD719W');
+            gtag('config', 'G-X9E0GD719W');
           `}
         </Script>
         <Script id="json-ld" type="application/ld+json">

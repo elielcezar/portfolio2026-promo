@@ -38,24 +38,17 @@ export default function Header() {
 
   return (
     <header className={`header ${isMenuOpen ? 'menu-open' : ''}`}>
-      <div className="header-bar">
-        <div className="logo">
-          <Image src="/logo-elielcezar.webp"
-            alt="Logo"
-            width={180}
-            height={26}
-            className="logo-image" />
-        </div>
+      <div className="header-bar">       
         <nav className="desktop-nav">
           <ul>
             <li>
-              <Link href="/services" onClick={(event) => scrollToSection(event, 'services')}>Serviços</Link>
+              <a href="#services" onClick={(event) => scrollToSection(event, 'services')}>Serviços</a>
             </li>
             <li>
-              <Link href="/portfolio" onClick={(event) => scrollToSection(event, 'portfolio')}>Portfólio</Link>
-            </li>           
+              <a href="#portfolio" onClick={(event) => scrollToSection(event, 'portfolio')}>Portfólio</a>
+            </li>
             <li>
-              <Link href="/contact" onClick={(event) => scrollToSection(event, 'contact')}>Contato</Link>
+              <a href="#contact" onClick={(event) => scrollToSection(event, 'contact')}>Contato</a>
             </li>
             <li>
               <Link href="https://github.com/elielcezar" target="_blank" className="social-link">
@@ -84,14 +77,14 @@ export default function Header() {
       {/* Menu Mobile expandido verticalmente dentro do header */}
       <nav className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
         <ul>
-          <li>  
-            <Link href="/services" onClick={(event) => handleLinkClick(event, 'services')}>Sobre</Link>
+          <li>
+            <a href="#services" onClick={(event) => handleLinkClick(event, 'services')}>Serviços</a>
           </li>
           <li>
-            <Link href="/portfolio" onClick={(event) => handleLinkClick(event, 'portfolio')}>Portfolio</Link>
-          </li>          
+            <a href="#portfolio" onClick={(event) => handleLinkClick(event, 'portfolio')}>Portfólio</a>
+          </li>
           <li>
-            <Link href="/contact" onClick={(event) => handleLinkClick(event, 'contact')}>Contato</Link>
+            <a href="#contact" onClick={(event) => handleLinkClick(event, 'contact')}>Contato</a>
           </li>
           <li className="social-link">
             <Link href="https://github.com/elielcezar" onClick={closeMenu} target="_blank">

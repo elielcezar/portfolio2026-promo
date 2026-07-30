@@ -1,166 +1,240 @@
-#hero {    
-    background: var(--black) url('/bg-hero.webp') center;
-    background-size: cover;
-    background-attachment: fixed;
-    padding: 260px 0 12vh 0;
-}
+/* O design de referência foi composto num canvas de 2542x905 (as dimensões do
+   bg-hero.webp). As medidas estruturais abaixo são derivadas dele em vw
+   (medida / 2542 * 100), para o hero reproduzir a proporção do layout em
+   qualquer largura, com clamp() onde o tamanho não pode encolher demais. */
 
-#hero .container {
-    display: flex;
-    justify-content: center;
-}
-
-#hero .container-image {
-    width: 100%;
-    max-width: 1260px;
-    height: auto;
+#hero {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;    
+    overflow: hidden;
+    min-height: 35.6vw;
+    background: var(--black) url('/images/bg-hero.webp') center / cover no-repeat;
 }
 
-#hero img.desktop {
-    max-width: 100%;
-    height: auto;
+#hero .hero-inner {
+    position: relative;
+    min-height: 35.6vw;
 }
 
-#hero img.mobile {
-    max-width: 100%;
+/* Até 1920px o hero ganha um pouco mais de altura relativa. Precisa vir antes
+   do bloco retrato, que zera o min-height e tem a mesma especificidade. */
+@media (max-width: 1920px) {
+    #hero .hero-inner {
+        min-height: 38.6vw;
+    }
+}
+
+/* Foto: tamanho natural no canvas de referência, encostada no rodapé */
+#hero .hero-photo {
+    position: absolute;
+    left: 9.48vw;
+    bottom: 0;
+    width: 33.79vw;
+}
+
+#hero .hero-photo img {
+    display: block;
     width: 100%;
     height: auto;
 }
 
+#hero .hero-content {
+    margin-left: 43.5vw;
+    padding-top: 13.05vw;
+}
+
+/* Título */
+#hero .hero-title {
+    font-family: var(--font-inter), sans-serif;
+    font-size: clamp(2.5rem, 4.85vw, 7.75rem);
+    line-height: 0.87;
+    letter-spacing: -0.06em;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1.8vw 0;
+}
+
+#hero .hero-title .highlight {
+    color: var(--yellow);
+}
+
+/* Selo giratório */
 #hero .selo {
     position: absolute;
-    right: 10%;
-    top: -50px;
-    right: -70px;    
+    top: 5.11vw;
+    right: 23.7vw;
+    width: 7.24vw;
+    min-width: 70px;
 }
 
 #hero .selo-image {
+    display: block;
+    width: 100%;
+    height: auto;
     animation: spin 20s linear infinite;
 }
 
 #hero .e-bg {
     position: absolute;
     left: 50%;
-    margin-left: -55px;
-    top: 31px;
+    top: 18%;
+    width: 64%;
+    height: auto;
+    transform: translateX(-50%);
 }
 
+/* Tagline — mesma escala do título e da foto: cada medida é o valor do canvas
+   2542 convertido em vw (medida / 2542 * 100), com clamp() para não ficar
+   ilegível nas larguras baixas do layout desktop. Os valores máximos são
+   exatamente os do design. */
 #hero .tagline {
     display: flex;
     flex-direction: row;
-    gap: 20px;    
-    margin: 100px 0 0 16%;
-    width: 84%;
+    gap: 0.79vw;
 }
 
-#hero .tagline p{
+#hero .tagline p {
     color: #fff;
     margin: 0;
     font-weight: 400;
 }
 
 #hero .tagline .col-1 {
-    max-width: 300px;
+    max-width: clamp(160px, 11.8vw, 300px);
     border-right: 1px solid #ccc;
 }
 
 #hero .tagline .col-1 p {
-    margin-bottom: 28px;
+    margin-bottom: 1.1vw;
 }
 
-#hero .tagline .col-1 p strong.number{
-    color: var(--black);    
-    font-size: 68px;
-    line-height: 58px;
+#hero .tagline .col-1 p strong.number {
+    color: var(--black);
+    font-size: clamp(1.75rem, 2.675vw, 4.25rem);
+    line-height: 0.853;
     font-weight: 800;
-    -webkit-text-stroke-width: 1px;
-    stroke-width: 1px;
-    -webkit-text-stroke-color: var(--green);
-    stroke: var(--green);
-    font-weight: 800;
-    font-family: sans-serif;    
+    -webkit-text-stroke-width: max(1px, 0.04vw);
+    stroke-width: max(1px, 0.04vw);
+    -webkit-text-stroke-color: var(--yellow);
+    stroke: var(--yellow);
+    font-family: sans-serif;
 }
 
-#hero .tagline .col-1 p span{       
+#hero .tagline .col-1 p span {
     display: inline-block;
     width: 100%;
-    font-size: 20px;    
-    display: inline-block;
-    margin-top: 5px;
+    font-size: clamp(0.8125rem, 0.787vw, 1.25rem);
+    margin-top: 0.2vw;
 }
 
-#hero .tagline .col-1 .people{
+#hero .tagline .col-1 .people {
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    align-items: center;
+    gap: 0.79vw;
 }
 
-#hero .tagline .col-1 .people .rating{
+#hero .tagline .col-1 .people .people-image img {
+    width: clamp(70px, 4.25vw, 108px);
+    height: auto;
+}
+
+#hero .tagline .col-1 .people .rating {
     margin: 0;
 }
 
-#hero .tagline .col-1 .people .rating .stars{
-    height: 21px;
+#hero .tagline .col-1 .people .rating .stars {
+    display: flex;
+    align-items: center;
 }
 
-#hero .tagline .col-1 .people .rating p{
-    font-weight: 500;
+#hero .tagline .col-1 .people .rating .stars svg {
+    width: clamp(15px, 0.944vw, 24px);
+    height: clamp(15px, 0.944vw, 24px);
 }
-#hero .tagline .col-1 .people .rating p strong{
-    font-size: 24px;
+
+#hero .tagline .col-1 .people .rating p {
+    font-weight: 500;
+    font-size: clamp(0.6875rem, 0.63vw, 1rem);
+}
+
+#hero .tagline .col-1 .people .rating p strong {
+    font-size: clamp(1rem, 0.944vw, 1.5rem);
     font-weight: 600;
-    letter-spacing: -1px;
+    letter-spacing: -0.04em;
 }
 
 #hero .tagline .col-2 {
     display: flex;
     flex-direction: row;
-    gap: 20px;
-    padding: 0 0 0 40px;
-    display: flex;
+    gap: 0.79vw;
+    padding: 0 0 0 1.77vw;
     align-items: center;
     justify-content: start;
 }
 
-#hero .tagline .col-2 p{
-    font-size: 18px;
+#hero .tagline .col-2 p {
+    font-size: clamp(.8125rem, .928vw, 1.156rem);
     font-weight: 400;
-    line-height: 28px;    
+    line-height: 1.55;
+    max-width: clamp(210px, 18.88vw, 480px);
 }
 
-@media(orientation: landscape) {
-    #hero img.mobile {
-        display: none;
-    }
-}
-
-@media(orientation: portrait) {
+/* Retrato / telas estreitas: empilha, foto acima do texto.
+   Precisa desfazer o posicionamento absoluto usado no layout desktop. */
+@media (orientation: portrait), (max-width: 900px) {
     #hero {
-        padding: 150px 7% 100px 7%;
+        min-height: 0;
+        padding: 120px 7% 60px 7%;
     }
-    #hero img.desktop,
+
+    #hero .hero-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 0;
+    }
+
+    #hero .hero-photo {
+        position: static;
+        width: 70%;
+        max-width: 320px;
+        margin: 0 auto 20px auto;
+    }
+
+    #hero .hero-content {
+        width: 100%;
+        margin-left: 0;
+        padding-top: 0;
+    }
+
+    #hero .hero-title {
+        font-size: clamp(2.25rem, 11vw, 4rem);
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
     #hero .selo {
         display: none;
     }
+
     #hero .tagline {
         flex-direction: column;
-        margin: 40px 0 0 0;
         width: 100%;
+        gap: 0;
     }
+
     #hero .tagline .col-1,
     #hero .tagline .col-2 {
         width: 100%;
+        max-width: 100%;
         border-right: none;
         padding: 0;
     }
 
-    #hero .tagline .col-1 p strong.number{
+    #hero .tagline .col-1 p strong.number {
         font-size: 58px;
-        color: #b8e900;
+        line-height: 1;
+        color: var(--yellow);
         stroke: none;
         -webkit-text-stroke-width: 0;
     }
@@ -169,18 +243,37 @@
         margin-bottom: 16px;
     }
 
-    #hero .tagline .col-1 p span{
+    #hero .tagline .col-1 p span {
         font-size: 17px;
+        margin-top: 5px;
     }
 
-    #hero .tagline .col-2 p {     
+    /* Desfaz a escala em vw do desktop */
+    #hero .tagline .col-1 .people {
+        gap: 20px;
+    }
+
+    #hero .tagline .col-1 .people .people-image img {
+        width: 108px;
+    }
+
+    #hero .tagline .col-1 .people .rating .stars svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    #hero .tagline .col-1 .people .rating p {
+        font-size: 16px;
+    }
+
+    #hero .tagline .col-1 .people .rating p strong {
+        font-size: 24px;
+    }
+
+    #hero .tagline .col-2 p {
+        font-size: 17px;
         line-height: 34px;
-    }
-}
-
-@media(max-width: 1400px) {
-    #hero img.selo {
-        right: 0;
+        max-width: 100%;
     }
 }
 

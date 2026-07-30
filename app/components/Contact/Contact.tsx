@@ -3,8 +3,7 @@ import "./Contact.css";
 
 export default function Contact() {
     return (
-        <section id="contact">
-            <Image src="/hello2.png" alt="Contact" width={130} height={50} className="hello" />
+        <section id="contact">            
             <div className="container">                
                 <div className="btn">
                     <div className="icon-container">
