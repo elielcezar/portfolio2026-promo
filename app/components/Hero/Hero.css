@@ -37,6 +37,12 @@
     height: auto;
 }
 
+/* A foto tem arte própria no mobile; a troca acontece no mesmo breakpoint do
+   bloco retrato lá embaixo. */
+#hero .hero-photo-mobile {
+    display: none;
+}
+
 #hero .hero-content {
     margin-left: 43.5vw;
     padding-top: 13.05vw;
@@ -201,6 +207,16 @@
         margin: 0 auto 20px auto;
     }
 
+    #hero .hero-photo-desktop {
+        display: none;
+    }
+
+    /* 227px é a largura natural do avatar-mobile.png — não ampliar */
+    #hero .hero-photo-mobile {
+        display: block;
+        max-width: 227px;
+    }
+
     #hero .hero-content {
         width: 100%;
         margin-left: 0;
@@ -208,8 +224,8 @@
     }
 
     #hero .hero-title {
-        font-size: clamp(2.25rem, 11vw, 4rem);
-        text-align: center;
+        font-size: clamp(3.5rem, 11vw, 4rem);
+        text-align: left;
         margin-bottom: 40px;
     }
 

@@ -9,11 +9,19 @@ export default function Hero() {
     <section id="hero">
       <div className="hero-inner">
 
-        <div className="hero-photo">
+        <div className="hero-photo hero-photo-desktop">
           <Image src="/images/eliel.webp"
             alt="Eliel Cezar"
             width={859}
             height={812}
+            priority />
+        </div>
+
+        <div className="hero-photo hero-photo-mobile">
+          <Image src="/images/avatar-mobile.png"
+            alt="Eliel Cezar"
+            width={227}
+            height={238}
             priority />
         </div>
 

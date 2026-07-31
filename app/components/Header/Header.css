@@ -191,21 +191,41 @@ header nav ul li a.social-link {
         display: block;
     }
 
+    /* Fechado: sem barra — só o hambúrguer dentro de um círculo fosco, no canto
+       superior direito. O display:flex do header precisa ser desfeito aqui: no
+       mobile a .header-bar e a .mobile-nav empilham, e não lado a lado (era o
+       que jogava o X para a esquerda). */
     header {
-        top: 8px;
-        left: 7%;
-        width: 86%;
+        display: block;
+        top: 12px;
+        left: auto;
+        right: 7%;
+        width: 52px;
+        max-width: none;
+        max-height: 52px;
         margin: 0;
         background: rgba(255, 255, 255, 0.15);
-        border-radius: 30px;
+        border-radius: 50%;
     }
 
     .header-bar {
-        padding: 9px 15px;
+        justify-content: center;
+        min-height: 52px;
+        padding: 0;
+        gap: 0;
     }
 
+    /* Aberto: o círculo vira painel e o X sobe para o canto superior direito.
+       Anima por max-height porque height:auto não é transicionável. */
     header.menu-open {
-        border-radius: 20px;
+        width: 86%;
+        max-height: 520px;
+        border-radius: 24px;
+    }
+
+    header.menu-open .header-bar {
+        justify-content: flex-end;
+        padding: 0 18px;
     }
 
     header .logo img {
