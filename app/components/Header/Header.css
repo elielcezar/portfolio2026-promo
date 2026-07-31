@@ -118,7 +118,7 @@ header nav ul li a.social-link {
 .mobile-nav.open {
     max-height: 400px;
     opacity: 1;
-    padding: 20px 15px 25px 15px;
+    padding: 0 15px 25px 15px;
 }
 
 .mobile-nav ul {

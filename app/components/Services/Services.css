@@ -16,16 +16,19 @@
     line-height: 1;
     margin: 0 0 60px 0;
     max-width: 800px;
+    max-width: 100%;
+    margin: 0;
 }
 
 .services-header h2 strong {
     color: var(--yellow);
 }
 
-#services p {
+#services p.about {
     font-size: 1.1rem;
     margin: 0;
     font-weight: 300;
+    display: none;
 }
 
 #services p strong {
@@ -36,11 +39,9 @@
     margin-bottom: 60px;
 }
 
-
-
 .services-container {
     display: flex;    
-    gap: 1rem;
+    gap: 1rem;    
 }
 
 .services-item {

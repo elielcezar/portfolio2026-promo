@@ -31,7 +31,7 @@ export default function Services() {
             <div className="container">
                 <div className="services-header">
                     <h2>O <strong>pacote completo</strong> de serviços para melhorar o desempenho do seu site ou app</h2>
-                    <p>Sou formado em <strong>Design Gráfico</strong> pela <strong>UTFPR</strong>, possuo pós-graduação em <strong>Engenharia de Software</strong> para Dispositivos Móveis e trabalho há 15 anos com desenvolvimento para a web. Posso ajudar sua empresa com os seguintes serviços:</p>
+                    <p className="about">Sou formado em <strong>Design Gráfico</strong> pela <strong>UTFPR</strong>, possuo pós-graduação em <strong>Engenharia de Software</strong> para Dispositivos Móveis e trabalho há 15 anos com desenvolvimento para a web. Posso ajudar sua empresa com os seguintes serviços:</p>
                 </div>
                 <div className="services-container">
                     {services.map((service, i) => (

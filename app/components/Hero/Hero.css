@@ -139,6 +139,10 @@
     gap: 0.79vw;
 }
 
+#hero .tagline .col-1 .people .people-image {
+    margin-top: -18px;
+}
+
 #hero .tagline .col-1 .people .people-image img {
     width: clamp(70px, 4.25vw, 108px);
     height: auto;
@@ -190,13 +194,12 @@
 @media (orientation: portrait), (max-width: 900px) {
     #hero {
         min-height: 0;
-        padding: 120px 7% 60px 7%;
+        padding: 80px 7% 60px 7%;
     }
 
     #hero .hero-inner {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex-direction: column;        
         min-height: 0;
     }
 
@@ -204,7 +207,7 @@
         position: static;
         width: 70%;
         max-width: 320px;
-        margin: 0 auto 20px auto;
+        margin: 0 0 40px 0;
     }
 
     #hero .hero-photo-desktop {
@@ -257,6 +260,13 @@
 
     #hero .tagline .col-1 p {
         margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #hero .tagline .col-1 p.rating-value{
+        gap: 0;
     }
 
     #hero .tagline .col-1 p span {
@@ -268,7 +278,7 @@
     #hero .tagline .col-1 .people {
         gap: 20px;
     }
-
+    
     #hero .tagline .col-1 .people .people-image img {
         width: 108px;
     }
@@ -287,9 +297,9 @@
     }
 
     #hero .tagline .col-2 p {
-        font-size: 17px;
-        line-height: 34px;
+        font-size: 20px;        
         max-width: 100%;
+        margin: 40px 0;
     }
 }
 
