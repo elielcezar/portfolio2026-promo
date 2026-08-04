@@ -23,7 +23,7 @@
   max-width: 1400px;
   max-height: 95vh;
   border-radius: 4px;
-  background: #1b1b1b;
+  background: #fff;
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
   animation: modal-in 0.3s ease-out;
 }
@@ -51,14 +51,14 @@
   border: none;
   border-radius: 50%;
   background: transparent;
-  color: #bdbdbd;
+  color: #5f5f5f;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .modal-close:hover {
-  background: #2c2c2c;
-  color: #fff;
+  background: #ececec;
+  color: var(--black);
 }
 
 .modal-body {
@@ -81,7 +81,7 @@
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  color: #777;
+  color: #5f5f5f;
 }
 
 .modal-gallery-single {
@@ -209,7 +209,7 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.5rem;
+  padding: 0 1.5rem 1.5rem 1.5rem;
 }
 
 .modal-info h2 {
@@ -217,13 +217,13 @@
   font-size: 2.25rem;
   line-height: 1.1;
   font-weight: 600;
-  color: #fff;
+  color: var(--black);
 }
 
 .modal-content {
   font-size: 1rem;
   line-height: 1.7;
-  color: #c9c9c9;
+  color: #3d3d3d;
 }
 
 .modal-content p {
@@ -237,11 +237,13 @@
 .modal-content strong,
 .modal-content b {
   font-weight: 600;
-  color: #fff;
+  color: var(--black);
 }
 
+/* O --yellow da marca sobre branco fica ilegível (contraste ~1.6:1), então o
+   link se distingue pelo sublinhado e não pela cor. */
 .modal-content a {
-  color: var(--yellow);
+  color: var(--black);
   text-decoration: underline;
 }
 
@@ -254,11 +256,11 @@
 
 .modal-tech span {
   padding: 4px 12px;
-  border: 1px solid #3a3a3a;
+  border: 1px solid #d9d9d9;
   border-radius: 50px;
-  background: #262626;
+  background: #f2f2f2;
   font-size: 0.875rem;
-  color: #c9c9c9;
+  color: #3d3d3d;
 }
 
 .modal-link {
@@ -267,19 +269,23 @@
   gap: 0.5rem;
   margin-top: 0.5rem;
   padding: 10px 20px;
-  border: 2px solid var(--yellow);
+  border: 2px solid var(--black);
   border-radius: 4px;
-  background: var(--yellow);
-  color: var(--black);
+  background: var(--black);
+  color: #fff;
   font-size: 0.875rem;
   font-weight: 700;
   text-decoration: none;
   transition: all 0.3s;
 }
 
+/* No hover só o fundo sai; o texto vira preto porque amarelo sobre branco
+   sumiria. A borda amarela é o que mantém a identidade do botão. */
 .modal-link:hover {
   background: transparent;
-  color: var(--yellow);
+  color: var(--black);
+  border-color: var(--black);
+  background: #fff;
 }
 
 /* Telas em modo retrato: empilha as colunas */

@@ -76,10 +76,9 @@
 }
 
 @media(orientation: portrait) {
-    #contact {
-        margin-top: 80px;
+    #contact {        
         padding: 7%;        
-        margin-bottom: 80px;
+        margin-top: 80px;    margin: 0 5% 120px 5%;
     }
 
     #contact .container {

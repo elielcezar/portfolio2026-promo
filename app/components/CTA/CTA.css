@@ -72,8 +72,8 @@
 
 /* Responsividade */
 @media (max-width: 768px) {
-    .tech-word {
-        font-size: 5rem;
+    .tech-scroll .tech-word{
+        font-size: 3.25rem;
     }
 
     .tech-scroll {
