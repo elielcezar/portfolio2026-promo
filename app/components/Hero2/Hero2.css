@@ -162,119 +162,6 @@
     line-height: 1.55;    
 }
 
-/* Retrato / telas estreitas: empilha, foto acima do texto.
-   Precisa desfazer o posicionamento absoluto usado no layout desktop. */
-@media (orientation: portrait), (max-width: 900px) {
-    #hero {
-        min-height: 0;
-        padding: 80px 7% 60px 7%;
-    }
-
-    #hero .hero-inner {
-        display: flex;
-        flex-direction: column;        
-        min-height: 0;
-    }
-
-    #hero .hero-photo {
-        position: static;
-        width: 70%;
-        max-width: 320px;
-        margin: 0 0 40px 0;
-    }
-
-    #hero .hero-photo-desktop {
-        display: none;
-    }
-
-    /* 227px é a largura natural do avatar-mobile.png — não ampliar */
-    #hero .hero-photo-mobile {
-        display: block;
-        max-width: 227px;
-    }
-
-    #hero .hero-content {
-        width: 100%;
-        margin-left: 0;
-        padding-top: 0;
-    }
-
-    #hero .hero-title {
-        font-size: clamp(3.5rem, 11vw, 4rem);
-        text-align: left;
-        margin-bottom: 40px;
-    }
-
-    #hero .selo {
-        display: none;
-    }
-
-    #hero .tagline {
-        flex-direction: column;
-        width: 100%;
-        gap: 0;
-    }
-
-    #hero .tagline .col-1,
-    #hero .tagline .col-2 {
-        width: 100%;
-        max-width: 100%;
-        border-right: none;
-        padding: 0;
-    }
-
-    #hero .tagline .col-1 p strong.number {
-        font-size: 58px;
-        line-height: 1;
-        color: var(--yellow);
-        stroke: none;
-        -webkit-text-stroke-width: 0;
-    }
-
-    #hero .tagline .col-1 p {
-        margin-bottom: 16px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    #hero .tagline .col-1 p.rating-value{
-        gap: 0;
-    }
-
-    #hero .tagline .col-1 p span {
-        font-size: 17px;
-        margin-top: 5px;
-    }
-
-    /* Desfaz a escala em vw do desktop */
-    #hero .tagline .col-1 .people {
-        gap: 20px;
-    }
-    
-    #hero .tagline .col-1 .people .people-image img {
-        width: 108px;
-    }
-
-    #hero .tagline .col-1 .people .rating .stars svg {
-        width: 24px;
-        height: 24px;
-    }
-
-    #hero .tagline .col-1 .people .rating p {
-        font-size: 16px;
-    }
-
-    #hero .tagline .col-1 .people .rating p strong {
-        font-size: 24px;
-    }
-
-    #hero .tagline .col-2 p {
-        font-size: 20px;        
-        max-width: 100%;
-        margin: 40px 0;
-    }
-}
 
 @keyframes spin {
     100% {
@@ -329,4 +216,116 @@
         width: 200px;
     }
     
+}
+
+/* Retrato / telas estreitas: empilha, foto acima do texto.
+   Precisa desfazer o posicionamento absoluto usado no layout desktop. */
+   @media (orientation: portrait), (max-width: 900px) {
+    #hero {
+        min-height: 0;
+        padding: 80px 7% 60px 7%;
+    }
+
+    #hero .hero-inner {
+        display: flex;
+        flex-direction: column;        
+        min-height: 0;
+    }
+  
+    #hero .hero-photo-desktop {
+        display: none;
+    }
+
+    /* 227px é a largura natural do avatar-mobile.png — não ampliar */
+    #hero .hero-photo-mobile {
+        display: block;
+        max-width: 180px;
+    }
+
+    #hero .hero-content {
+        width: 100%;
+        max-width: 100%;        
+        margin: 40px 0 0 0;
+    }
+
+    #hero .hero-title {
+        font-size: clamp(3.5rem, 11vw, 4rem);
+        text-align: left;
+        margin-bottom: 40px;
+    }
+
+    #hero .selo {
+        display: none;
+    }
+
+    #hero .tagline {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        max-width: 100%;
+    }
+
+    #hero .tagline .col-1,
+    #hero .tagline .col-2 {
+        width: 100%;
+        max-width: 100%;
+        border-right: none;
+        padding: 0;
+    }
+
+    #hero .tagline .col-1 {
+        flex-direction: column;
+    }
+
+    #hero .tagline .col-1 p strong.number {
+        font-size: 58px;
+        line-height: 1;
+        color: var(--yellow);
+        stroke: none;
+        -webkit-text-stroke-width: 0;
+    }
+
+    #hero .tagline .col-1 p {
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #hero .tagline .col-1 p.rating-value{
+        gap: 0;
+    }
+
+    #hero .tagline .col-1 p span {
+        font-size: 17px;
+        margin-top: 5px;
+    }
+
+    /* Desfaz a escala em vw do desktop */
+    #hero .tagline .col-1 .people {
+        gap: 20px;
+    }
+    
+    #hero .tagline .col-1 .people .people-image img {
+        width: 108px;
+    }
+
+    #hero .tagline .col-1 .people .rating .stars svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    #hero .tagline .col-1 .people .rating p {
+        font-size: 16px;
+    }
+
+    #hero .tagline .col-1 .people .rating p strong {
+        font-size: 24px;
+    }
+
+    #hero .tagline .col-2 p {
+        font-size: 20px;        
+        max-width: 100%;
+        margin: 40px 0;
+    }
 }
