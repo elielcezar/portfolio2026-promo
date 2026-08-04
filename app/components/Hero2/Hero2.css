@@ -1,0 +1,332 @@
+/* O design de referência foi composto num canvas de 2542x905 (as dimensões do
+   bg-hero.webp). As medidas estruturais abaixo são derivadas dele em vw
+   (medida / 2542 * 100), para o hero reproduzir a proporção do layout em
+   qualquer largura, com clamp() onde o tamanho não pode encolher demais. */
+
+#hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 35.6vw;
+    background: var(--black) url('/images/bg-hero.webp') center / cover no-repeat;
+}
+
+#hero .hero-inner {
+    position: relative;
+    min-height: 26.6vw;
+}
+
+
+/* A foto tem arte própria no mobile; a troca acontece no mesmo breakpoint do
+   bloco retrato lá embaixo. */
+#hero .hero-photo-mobile {
+    display: none;
+}
+
+#hero .hero-content {    
+    max-width: 80%;
+    margin: 15vw auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.hero-photo-desktop{
+    position: absolute;
+    top: -59px;
+    left: 46.5vw;
+}
+.hero-photo-desktop img{
+    max-width: 10vw;
+}
+
+/* Título */
+#hero .hero-title {
+    font-family: var(--font-inter), sans-serif;
+    font-size: clamp(2.5rem, 7.85vw, 7.75vw);
+    line-height: 0.87;
+    letter-spacing: -0.06em;
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1.8vw 0;
+}
+
+#hero .hero-title .highlight {
+    color: var(--yellow);
+}
+
+
+
+/* Tagline — mesma escala do título e da foto: cada medida é o valor do canvas
+   2542 convertido em vw (medida / 2542 * 100), com clamp() para não ficar
+   ilegível nas larguras baixas do layout desktop. Os valores máximos são
+   exatamente os do design. */
+#hero .tagline {
+    display: flex;
+    flex-direction: row;
+    gap: 0.79vw;    
+    max-width: 80%;
+}
+
+#hero .tagline p {
+    color: #fff;
+    margin: 0;
+    font-weight: 400;
+}
+
+#hero .tagline .col-1 {
+    
+    border-right: 1px solid #ccc;
+    display: flex;
+    
+    width: 37%;
+    padding-right: 3%;
+}
+
+#hero .tagline .col-1 p {
+    display: block;
+    width: 140px;
+}
+
+#hero .tagline .col-1 p strong.number {
+    color: var(--black);
+    font-size: clamp(1.75rem, 2.675vw, 4.25rem);
+    line-height: 0.853;
+    font-weight: 800;
+    -webkit-text-stroke-width: max(1px, 0.04vw);
+    stroke-width: max(1px, 0.04vw);
+    -webkit-text-stroke-color: var(--yellow);
+    stroke: var(--yellow);
+    font-family: sans-serif;
+}
+
+#hero .tagline .col-1 p span {
+    display: inline-block;
+    width: 100%;
+    font-size: clamp(0.8125rem, 0.787vw, 1.25rem);
+    margin-top: 0.2vw;
+}
+
+#hero .tagline .col-1 .people {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.79vw;
+    width: 50%;    
+}
+
+
+#hero .tagline .col-1 .people .people-image img {
+    width: 110px;
+    max-width: 110px;
+    height: auto;
+}
+
+#hero .tagline .col-1 .people .rating {
+    margin: 0;
+}
+
+#hero .tagline .col-1 .people .rating .stars {
+    display: flex;
+    align-items: center;
+}
+
+#hero .tagline .col-1 .people .rating .stars svg {
+    width: clamp(15px, 0.944vw, 24px);
+    height: clamp(15px, 0.944vw, 24px);
+}
+
+#hero .tagline .col-1 .people .rating p {
+    font-weight: 500;
+    font-size: clamp(0.6875rem, 0.63vw, 1rem);
+}
+
+#hero .tagline .col-1 .people .rating p strong {
+    font-size: clamp(1rem, 0.944vw, 1.5rem);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+}
+
+#hero .tagline .col-2 {
+    display: flex;
+    flex-direction: row;
+    gap: 0.79vw;
+    padding: 0 0 0 1.77vw;
+    align-items: center;
+    justify-content: start;
+}
+
+#hero .tagline .col-2 p {
+    font-size: clamp(.8125rem, .928vw, 1.156rem);
+    font-weight: 400;
+    line-height: 1.55;    
+}
+
+/* Retrato / telas estreitas: empilha, foto acima do texto.
+   Precisa desfazer o posicionamento absoluto usado no layout desktop. */
+@media (orientation: portrait), (max-width: 900px) {
+    #hero {
+        min-height: 0;
+        padding: 80px 7% 60px 7%;
+    }
+
+    #hero .hero-inner {
+        display: flex;
+        flex-direction: column;        
+        min-height: 0;
+    }
+
+    #hero .hero-photo {
+        position: static;
+        width: 70%;
+        max-width: 320px;
+        margin: 0 0 40px 0;
+    }
+
+    #hero .hero-photo-desktop {
+        display: none;
+    }
+
+    /* 227px é a largura natural do avatar-mobile.png — não ampliar */
+    #hero .hero-photo-mobile {
+        display: block;
+        max-width: 227px;
+    }
+
+    #hero .hero-content {
+        width: 100%;
+        margin-left: 0;
+        padding-top: 0;
+    }
+
+    #hero .hero-title {
+        font-size: clamp(3.5rem, 11vw, 4rem);
+        text-align: left;
+        margin-bottom: 40px;
+    }
+
+    #hero .selo {
+        display: none;
+    }
+
+    #hero .tagline {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+    }
+
+    #hero .tagline .col-1,
+    #hero .tagline .col-2 {
+        width: 100%;
+        max-width: 100%;
+        border-right: none;
+        padding: 0;
+    }
+
+    #hero .tagline .col-1 p strong.number {
+        font-size: 58px;
+        line-height: 1;
+        color: var(--yellow);
+        stroke: none;
+        -webkit-text-stroke-width: 0;
+    }
+
+    #hero .tagline .col-1 p {
+        margin-bottom: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    #hero .tagline .col-1 p.rating-value{
+        gap: 0;
+    }
+
+    #hero .tagline .col-1 p span {
+        font-size: 17px;
+        margin-top: 5px;
+    }
+
+    /* Desfaz a escala em vw do desktop */
+    #hero .tagline .col-1 .people {
+        gap: 20px;
+    }
+    
+    #hero .tagline .col-1 .people .people-image img {
+        width: 108px;
+    }
+
+    #hero .tagline .col-1 .people .rating .stars svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    #hero .tagline .col-1 .people .rating p {
+        font-size: 16px;
+    }
+
+    #hero .tagline .col-1 .people .rating p strong {
+        font-size: 24px;
+    }
+
+    #hero .tagline .col-2 p {
+        font-size: 20px;        
+        max-width: 100%;
+        margin: 40px 0;
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media(max-width: 1400px) and (orientation: landscape){
+    #hero .hero-title {      
+        font-size: max(2.5rem, 9.25vw);      
+    }
+    #hero .tagline {
+        max-width: 92%;
+    }
+    .hero-photo-desktop img {
+        max-width: 12vw;
+    }
+    .hero-photo-desktop {
+        left: 48vw;
+    }
+}
+
+@media(min-width: 1921px){ 
+    
+    #hero {        
+        min-height: 32.6vw;       
+    }
+    #hero .hero-inner{
+        min-height: auto;
+    }
+    #hero .hero-content {    
+        max-width: 60%;      
+    }
+    #hero .hero-title {       
+        font-size: clamp(2.5rem, 7.85vw, 6.75vw);       
+    }
+
+    #hero .hero-content {          
+        margin: 10vw auto 0 auto;
+    }
+
+    .hero-photo-desktop {      
+        top: -86px;
+        left: 36.5vw;
+    }
+
+    #hero .tagline {       
+        max-width: 89%;
+    }
+
+    #hero .tagline .col-1 p {
+        width: 200px;
+    }
+    
+}

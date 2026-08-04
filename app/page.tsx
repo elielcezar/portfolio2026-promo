@@ -1,5 +1,5 @@
 import Header from "./components/Header/Header";
-import Hero from "./components/Hero/Hero";
+import Hero2 from "./components/Hero2/Hero2";
 import Portfolio from "./components/Portfolio/Portfolio";
 import Services from "./components/Services/Services";
 import Clients from "./components/Clients/Clients";
@@ -13,11 +13,12 @@ export default function Home() {
   return (
     <>
       <Header />    
-      <Hero />
+      <Hero2 />
       <Ribbon />
       <Services />      
-      <Portfolio />            
       <Clients />
+      <Portfolio />            
+      
       <CTA />
       <Contact />
       <WhatsappButton />

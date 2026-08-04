@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Star } from 'lucide-react';
-import "./Hero.css";
+import "./Hero2.css";
 
 
 export default function Hero() {
@@ -9,14 +9,7 @@ export default function Hero() {
     <section id="hero">
       <div className="hero-inner">
 
-        <div className="hero-photo hero-photo-desktop">
-          <Image src="/images/eliel.webp"
-            alt="Eliel Cezar"
-            width={859}
-            height={812}
-            priority />
-        </div>
-
+       
         <div className="hero-photo hero-photo-mobile">
           <Image src="/images/avatar-mobile.png"
             alt="Eliel Cezar"
@@ -27,19 +20,14 @@ export default function Hero() {
 
         <div className="hero-content">
 
-          <div className="selo">
-            <Image src="/selo.webp"
-              alt=""
-              width={170}
-              height={171}
-              className="selo-image" />
-            <Image src="/e.png"
-              alt=""
-              width={109}
-              height={109}
-              className="e-bg" />
-          </div>
-
+        <div className="hero-photo hero-photo-desktop">
+          <Image src="/images/avatar-mobile.png"
+            alt="Eliel Cezar"
+            width={227}
+            height={238}
+            priority />
+        </div>
+         
           <h1 className="hero-title">
             Designer &amp;<br />
             <span className="highlight">Programador</span> Web

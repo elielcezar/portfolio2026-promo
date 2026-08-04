@@ -5,13 +5,13 @@ export default function Contact() {
     return (
         <section id="contact">            
             <div className="container">                
-                <div className="btn">
+                <div className="btn phone">
                     <div className="icon-container">
                         <Image src="/icon-wpp.svg" alt="WhatsApp" width={40} height={40} />
                     </div>
-                    <span>+55 41 99963.1609</span>
+                    <span>+55 (41) 99963-1609</span>
                 </div>
-                <div className="btn">
+                <div className="btn email">
                     <div className="icon-container">    
                         <Image src="/icon-email.svg" alt="Email" width={40} height={40} />
                     </div>

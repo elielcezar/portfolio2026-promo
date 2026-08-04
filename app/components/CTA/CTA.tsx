@@ -1,7 +1,7 @@
 import Image from "next/image";
 import "./CTA.css";
 
-const techWords = ["Você tem um projeto?", "Vamos conversar!","Você tem um projeto?", "Vamos conversar!","Você tem um projeto?", "Vamos conversar!","Você tem um projeto?", "Vamos conversar!"];
+const techWords = ["Contato", "Contato", "Contato", "Contato", "Contato", "Contato", "Contato", "Contato", "Contato", "Contato"];
 
 export default function CTA() {
     return (

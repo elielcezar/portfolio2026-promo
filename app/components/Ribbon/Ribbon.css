@@ -14,6 +14,7 @@
     background: #fff;
     padding: 5px 0 15px 0;
     margin-bottom: -7px;
+    transform: rotate3d(1, 1, 1, 0deg);
 }
 
 .tech-scroll-2 .tech-scroll-content {
@@ -116,10 +117,10 @@
         justify-content: center;
     }
     .tech-scroll-2 {
-        transform: rotate3d(1, 1, 1, 0deg);
+        transform: rotate3d(1, 1, 1, -1deg);
     }
     .tech-scroll-3 {
-        transform: rotate3d(1, 1, 1, 0deg);
+        transform: rotate3d(1, 1, 1, -3deg);
         /*margin-top: -40px !important;*/
     }
 }
