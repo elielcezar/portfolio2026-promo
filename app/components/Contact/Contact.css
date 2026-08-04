@@ -1,15 +1,14 @@
 #contact {
     max-width: 900px;
     background: var(--black);
-    padding: 85px 15px;
-    margin: 0 auto 80px auto;
+    padding: 85px 15px;    
     border-radius: 20px;
     color: #fff;
     text-align: center;    
     position: relative;
     backdrop-filter: blur(14px);
     background: rgba(255, 255, 255, 0.2);   
-    margin-top: -163px;
+    margin: -163px auto 180px auto;
     border: 2px solid #e4ca29;
 }
 
