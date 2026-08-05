@@ -54,6 +54,9 @@
   color: #5f5f5f;
   cursor: pointer;
   transition: all 0.3s;
+  background: var(--yellow);
+  top: -10px;
+  right: -10px;
 }
 
 .modal-close:hover {
@@ -66,6 +69,7 @@
   flex: 1;
   min-height: 0;
   overflow: hidden;
+  background: #f7f5f0;
 }
 
 /* Coluna 1 - galeria */

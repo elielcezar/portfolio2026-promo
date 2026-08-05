@@ -13,6 +13,7 @@ header {
     overflow: hidden;
     display: flex;
     justify-content: center;
+    border: 2px solid var(--yellow);
 }
 
 .header-bar {
@@ -115,10 +116,14 @@ header nav ul li a.social-link {
     transition: max-height 0.4s ease, opacity 0.3s ease, padding 0.3s ease;
 }
 
+/* Padding vertical simétrico: o vão entre a borda e o primeiro item fica igual
+   ao do último item até a borda de baixo. Só funciona porque o botão do menu
+   sai do fluxo no mobile (ver .menu-toggle no media query) e deixa de reservar
+   altura no topo do painel. */
 .mobile-nav.open {
     max-height: 400px;
     opacity: 1;
-    padding: 0 15px 25px 15px;
+    padding: 25px 15px;
 }
 
 .mobile-nav ul {
@@ -202,30 +207,40 @@ header nav ul li a.social-link {
         right: 7%;
         width: 52px;
         max-width: none;
+        /* min e max iguais: com o botão fora do fluxo, nada mais sustenta a
+           altura do círculo quando o menu está fechado. */
+        min-height: 52px;
         max-height: 52px;
         margin: 0;
         background: rgba(255, 255, 255, 0.15);
         border-radius: 50%;
     }
 
+    /* O botão sai do fluxo e gruda no canto do header. Dois ganhos: ele fica na
+       mesma posição nos dois estados (era o que causava o salto ao fechar, já
+       que justify-content não é animável) e para de reservar 52px de altura no
+       topo do painel aberto, que era o vão exagerado.
+
+       11px = (48 − 26) / 2. São 48 e não 52 porque o box-sizing é border-box e
+       a borda de 2px do header entra na conta: a caixa interna é 52 − 2 − 2. */
+    .menu-toggle {
+        position: absolute;
+        top: 11px;
+        right: 11px;
+    }
+
     .header-bar {
-        justify-content: center;
-        min-height: 52px;
+        min-height: 0;
         padding: 0;
         gap: 0;
     }
 
-    /* Aberto: o círculo vira painel e o X sobe para o canto superior direito.
+    /* Aberto: o círculo vira painel.
        Anima por max-height porque height:auto não é transicionável. */
     header.menu-open {
         width: 86%;
         max-height: 520px;
         border-radius: 24px;
-    }
-
-    header.menu-open .header-bar {
-        justify-content: flex-end;
-        padding: 0 18px;
     }
 
     header .logo img {
