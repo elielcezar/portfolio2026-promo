@@ -5,17 +5,24 @@ export default function Contact() {
     return (
         <section id="contact">            
             <div className="container">                
-                <div className="btn phone">
-                    <div className="icon-container">
-                        <Image src="/icon-wpp.svg" alt="WhatsApp" width={40} height={40} />
+                <div className="row">
+                    <div className="col-1">
+                        <h3>Vamos tirar seu projeto do papel?</h3>                        
                     </div>
-                    <span>+55 (41) 99963-1609</span>
-                </div>
-                <div className="btn email">
-                    <div className="icon-container">    
-                        <Image src="/icon-email.svg" alt="Email" width={40} height={40} />
+                    <div className="col-2 ">
+                        <div className="btn phone">
+                            <div className="icon-container">
+                                <Image src="/icon-wpp.svg" alt="WhatsApp" width={40} height={40} />
+                            </div>
+                            <span>+55 (41) 99963-1609</span>
+                        </div>
+                        <div className="btn email">
+                            <div className="icon-container">    
+                                <Image src="/icon-email.svg" alt="Email" width={40} height={40} />
+                            </div>
+                            <span>elielcezar@gmail.com</span>
+                        </div>                        
                     </div>
-                    <span>elielcezar@gmail.com</span>
                 </div>
             </div>
             

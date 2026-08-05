@@ -11,21 +11,22 @@ const clients = [
         "image": "/clients/logo-mc4.webp"
     },
     {
-        "name": "Buscapé",
-        "image": "/clients/logo-buscape.webp"
-    },
+        "name": "Lojas Americanas",
+        "image": "/clients/logo-americanas.webp"
+    },    
     {
         "name": "Subway",
         "image": "/clients/logo-sub.webp"
     },
     {
         "name": "Gazeta do Povo",
-        "image": "/clients/logo-gazeta.webp"
+        "image": "/clients/logo-gazeta2.webp"
     },
     {
-        "name": "Uninter",
-        "image": "/clients/logo-uninter.webp"
+        "name": "Buscapé",
+        "image": "/clients/logo-buscape.webp"
     }
+   
 ]
 export default function Clients() {
     return (

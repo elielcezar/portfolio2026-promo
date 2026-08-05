@@ -4,7 +4,7 @@ import "./Services.css";
 const services = [
     {
         "title": "Programação",
-        "description": "de sites, blogs, landing pages, aplicativos e e-commerce",
+        "description": "de sites, landing pages, aplicativos e e-commerce",
         "icon": "/icon-code.svg"
     },
     {

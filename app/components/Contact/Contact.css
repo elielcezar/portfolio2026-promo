@@ -1,14 +1,14 @@
 #contact {
     max-width: 900px;
     background: var(--black);
-    padding: 85px 15px;    
+    padding: 85px 3%;    
     border-radius: 20px;
     color: #fff;
     text-align: center;    
     position: relative;
     backdrop-filter: blur(14px);
     background: rgba(255, 255, 255, 0.2);   
-    margin: -163px auto 180px auto;
+    margin: -210px auto 180px auto;
     border: 2px solid #e4ca29;
 }
 
@@ -19,7 +19,34 @@
     justify-content: center;
 }
 
+#contact .row {
+    width: 100%;    
+    flex-direction: row;
+    gap: 2rem;
+    display: flex;
+}
+
+#contact .col-1 {
+    text-align: left;
+}
+
+#contact .col-1 h3 {
+    font-size: 3.5rem;
+    margin: 0;
+    line-height: 1;
+    text-shadow: 2px 3px 2px #000;
+}
+
+#contact .col-2 {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+}
+
 #contact .btn {
+    max-width: 300px;
     font-size: 1.15rem;
     text-align: center;
     max-width: 350PX;
@@ -86,15 +113,19 @@
         gap: 2rem;
     }
 
-    #contact h2 {
-        font-size: 2.5rem;
-        line-height: 1;
+    #contact .row {        
+        flex-direction: column;        
+    }    
+    #contact .col-1 {
+        width: 100%;
         text-align: center;
     }
-
-    #contact p {
-        font-size: 1.3rem;
+    #contact .col-1 h3 {
+        font-size: 2.5rem;      
+        margin: 20px 0;
     }
-
+    #contact .col-2 {
+        width: 100%;
+    }
     
 }

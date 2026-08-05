@@ -4,6 +4,7 @@ import Image from "next/image";
 import Modal from "./Modal";
 import { useModal } from "../../hooks/useModal";
 import { portfolioItems } from "@/lib/portfolio";
+import { ArrowRight } from "lucide-react";
 
 import "./Portfolio.css";
 
@@ -11,7 +12,9 @@ export default function Portfolio() {
   const modal = useModal();
 
   return (
-    <section id="portfolio">      
+    <section id="portfolio">   
+
+      <h2>Portfólio <ArrowRight className="arrow-right" /></h2>   
 
       <div className="portfolio-grid">
         {portfolioItems.map((item) => (
@@ -33,7 +36,7 @@ export default function Portfolio() {
             </div>
 
             <div className="portfolio-item-content">
-              <h3>{item.title}</h3>
+              <h4>{item.title}</h4>
             </div>
           </button>
         ))}

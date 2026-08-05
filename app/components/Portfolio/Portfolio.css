@@ -1,6 +1,6 @@
 #portfolio {
   padding: 0;
-  margin: 0 0 200px 0;
+  margin: 0 0 250px 0;
   color: #f5f5f5;
   position: relative;
   background: #111;
@@ -11,6 +11,22 @@
 }
 
 #portfolio h2 {
+  font-size: 2.5rem;
+  width: 86%;
+  margin: 0 0 45px 7%;    
+  border-bottom: 3px solid var(--black);
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#portfolio .arrow-right {
+  width: 40px;
+  height: 40px;
+}
+
+#portfolio h3 {
   font-size: 2.5rem;
   line-height: 1;
   margin: 0;  
@@ -69,7 +85,7 @@
   padding: 16px 24px;
 }
 
-.portfolio-item-content h3 {
+.portfolio-item-content h4 {
   margin: 0;
   color: #fff;
   font-size: 1.125rem;
@@ -78,6 +94,10 @@
 }
 
 @media (min-width: 768px) {
+
+  #portfolio h2 {
+    display: none;  
+  }
   .portfolio-grid {
     columns: 4;
     column-gap: 2.5rem;
@@ -100,14 +120,9 @@
 @media (max-width: 768px) {
   #portfolio {    
     margin: 60px 0;
-    padding: 60px 0;
+    padding: 30px 0 60px 0;
     background: var(--yellow);
   }
-
-  #portfolio h2 {
-    font-size: 2rem;    
-  }
-
   /* No mobile a masonry vira uma faixa que rola na horizontal.
      A faixa é full-bleed (sem o max-width de 96%) para o segundo card ser
      cortado pela borda da tela — é esse corte que sinaliza o arrasto. */

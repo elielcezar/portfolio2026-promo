@@ -170,7 +170,7 @@ export default function Modal({
           {/* Coluna 2 - Conteúdo */}
           <div className="modal-info">
             <div className="modal-info-inner">
-              <h2>{title}</h2>
+              <h3>{title}</h3>
 
               {description && (
                 <div

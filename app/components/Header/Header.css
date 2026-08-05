@@ -3,17 +3,17 @@ header {
     top: 10px;    
     left: 50%;
     width: 100%;
-    max-width: 550px;
+    max-width: 540px;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(14px);
     border-radius: 50px;    
-    margin: 0 0 0 -275px;
+    margin: 0 0 0 -270px;
     transition: all 0.3s ease;
     overflow: hidden;
     display: flex;
     justify-content: center;
-    border: 2px solid var(--yellow);
+    border: 3px solid var(--yellow);
 }
 
 .header-bar {
@@ -52,14 +52,16 @@ header nav ul li a {
     padding: 5px 15px;
     border-radius: 50px;   
     font-size: 14px; 
-    border: 3px solid transparent;
+    border: 2px solid transparent;
+    text-shadow: 1px 1px 1px #000;
 }
 
 header nav ul li a:hover {
     background: var(--yellow)    ;
     color: #000;
     transition: all 0.3s ease;
-    border-color: #fff;    
+    border-color: #fff;   
+    text-shadow: none; 
 }
 
 header nav ul li a.social-link {
