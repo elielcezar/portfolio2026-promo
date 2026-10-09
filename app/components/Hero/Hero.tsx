@@ -1,4 +1,5 @@
 import Image from "next/image";
+import HeroScene from "./HeroScene";
 import { IconArrowRight, IconChat, IconStar } from "../Icons";
 import { WHATSAPP_URL } from "@/lib/contact";
 import "./Hero.css";
@@ -11,6 +12,9 @@ const stats = [
 export default function Hero() {
   return (
     <section id="topo">
+      {/* Fora do container: posicionada em relação à página (ver Hero.css) */}
+      <HeroScene />
+
       <div className="container hero">
         <div className="hero-text">
           <h1 className="hero-title">

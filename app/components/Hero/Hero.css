@@ -3,6 +3,39 @@
   padding-bottom: 88px;
 }
 
+/* Cena three.js (experimento): fundo interativo atrás de todo o conteúdo
+   (z-index -1). Nenhum ancestral é posicionado, então a camada começa no topo
+   da página e ocupa os 60% da direita; as formas ficam no meio dela (CENTER_Y,
+   centerX no HeroScene.tsx). O fade na borda esquerda esconde o corte das
+   partículas que passam do limite da camada. */
+.hero-scene-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  width: 60%;
+  height: 1300px;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 15%);
+  mask-image: linear-gradient(to right, transparent, #000 15%);
+}
+
+.hero-scene {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-scene canvas {
+  display: block;
+}
+
+@media (max-width: 1300px) {
+  .hero-scene-layer {
+    display: none;
+  }
+}
+
 .hero-text {
   min-width: 0;
   padding-top: 40px;
