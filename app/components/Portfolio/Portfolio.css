@@ -3,10 +3,6 @@
   color: var(--dark-text);
 }
 
-#portfolio .eyebrow {
-  color: var(--dark-muted);
-}
-
 .portfolio-inner {
   display: flex;
   flex-direction: column;
@@ -40,7 +36,7 @@
 }
 
 .portfolio-window {
-  height: 240px;
+  height: 280px;
   border-radius: 16px;
   background: var(--dark-card);
   border: 1px solid var(--dark-line);
@@ -69,7 +65,19 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #3A3A37;
+}
+
+/* Botões de janela no estilo macOS: fechar, minimizar, maximizar */
+.portfolio-window-bar span:nth-child(1) {
+  background: #FF5F57;
+}
+
+.portfolio-window-bar span:nth-child(2) {
+  background: #FEBC2E;
+}
+
+.portfolio-window-bar span:nth-child(3) {
+  background: #28C840;
 }
 
 .portfolio-item-image {

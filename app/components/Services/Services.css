@@ -8,13 +8,18 @@
   gap: 48px;
 }
 
-.services-intro {
-  margin: 0;
+/* Ocupa o lugar do antigo texto de apoio com as mesmas regras de flex, para o
+   título manter a largura e as quebras de linha. Abaixo de 996px o texto já
+   descia para outra linha (título em largura total), então o espaço sai. */
+.services-head-spacer {
   flex: 1 1 340px;
   max-width: 440px;
-  font-size: 18px;
-  line-height: 1.6;
-  color: var(--text-2);
+}
+
+@media (max-width: 995px) {
+  .services-head-spacer {
+    display: none;
+  }
 }
 
 .services-grid {
@@ -85,13 +90,3 @@
   margin-top: 3px;
 }
 
-.service-tools {
-  margin: auto 0 0;
-  padding-top: 16px;
-  border-top: 1px solid var(--line-soft);
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--text-3);
-}

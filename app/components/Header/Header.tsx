@@ -1,5 +1,5 @@
-import { IconChat } from "../Icons";
-import { WHATSAPP_URL } from "@/lib/contact";
+import { IconChat, IconGithub, IconLinkedin } from "../Icons";
+import { GITHUB_URL, LINKEDIN_URL, WHATSAPP_URL } from "@/lib/contact";
 import "./Header.css";
 
 const links = [
@@ -21,8 +21,18 @@ export default function Header() {
 
         <nav aria-label="Principal" className="header-nav">
           {links.map((link) => (
-            <a key={link.href} href={link.href}>{link.label}</a>
+            <a key={link.href} href={link.href}>
+              <span className="nav-label">{link.label}</span>
+            </a>
           ))}
+          <span className="header-social">
+            <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <IconGithub size={20} />
+            </a>
+            <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <IconLinkedin size={20} />
+            </a>
+          </span>
         </nav>
 
         <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-dark header-cta">

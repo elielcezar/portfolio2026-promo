@@ -12,7 +12,6 @@ const services = [
       "Loja virtual (e-commerce) pronta para vender",
       "Aplicativos e sistemas sob medida",
     ],
-    tools: "WordPress · React · Next.js",
   },
   {
     title: "Design",
@@ -23,7 +22,6 @@ const services = [
       "Layout desenhado no Figma e aprovado por você antes de programar",
       "Navegação pensada para o seu cliente (UX)",
     ],
-    tools: "Figma · Photoshop · Illustrator",
   },
   {
     title: "SEO / Google",
@@ -35,7 +33,6 @@ const services = [
       "Campanhas no Google Ads",
       "Relatórios de resultado no Google Data Studio",
     ],
-    tools: "Google Ads · Data Studio",
   },
   {
     title: "Correção de Bugs",
@@ -46,7 +43,6 @@ const services = [
       "Plano de melhorias por ordem de prioridade",
       "Correções em WordPress, PHP e JavaScript",
     ],
-    tools: "WordPress · PHP · JavaScript",
   },
 ];
 
@@ -56,16 +52,14 @@ export default function Services() {
       <div className="container section-pad services-inner">
         <div className="section-head">
           <div className="section-head-main">
-            <p className="eyebrow">Serviços</p>
-            <h2 className="section-title">O pacote completo para o seu site dar resultado</h2>
+            <h2 className="section-title">O pacote completo para o seu site dar <span className="highlight">resultado</span></h2>
           </div>
-          <p className="services-intro">
-            Você fala com uma pessoa só — do design à programação — sem precisar coordenar agência, designer e programador.
-          </p>
+          {/* Espaço vazio onde ficava o texto de apoio; mantém a largura do título */}
+          <div className="services-head-spacer" aria-hidden />
         </div>
 
         <div className="services-grid">
-          {services.map(({ title, description, icon: Icon, items, tools }) => (
+          {services.map(({ title, description, icon: Icon, items }) => (
             <article key={title} className="service-card">
               <div className="service-icon">
                 <Icon size={26} />
@@ -79,7 +73,6 @@ export default function Services() {
                   <li key={item}><IconCheck size={18} />{item}</li>
                 ))}
               </ul>
-              <p className="service-tools">{tools}</p>
             </article>
           ))}
         </div>

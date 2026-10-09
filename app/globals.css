@@ -7,13 +7,16 @@
   --line: #E6E5E0;
   --line-soft: #ECEBE6;
   --soft: #F3F3F0;
-  --accent: #F2C230;
+  --accent: #FDC438;
 
   /* Blocos escuros (portfólio, rodapé) */
   --dark-text: #F2F2EF;
   --dark-muted: #A6A6A0;
   --dark-card: #1D1D1C;
   --dark-line: #2E2E2C;
+
+  /* Marca-texto: faixa de accent atrás da metade de baixo das letras */
+  --highlight: linear-gradient(transparent 58%, var(--accent) 58%, var(--accent) 92%, transparent 92%);
 
   --font-display: var(--font-bricolage), sans-serif;
   --font-body: var(--font-hanken), sans-serif;
@@ -66,7 +69,7 @@ img {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1260px;
   margin: 0 auto;
   padding-left: 24px;
   padding-right: 24px;
@@ -85,6 +88,12 @@ img {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--text-3);
+}
+
+/* Trecho com marca-texto nos títulos (h1 do hero, títulos de seção) */
+.highlight {
+  background-image: var(--highlight);
+  padding: 0 4px;
 }
 
 .section-title {
@@ -120,6 +129,7 @@ img {
   border-radius: 999px;
   text-decoration: none;
   color: var(--ink);
+  transition: background 0.2s, color 0.2s;
 }
 
 .btn-accent {
@@ -130,9 +140,21 @@ img {
   font-size: 17px;
 }
 
+/* Hover do botão accent: fundo preto, conteúdo branco */
+.btn-accent:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
 .btn-outline {
   border: 1.5px solid var(--ink);
   font-weight: 600;
+}
+
+/* Hover do botão de contorno: fundo accent, conteúdo e borda continuam pretos */
+.btn-outline:hover {
+  background: var(--accent);
+  color: var(--ink);
 }
 
 .btn-dark {
@@ -141,8 +163,10 @@ img {
   font-weight: 600;
 }
 
+/* Hover do botão escuro: fundo accent, conteúdo preto */
 .btn-dark:hover {
-  color: var(--paper);
+  background: var(--accent);
+  color: var(--ink);
 }
 
 .sr-only {
@@ -155,12 +179,4 @@ img {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-/* Marca de conteúdo pendente (foto, prazos) — sai quando o material chegar */
-.placeholder {
-  font-family: var(--font-mono);
-  font-size: 13px;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
 }

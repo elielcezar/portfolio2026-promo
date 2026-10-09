@@ -24,8 +24,7 @@ export default function Steps() {
     <section id="como-funciona">
       <div className="container section-pad steps-inner">
         <div className="steps-head">
-          <p className="eyebrow">Como funciona</p>
-          <h2 className="section-title">Do primeiro papo ao site no ar, em 4 etapas</h2>
+          <h2 className="section-title">Do primeiro papo ao site no ar, em <span className="highlight">4 etapas</span></h2>
         </div>
 
         <ol className="steps-list">

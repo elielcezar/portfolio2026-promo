@@ -54,6 +54,45 @@
   padding: 10px 0;
 }
 
+/* Hover: o mesmo marca-texto do h1, crescendo da esquerda para a direita.
+   Fica num span porque no <a> o padding vertical deslocaria a faixa; a
+   margem negativa compensa o padding lateral para o menu não mudar de lugar. */
+.nav-label {
+  padding: 0 4px;
+  margin: 0 -4px;
+  background-image: var(--highlight);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 0.25s ease;
+}
+
+.header-nav a:hover .nav-label,
+.header-nav a:focus-visible .nav-label {
+  background-size: 100% 100%;
+}
+
+/* Ícones das redes, no fim do menu */
+.header-social {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.header-nav .header-social a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  transition: background 0.2s;
+}
+
+.header-nav .header-social a:hover {
+  background: var(--soft);
+}
+
 .header-cta {
   gap: 8px;
   min-height: 44px;

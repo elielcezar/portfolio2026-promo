@@ -31,7 +31,6 @@ export default function Faq() {
     <section id="duvidas" className="faq">
       <div className="container section-pad faq-inner">
         <div className="faq-side">
-          <p className="eyebrow">Dúvidas</p>
           <h2 className="section-title">Perguntas comuns</h2>
           <p className="faq-intro">Não achou a sua? Me chama no WhatsApp e eu respondo.</p>
           <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-outline faq-cta">

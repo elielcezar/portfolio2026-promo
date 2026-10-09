@@ -15,7 +15,6 @@ export default function Portfolio() {
       <div className="container section-pad portfolio-inner">
         <div className="section-head">
           <div className="section-head-main">
-            <p className="eyebrow">Portfólio</p>
             <h2 className="section-title">Projetos que já saíram do papel</h2>
           </div>
         </div>

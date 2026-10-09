@@ -1,11 +1,9 @@
-import { IconUser } from "../Icons";
+import Image from "next/image";
 import "./About.css";
 
 const facts = [
   { label: "Formação", value: "Design Gráfico · UTFPR" },
   { label: "Pós-graduação", value: "Software para Dispositivos Móveis" },
-  { label: "Hoje", value: "Tech Lead de um time de 5 devs" },
-  { label: "Experiência", value: "15+ anos com web" },
 ];
 
 const differentials = [
@@ -30,11 +28,14 @@ export default function About() {
     <section id="sobre">
       <div className="container section-pad about">
         <div className="about-side">
-          {/* TODO: trocar pela foto do Eliel trabalhando quando o arquivo chegar */}
-          <div className="about-photo">
-            <IconUser size={72} />
-            <span className="placeholder">[Foto trabalhando]</span>
-          </div>
+          <Image
+            src="/images/eliel-perfil.jpg"
+            alt="Eliel Cezar"
+            width={1024}
+            height={1536}
+            sizes="(min-width: 900px) 420px, 360px"
+            className="about-photo"
+          />
 
           <div className="about-facts">
             {facts.map((fact) => (
@@ -47,7 +48,6 @@ export default function About() {
         </div>
 
         <div className="about-main">
-          <p className="eyebrow">Sobre mim</p>
           <h2 className="section-title">Olá! Meu nome é Eliel.</h2>
 
           <div className="about-text">

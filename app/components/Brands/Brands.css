@@ -1,26 +1,80 @@
 .brands {
+  --brands-gap: 80px;
+
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  padding: 32px 0;
+  overflow: hidden;
+  /* Fade nas bordas para os logos entrarem e saírem sem corte seco */
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
+  mask-image: linear-gradient(to right, transparent, #000 10%, #000 90%, transparent);
 }
 
-.brands-inner {
-  padding-top: 28px;
-  padding-bottom: 28px;
+.brands-track {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 16px 48px;
+  width: max-content;
+  /* ~44px/s; se mudar REPEAT no Brands.tsx ou o tamanho dos logos, ajuste
+     a duração na mesma proporção para manter a velocidade */
+  animation: brands-scroll 98s linear infinite;
 }
 
-.brands-list {
-  flex: 1 1 600px;
+/* O espaço entre os logos vai como padding (e não só gap) para o fim de uma
+   cópia e o começo da outra ficarem com o mesmo intervalo */
+.brands-group {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: 10px 36px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 24px;
-  letter-spacing: -0.01em;
-  color: #85857F;
+  gap: var(--brands-gap);
+  margin: 0;
+  padding: 0 var(--brands-gap) 0 0;
+  list-style: none;
+}
+
+.brands-group li {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.brands-group img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 150px;
+  max-height: 50px;
+  opacity: 0.5;
+}
+
+@keyframes brands-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Sem animação para quem pede menos movimento: só os seis logos, centralizados */
+@media (prefers-reduced-motion: reduce) {
+  .brands {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .brands-track {
+    width: auto;
+    animation: none;
+  }
+
+  .brands-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding: 0 24px;
+    row-gap: 32px;
+  }
+
+  .brands-group[aria-hidden],
+  .brands-repeat {
+    display: none;
+  }
 }
