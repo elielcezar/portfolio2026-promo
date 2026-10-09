@@ -27,32 +27,39 @@ export default function Brands() {
   ).flat();
 
   return (
-    <section aria-label="Marcas atendidas" className="brands">
-      <div className="brands-track">
-        {[0, 1].map((copy) => (
-          <ul key={copy} className="brands-group" aria-hidden={copy === 1 || undefined}>
-            {items.map((brand) => {
-              const original = copy === 0 && brand.round === 0;
-              return (
-                <li key={`${brand.round}-${brand.name}`} className={original ? undefined : "brands-repeat"}>
-                  <Image
-                    src={brand.src}
-                    alt={original ? brand.name : ""}
-                    width={brand.width}
-                    height={brand.height}
-                    // Sem lazy: logo carregando no meio da animação muda a
-                    // largura da trilha e o loop dá um salto
-                    loading="eager"
-                    // Direto de /public: os webp já são leves, e o cache do
-                    // otimizador continuava servindo as versões brancas antigas
-                    // destes mesmos nomes de arquivo
-                    unoptimized
-                  />
-                </li>
-              );
-            })}
-          </ul>
-        ))}
+    <section aria-labelledby="brands-title">
+      <div className="container">
+        <p id="brands-title" className="eyebrow brands-eyebrow">Já trabalhei para grandes marcas:</p>
+      </div>
+
+      {/* A faixa fica fora do container (largura total) e com fade nas bordas */}
+      <div className="brands">
+        <div className="brands-track">
+          {[0, 1].map((copy) => (
+            <ul key={copy} className="brands-group" aria-hidden={copy === 1 || undefined}>
+              {items.map((brand) => {
+                const original = copy === 0 && brand.round === 0;
+                return (
+                  <li key={`${brand.round}-${brand.name}`} className={original ? undefined : "brands-repeat"}>
+                    <Image
+                      src={brand.src}
+                      alt={original ? brand.name : ""}
+                      width={brand.width}
+                      height={brand.height}
+                      // Sem lazy: logo carregando no meio da animação muda a
+                      // largura da trilha e o loop dá um salto
+                      loading="eager"
+                      // Direto de /public: os webp já são leves, e o cache do
+                      // otimizador continuava servindo as versões brancas antigas
+                      // destes mesmos nomes de arquivo
+                      unoptimized
+                    />
+                  </li>
+                );
+              })}
+            </ul>
+          ))}
+        </div>
       </div>
     </section>
   );

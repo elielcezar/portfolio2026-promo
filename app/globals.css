@@ -105,6 +105,13 @@ img {
   letter-spacing: -0.03em;
 }
 
+/* Mobile: títulos de seção com o mesmo tamanho do h1 do hero */
+@media (max-width: 767px) {
+  .section-title {
+    font-size: 2.9rem;
+  }
+}
+
 /* Cabeçalho de seção com título à esquerda e texto/link à direita */
 .section-head {
   display: flex;
