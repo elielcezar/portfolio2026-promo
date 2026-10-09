@@ -1,310 +1,194 @@
-/* O design de referência foi composto num canvas de 2542x905 (as dimensões do
-   bg-hero.webp). As medidas estruturais abaixo são derivadas dele em vw
-   (medida / 2542 * 100), para o hero reproduzir a proporção do layout em
-   qualquer largura, com clamp() onde o tamanho não pode encolher demais. */
-
-#hero {
-    position: relative;
-    overflow: hidden;
-    min-height: 35.6vw;
-    background: var(--black) url('/images/bg-hero.webp') center / cover no-repeat;
+.hero {
+  padding-top: 72px;
+  padding-bottom: 88px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 56px;
 }
 
-#hero .hero-inner {
-    position: relative;
-    min-height: 35.6vw;
+.hero-text {
+  flex: 1 1 540px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
-/* Até 1920px o hero ganha um pouco mais de altura relativa. Precisa vir antes
-   do bloco retrato, que zera o min-height e tem a mesma especificidade. */
-@media (max-width: 1920px) {
-    #hero .hero-inner {
-        min-height: 38.6vw;
-    }
+.hero-tag {
+  margin: 0;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid #DAD9D3;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-2);
 }
 
-/* Foto: tamanho natural no canvas de referência, encostada no rodapé */
-#hero .hero-photo {
-    position: absolute;
-    left: 9.48vw;
-    bottom: 0;
-    width: 33.79vw;
+.hero-tag-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--ink);
 }
 
-#hero .hero-photo img {
-    display: block;
-    width: 100%;
-    height: auto;
+.hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(44px, 6vw, 84px);
+  line-height: 1;
+  letter-spacing: -0.035em;
 }
 
-/* A foto tem arte própria no mobile; a troca acontece no mesmo breakpoint do
-   bloco retrato lá embaixo. */
-#hero .hero-photo-mobile {
-    display: none;
+/* Marca-texto: faixa de accent atrás da metade de baixo das letras */
+.hero-title .highlight {
+  background-image: linear-gradient(transparent 58%, var(--accent) 58%, var(--accent) 92%, transparent 92%);
+  padding: 0 4px;
 }
 
-#hero .hero-content {
-    margin-left: 43.5vw;
-    padding-top: 13.05vw;
+.hero-lead {
+  margin: 0;
+  max-width: 560px;
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--text-2);
 }
 
-/* Título */
-#hero .hero-title {
-    font-family: var(--font-inter), sans-serif;
-    font-size: clamp(2.5rem, 4.85vw, 7.75rem);
-    line-height: 0.87;
-    letter-spacing: -0.06em;
-    font-weight: 700;
-    color: #fff;
-    margin: 0 0 1.8vw 0;
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
-#hero .hero-title .highlight {
-    color: var(--yellow);
+.hero-secondary {
+  min-height: 56px;
+  padding: 0 26px;
+  font-size: 17px;
 }
 
-/* Selo giratório */
-#hero .selo {
-    position: absolute;
-    top: 5.11vw;
-    right: 23.7vw;
-    width: 7.24vw;
-    min-width: 70px;
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
 }
 
-#hero .selo-image {
-    display: block;
-    width: 100%;
-    height: auto;
-    animation: spin 20s linear infinite;
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
-#hero .e-bg {
-    position: absolute;
-    left: 50%;
-    top: 18%;
-    width: 64%;
-    height: auto;
-    transform: translateX(-50%);
+.hero-stat-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 36px;
+  letter-spacing: -0.02em;
 }
 
-/* Tagline — mesma escala do título e da foto: cada medida é o valor do canvas
-   2542 convertido em vw (medida / 2542 * 100), com clamp() para não ficar
-   ilegível nas larguras baixas do layout desktop. Os valores máximos são
-   exatamente os do design. */
-#hero .tagline {
-    display: flex;
-    flex-direction: row;
-    gap: 0.79vw;
+.hero-stat-small {
+  font-size: 20px;
+  color: var(--text-3);
 }
 
-#hero .tagline p {
-    color: #fff;
-    margin: 0;
-    font-weight: 400;
+.hero-stat-label {
+  font-size: 15px;
+  color: var(--text-3);
 }
 
-#hero .tagline .col-1 {
-    max-width: clamp(160px, 11.8vw, 300px);
-    border-right: 1px solid #ccc;
+/* Coluna da foto */
+.hero-visual {
+  flex: 1 1 380px;
+  min-width: 0;
+  position: relative;
+  height: 560px;
 }
 
-#hero .tagline .col-1 p {
-    margin-bottom: 1.1vw;
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  border-radius: 32px;
+  background: var(--accent);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--ink);
 }
 
-#hero .tagline .col-1 p strong.number {
-    color: var(--black);
-    font-size: clamp(1.75rem, 2.675vw, 4.25rem);
-    line-height: 0.853;
-    font-weight: 800;
-    -webkit-text-stroke-width: max(1px, 0.04vw);
-    stroke-width: max(1px, 0.04vw);
-    -webkit-text-stroke-color: var(--yellow);
-    stroke: var(--yellow);
-    font-family: sans-serif;
+.hero-photo-icon {
+  opacity: 0.35;
 }
 
-#hero .tagline .col-1 p span {
-    display: inline-block;
-    width: 100%;
-    font-size: clamp(0.8125rem, 0.787vw, 1.25rem);
-    margin-top: 0.2vw;
+.hero-rating {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  max-width: calc(100% - 40px);
+  background: var(--paper);
+  border-radius: 18px;
+  padding: 14px 18px;
+  box-shadow: 0 12px 32px rgba(18, 18, 18, 0.14);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  font-weight: 600;
 }
 
-#hero .tagline .col-1 .people {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.79vw;
+.hero-stars {
+  display: flex;
+  gap: 2px;
+  color: var(--ink);
 }
 
-#hero .tagline .col-1 .people .people-image {
-    margin-top: -18px;
+.hero-steps {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  max-width: calc(100% - 40px);
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: 20px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 12px 32px rgba(18, 18, 18, 0.22);
 }
 
-#hero .tagline .col-1 .people .people-image img {
-    width: clamp(70px, 4.25vw, 108px);
-    height: auto;
+.hero-steps-title {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #B4B4AE;
 }
 
-#hero .tagline .col-1 .people .rating {
-    margin: 0;
+.hero-steps-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: 15px;
+  font-weight: 600;
 }
 
-#hero .tagline .col-1 .people .rating .stars {
-    display: flex;
-    align-items: center;
+.hero-steps-list span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
-#hero .tagline .col-1 .people .rating .stars svg {
-    width: clamp(15px, 0.944vw, 24px);
-    height: clamp(15px, 0.944vw, 24px);
-}
-
-#hero .tagline .col-1 .people .rating p {
-    font-weight: 500;
-    font-size: clamp(0.6875rem, 0.63vw, 1rem);
-}
-
-#hero .tagline .col-1 .people .rating p strong {
-    font-size: clamp(1rem, 0.944vw, 1.5rem);
-    font-weight: 600;
-    letter-spacing: -0.04em;
-}
-
-#hero .tagline .col-2 {
-    display: flex;
-    flex-direction: row;
-    gap: 0.79vw;
-    padding: 0 0 0 1.77vw;
-    align-items: center;
-    justify-content: start;
-}
-
-#hero .tagline .col-2 p {
-    font-size: clamp(.8125rem, .928vw, 1.156rem);
-    font-weight: 400;
-    line-height: 1.55;
-    max-width: clamp(210px, 18.88vw, 480px);
-}
-
-/* Retrato / telas estreitas: empilha, foto acima do texto.
-   Precisa desfazer o posicionamento absoluto usado no layout desktop. */
-@media (orientation: portrait), (max-width: 900px) {
-    #hero {
-        min-height: 0;
-        padding: 80px 7% 60px 7%;
-    }
-
-    #hero .hero-inner {
-        display: flex;
-        flex-direction: column;        
-        min-height: 0;
-    }
-
-    #hero .hero-photo {
-        position: static;
-        width: 70%;
-        max-width: 320px;
-        margin: 0 0 40px 0;
-    }
-
-    #hero .hero-photo-desktop {
-        display: none;
-    }
-
-    /* 227px é a largura natural do avatar-mobile.png — não ampliar */
-    #hero .hero-photo-mobile {
-        display: block;
-        max-width: 227px;
-    }
-
-    #hero .hero-content {
-        width: 100%;
-        margin-left: 0;
-        padding-top: 0;
-    }
-
-    #hero .hero-title {
-        font-size: clamp(3.5rem, 11vw, 4rem);
-        text-align: left;
-        margin-bottom: 40px;
-    }
-
-    #hero .selo {
-        display: none;
-    }
-
-    #hero .tagline {
-        flex-direction: column;
-        width: 100%;
-        gap: 0;
-    }
-
-    #hero .tagline .col-1,
-    #hero .tagline .col-2 {
-        width: 100%;
-        max-width: 100%;
-        border-right: none;
-        padding: 0;
-    }
-
-    #hero .tagline .col-1 p strong.number {
-        font-size: 58px;
-        line-height: 1;
-        color: var(--yellow);
-        stroke: none;
-        -webkit-text-stroke-width: 0;
-    }
-
-    #hero .tagline .col-1 p {
-        margin-bottom: 16px;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    #hero .tagline .col-1 p.rating-value{
-        gap: 0;
-    }
-
-    #hero .tagline .col-1 p span {
-        font-size: 17px;
-        margin-top: 5px;
-    }
-
-    /* Desfaz a escala em vw do desktop */
-    #hero .tagline .col-1 .people {
-        gap: 20px;
-    }
-    
-    #hero .tagline .col-1 .people .people-image img {
-        width: 108px;
-    }
-
-    #hero .tagline .col-1 .people .rating .stars svg {
-        width: 24px;
-        height: 24px;
-    }
-
-    #hero .tagline .col-1 .people .rating p {
-        font-size: 16px;
-    }
-
-    #hero .tagline .col-1 .people .rating p strong {
-        font-size: 24px;
-    }
-
-    #hero .tagline .col-2 p {
-        font-size: 20px;        
-        max-width: 100%;
-        margin: 40px 0;
-    }
-}
-
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
+.hero-check {
+  color: var(--accent);
 }

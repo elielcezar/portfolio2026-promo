@@ -1,104 +1,35 @@
-"use client";
-
-import { useState } from "react";
-import Link from "next/link";
+import { IconChat } from "../Icons";
+import { WHATSAPP_URL } from "@/lib/contact";
 import "./Header.css";
 
-const scrollToSection = (event: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-  event.preventDefault();
-  const section = document.getElementById(sectionId);
-  if (section) {
-    const elementPosition = section.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset;
-    const offset = 150;
-
-    window.scrollTo({
-      top: offsetPosition - offset,
-      behavior: 'smooth'
-    });
-  }
-};
+const links = [
+  { href: "#servicos", label: "Serviços" },
+  { href: "#como-funciona", label: "Como funciona" },
+  { href: "#portfolio", label: "Portfólio" },
+  { href: "#sobre", label: "Sobre" },
+  { href: "#duvidas", label: "Dúvidas" },
+];
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
-
-  const handleLinkClick = (event: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
-    closeMenu();
-    scrollToSection(event, sectionId);
-  };
-
   return (
-    <header className={`header ${isMenuOpen ? 'menu-open' : ''}`}>
-      <div className="header-bar">       
-        <nav className="desktop-nav">
-          <ul>
-            <li>
-              <a href="#services" onClick={(event) => scrollToSection(event, 'services')}>Serviços</a>
-            </li>
-            <li>
-              <a href="#portfolio" onClick={(event) => scrollToSection(event, 'portfolio')}>Portfólio</a>
-            </li>
-            <li>
-              <a href="#contact" onClick={(event) => scrollToSection(event, 'contact')}>Contato</a>
-            </li>
-            <li>
-              <Link href="https://github.com/elielcezar" target="_blank" className="social-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-              </Link>
-            </li>
-            <li>
-              <Link href="https://www.linkedin.com/in/elielcezar/" target="_blank" className="social-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              </Link>
-            </li>
-          </ul>
-        </nav>
-        <button
-          className={`menu-toggle ${isMenuOpen ? 'active' : ''}`}
-          onClick={toggleMenu}
-          aria-label="Toggle menu"
-          aria-expanded={isMenuOpen}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+    <header className="header">
+      <div className="container header-bar">
+        <a href="#topo" className="logo">
+          <span className="logo-mark">ec</span>
+          <span className="logo-name">Eliel Cezar</span>
+        </a>
 
-      {/* Menu Mobile expandido verticalmente dentro do header */}
-      <nav className={`mobile-nav ${isMenuOpen ? 'open' : ''}`}>
-        <ul>
-          <li>
-            <a href="#services" onClick={(event) => handleLinkClick(event, 'services')}>Serviços</a>
-          </li>
-          <li>
-            <a href="#portfolio" onClick={(event) => handleLinkClick(event, 'portfolio')}>Portfólio</a>
-          </li>
-          <li>
-            <a href="#contact" onClick={(event) => handleLinkClick(event, 'contact')}>Contato</a>
-          </li>
-          <li className="social-link">
-            <Link href="https://github.com/elielcezar" onClick={closeMenu} target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-              <span className="sr-only">GitHub</span>
-            </Link>
-          </li>
-          <li className="social-link">
-            <Link href="https://www.linkedin.com/in/elielcezar/" onClick={closeMenu} target="_blank">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-linkedin"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect width="4" height="12" x="2" y="9"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              <span className="sr-only">LinkedIn</span>
-            </Link>
-          </li>
-        </ul>
-      </nav>
+        <nav aria-label="Principal" className="header-nav">
+          {links.map((link) => (
+            <a key={link.href} href={link.href}>{link.label}</a>
+          ))}
+        </nav>
+
+        <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="btn btn-dark header-cta">
+          <IconChat size={18} />
+          Falar comigo
+        </a>
+      </div>
     </header>
   );
 }

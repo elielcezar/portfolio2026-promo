@@ -1,31 +1,34 @@
-import Image from "next/image";
+import { IconChat, IconMail } from "../Icons";
+import { EMAIL, WHATSAPP_LABEL, WHATSAPP_URL } from "@/lib/contact";
 import "./Contact.css";
 
 export default function Contact() {
-    return (
-        <section id="contact">            
-            <div className="container">                
-                <div className="row">
-                    <div className="col-1">
-                        <h3>Vamos tirar seu projeto do papel?</h3>                        
-                    </div>
-                    <div className="col-2 ">
-                        <div className="btn phone">
-                            <div className="icon-container">
-                                <Image src="/icon-wpp.svg" alt="WhatsApp" width={40} height={40} />
-                            </div>
-                            <span>+55 (41) 99963-1609</span>
-                        </div>
-                        <div className="btn email">
-                            <div className="icon-container">    
-                                <Image src="/icon-email.svg" alt="Email" width={40} height={40} />
-                            </div>
-                            <span>elielcezar@gmail.com</span>
-                        </div>                        
-                    </div>
-                </div>
-            </div>
-            
-        </section>
-    )
+  return (
+    <section id="contato" className="contact">
+      <div className="container contact-inner">
+        <div className="contact-text">
+          <p className="eyebrow">Contato</p>
+          <h2>Vamos tirar seu projeto do papel?</h2>
+          <p className="contact-lead">Me manda uma mensagem contando o que você precisa. A conversa é direto comigo.</p>
+        </div>
+
+        <div className="contact-channels">
+          <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="contact-channel contact-whatsapp">
+            <IconChat size={22} />
+            <span className="contact-channel-text">
+              <span className="contact-channel-label">WhatsApp</span>
+              <span className="contact-channel-value">{WHATSAPP_LABEL}</span>
+            </span>
+          </a>
+          <a href={`mailto:${EMAIL}`} className="contact-channel contact-email">
+            <IconMail size={22} />
+            <span className="contact-channel-text">
+              <span className="contact-channel-label">E-mail</span>
+              <span className="contact-channel-value">{EMAIL}</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
 }
