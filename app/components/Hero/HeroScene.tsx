@@ -1,16 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
-import Script from "next/script";
-
-/* eslint-disable @typescript-eslint/no-explicit-any -- three r71 vem do CDN, sem tipos */
-declare global {
-  interface Window {
-    THREE?: any;
-  }
-}
-
-const THREE_SRC = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js";
+import { useEffect, useRef, useSyncExternalStore } from "react";
+import type { PerspectiveCamera, Quaternion, Vector3, WebGLRenderer } from "three";
 
 /** Só em telas maiores que 1300px (mesmo valor do @media em Hero.css) */
 const DESKTOP_QUERY = "(min-width: 1301px)";
@@ -38,7 +29,7 @@ const CENTER_Y = 490;
 const centerX = (width: number) => width / 2;
 
 /** Ajusta canvas e câmera ao tamanho da camada, mantendo as formas no centro */
-function fitCamera(camera: any, renderer: any, width: number, height: number) {
+function fitCamera(camera: PerspectiveCamera, renderer: WebGLRenderer, width: number, height: number) {
   const cx = centerX(width);
   const fullWidth = 2 * Math.max(cx, width - cx);
   const fullHeight = 2 * Math.max(CENTER_Y, height - CENTER_Y);
@@ -79,6 +70,15 @@ const SHAPE_SECONDS = 20;
 
 /** Quanto o mouse inclina a cena: 1 nas formas abstratas (como no original), menos nas palavras */
 const WORD_TILT = 0.4;
+
+/**
+ * Flutuação contínua, independente do mouse: a cena sobe e desce (amplitude em
+ * unidades da cena; 1,4 ≈ 20px) e balança de leve (radianos). Os períodos são
+ * diferentes entre si para o movimento não parecer repetitivo.
+ */
+const FLOAT_AMPLITUDE = 1.4;
+const FLOAT_SECONDS = 6;
+const SWAY = 0.08;
 
 /**
  * Clique no hero: as partículas a até BLAST_RADIUS px do clique são empurradas
@@ -137,13 +137,11 @@ function sampleText(text: string, count: number, family: string) {
 }
 
 /**
- * Experimento: partículas que alternam entre esfera, cubo e palavras, girando e
- * reagindo ao mouse. Baseado em _test_threejs/v1.js, desenhando num container
- * do hero em vez da tela inteira.
+ * Experimento: partículas que alternam entre cubo e palavras, girando, flutuando
+ * e reagindo ao mouse e ao clique. Baseado em _test_threejs/v1.js.
  */
 export default function HeroScene() {
   const mountRef = useRef<HTMLDivElement>(null);
-  const [threeReady, setThreeReady] = useState(false);
   // No servidor é sempre false; no navegador segue a media query
   const enabled = useSyncExternalStore(
     subscribeDesktop,
@@ -153,15 +151,15 @@ export default function HeroScene() {
 
   useEffect(() => {
     const mount = mountRef.current;
-    const THREE = window.THREE;
-    if (!enabled || !threeReady || !mount || !THREE) return;
+    if (!enabled || !mount) return;
 
     let disposed = false;
     let teardown = () => {};
 
-    // As palavras usam a Bricolage do site; espera a fonte antes de amostrar
+    // three.js só é baixado aqui (import dinâmico), ou seja, em telas grandes.
+    // As palavras usam a Bricolage do site; espera a fonte antes de amostrar.
     const family = getComputedStyle(document.documentElement).getPropertyValue("--font-bricolage").trim() || "sans-serif";
-    document.fonts.load(`800 100px ${family}`).catch(() => {}).then(() => {
+    Promise.all([import("three"), document.fonts.load(`800 100px ${family}`).catch(() => {})]).then(([THREE]) => {
       if (disposed) return;
 
       let mousePos = { x: 0.5, y: 0.5 };
@@ -184,7 +182,7 @@ export default function HeroScene() {
 
       const boxSize = 0.2;
       const geometry = new THREE.BoxGeometry(boxSize, boxSize, boxSize);
-      const material = new THREE.MeshBasicMaterial({ transparent: true, color: COLOR, opacity: OPACITY, side: THREE.DoubleSide });
+      const material = new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, color: COLOR, opacity: OPACITY, side: THREE.DoubleSide });
 
       const side = Math.pow(PARTICLES, 1 / 3);
       const posInBox = (place: number) => ((place / side) - 0.5) * RADIUS * 1.2;
@@ -196,6 +194,16 @@ export default function HeroScene() {
 
       const parentContainer = new THREE.Object3D();
       scene.add(parentContainer);
+
+      // Todas as partículas são instâncias de um único mesh: uma chamada de
+      // desenho só. O estado de cada uma fica nestes arrays, pelo índice.
+      const mesh = new THREE.InstancedMesh(geometry, material, PARTICLES);
+      mesh.frustumCulled = false; // as instâncias se movem; o recorte automático erraria
+      parentContainer.add(mesh);
+      const positions: Vector3[] = [];
+      const speeds: Vector3[] = [];
+      const destinations: Vector3[][] = [];
+      const rotations: Quaternion[] = [];
 
       // Cada partícula tem um destino por forma da SEQUENCE, na mesma ordem
       let index = 0;
@@ -216,17 +224,16 @@ export default function HeroScene() {
             posInBox(Math.floor(n / Math.pow(side, 2)) % side)
           );
 
-          const dests = SEQUENCE.map((shape) => {
+          destinations.push(SEQUENCE.map((shape) => {
             if (shape === "sphere") return sphere;
             if (shape === "cube") return cube;
             const point = words.get(shape.text)![index];
             return new THREE.Vector3(point.x, point.y, point.z);
-          });
-
-          const particle = new THREE.Mesh(geometry, material);
-          particle.position.copy(cube); // começa no cubo, como no original
-          particle.userData = { dests, speed: new THREE.Vector3() };
-          parentContainer.add(particle);
+          }));
+          positions.push(cube.clone()); // começa no cubo, como no original
+          speeds.push(new THREE.Vector3());
+          // Rotação fixa e aleatória (antes cada cubinho apontava para o destino)
+          rotations.push(new THREE.Quaternion().setFromEuler(new THREE.Euler(Math.random() * 6.3, Math.random() * 6.3, 0)));
         }
       }
 
@@ -234,6 +241,10 @@ export default function HeroScene() {
       let phase = 0;
       let spin = 0; // rotação em y
       let tilt = 1; // quanto o mouse inclina a cena (1 = como no original)
+
+      const ONE = new THREE.Vector3(1, 1, 1);
+      const matrix = new THREE.Matrix4();
+      const diff = new THREE.Vector3();
 
       let frame = 0;
       let lastTime = 0;
@@ -243,23 +254,25 @@ export default function HeroScene() {
         const dt = lastTime ? Math.min((time - lastTime) / 1000, 0.1) : 0;
         lastTime = time;
         const frames = dt * 60; // ajustes que antes eram "por quadro a 60fps"
+        const seconds = time / 1000;
 
         phase += dt / SHAPE_SECONDS;
         const step = Math.floor(phase) % SEQUENCE.length;
         const isWord = typeof SEQUENCE[step] === "object";
 
-        for (let i = 0, l = parentContainer.children.length; i < l; i++) {
-          const particle = parentContainer.children[i];
-          const dest = particle.userData.dests[step].clone();
-          const diff = dest.sub(particle.position);
-          particle.userData.speed.divideScalar(1.02); // arrasto
-          particle.userData.speed.add(diff.divideScalar(400)); // acelera em direção ao destino
-          particle.position.add(particle.userData.speed);
-          particle.lookAt(dest);
+        // Mesma física do original (que era por quadro a 60fps), escalada
+        // pelo tempo real: a velocidade não depende da taxa de quadros
+        const drag = Math.pow(1.02, -frames);
+        for (let i = 0; i < PARTICLES; i++) {
+          diff.subVectors(destinations[i][step], positions[i]).multiplyScalar(frames / 400); // acelera em direção ao destino
+          speeds[i].multiplyScalar(drag).add(diff); // arrasto
+          positions[i].addScaledVector(speeds[i], frames);
+          mesh.setMatrixAt(i, matrix.compose(positions[i], rotations[i], ONE));
         }
+        mesh.instanceMatrix.needsUpdate = true;
 
-        // Nas palavras o giro para de frente para a câmera e o mouse quase não
-        // inclina, para dar para ler; nas formas volta ao giro contínuo
+        // Nas palavras o giro para de frente para a câmera e o mouse inclina
+        // menos, para dar para ler; nas formas volta ao giro contínuo
         if (isWord) {
           const facing = Math.round(spin / FULL_TURN) * FULL_TURN;
           spin += (facing - spin) * Math.min(0.04 * frames, 1);
@@ -269,8 +282,11 @@ export default function HeroScene() {
           tilt += (1 - tilt) * Math.min(0.04 * frames, 1);
         }
 
-        parentContainer.rotation.y = spin;
-        parentContainer.rotation.x = (mousePos.y - 0.5) * Math.PI * tilt;
+        // Flutuação (sobe e desce + balanço), somada ao giro e ao mouse
+        const wave = (period: number) => Math.sin((seconds / period) * FULL_TURN);
+        parentContainer.position.y = wave(FLOAT_SECONDS) * FLOAT_AMPLITUDE;
+        parentContainer.rotation.y = spin + wave(FLOAT_SECONDS * 1.9) * SWAY;
+        parentContainer.rotation.x = (mousePos.y - 0.5) * Math.PI * tilt + wave(FLOAT_SECONDS * 1.4) * SWAY;
         parentContainer.rotation.z = (mousePos.x - 0.5) * Math.PI * tilt;
 
         renderer.render(scene, camera);
@@ -294,10 +310,10 @@ export default function HeroScene() {
         const rect = renderer.domElement.getBoundingClientRect();
         const clickX = event.clientX - rect.left;
         const clickY = event.clientY - rect.top;
-        const toLocal = parentContainer.quaternion.clone().inverse();
+        const toLocal = parentContainer.quaternion.clone().invert();
         const projected = new THREE.Vector3();
-        for (const particle of parentContainer.children) {
-          projected.setFromMatrixPosition(particle.matrixWorld).project(camera);
+        for (let i = 0; i < PARTICLES; i++) {
+          projected.copy(positions[i]).applyMatrix4(parentContainer.matrixWorld).project(camera);
           const dx = ((projected.x + 1) / 2) * rect.width - clickX;
           const dy = ((1 - projected.y) / 2) * rect.height - clickY;
           const distance = Math.hypot(dx, dy);
@@ -305,7 +321,7 @@ export default function HeroScene() {
 
           const force = BLAST_FORCE * (1 - distance / BLAST_RADIUS);
           const direction = new THREE.Vector3(dx, -dy, (Math.random() - 0.5) * distance).normalize();
-          particle.userData.speed.add(direction.applyQuaternion(toLocal).multiplyScalar(force));
+          speeds[i].add(direction.applyQuaternion(toLocal).multiplyScalar(force));
         }
       };
       document.addEventListener("click", onClick);
@@ -329,6 +345,7 @@ export default function HeroScene() {
         resize.disconnect();
         document.removeEventListener("mousemove", onMouseMove);
         document.removeEventListener("click", onClick);
+        mesh.dispose();
         geometry.dispose();
         material.dispose();
         renderer.dispose();
@@ -340,16 +357,12 @@ export default function HeroScene() {
       disposed = true;
       teardown();
     };
-  }, [enabled, threeReady]);
+  }, [enabled]);
 
   return (
-    <>
-      {enabled && <Script src={THREE_SRC} strategy="afterInteractive" onReady={() => setThreeReady(true)} />}
-      {/* A camada tem a largura da tela e corta só na horizontal; a cena fica
-          dentro dela, no canto direito */}
-      <div className="hero-scene-layer" aria-hidden>
-        <div ref={mountRef} className="hero-scene" />
-      </div>
-    </>
+    // A camada ocupa os 60% da direita da página, atrás do conteúdo (Hero.css)
+    <div className="hero-scene-layer" aria-hidden>
+      <div ref={mountRef} className="hero-scene" />
+    </div>
   );
 }
