@@ -5,10 +5,9 @@
  * as imagens estão em `public/images/portfolio/{sites,projetos}` e os caminhos
  * abaixo são relativos a `public/`.
  *
- * `thumbWidth`/`thumbHeight` são as dimensões reais do arquivo. Elas vão para os
- * atributos `width`/`height` da <img> para o navegador reservar o espaço antes do
- * download — sem isso a masonry (CSS columns) remonta as colunas conforme as
- * imagens carregam.
+ * `thumbWidth`/`thumbHeight` são as dimensões reais do arquivo, exigidas pelo
+ * next/image. No card a thumb é recortada (object-fit: cover) numa janela de
+ * altura fixa, então a proporção não muda o layout da grade.
  *
  * TEXTO PROVISÓRIO: `description` e `technologies` são marcação para substituir.
  * `link` está vazio de propósito — as URLs reais se perderam com a API e não faz
@@ -18,6 +17,8 @@
 export interface PortfolioItem {
   id: string;
   title: string;
+  /** Rótulo curto exibido no card (ex.: "Varejo", "App") */
+  category: string;
   /** Imagem do card na grade */
   thumb: string;
   thumbWidth: number;
@@ -34,10 +35,11 @@ const SITES = '/images/portfolio/sites';
 const PROJETOS = '/images/portfolio/projetos';
 
 export const portfolioItems: PortfolioItem[] = [
-  // ---------------------------------------------------------------- Sites
+  // Mesma ordem do mockup (v2027); os seis últimos não estavam nele
   {
     id: 'site-assai',
     title: 'Assaí Atacadista',
+    category: 'Varejo',
     thumb: `${SITES}/assai-thumb_v2.png`,
     thumbWidth: 500,
     thumbHeight: 355,
@@ -47,64 +49,9 @@ export const portfolioItems: PortfolioItem[] = [
     link: 'https://www.assai.com.br/',
   },
   {
-    id: 'site-churrasco',
-    title: 'Churrasco Assaí',
-    thumb: `${SITES}/churrasco-thumb_v2.jpg`,
-    thumbWidth: 500,
-    thumbHeight: 355,
-    images: [`${SITES}/churrasco-1_v2.jpg`],
-    description: '<p>Site para ação promocional do setor de carnes do Assaí Atacadista. Além do conteúdo com receitas e dicas de churrasco, conta com um "Churrascômetro", um app para calcular a quantidade de carne, bebidas e outros produtos necessários para um churrasco.</p>',
-    technologies: ['HTML', 'CSS', 'JavaScript', 'PHP', 'VueJS', 'Wordpress'],
-    link: 'https://www.assai.com.br/churrascoassai/',
-  },
-  {
-    id: 'site-dhlaw',
-    title: 'DH Law',
-    // Captura da home inteira: é a imagem que dá altura variada à masonry
-    thumb: `${SITES}/dhlaw-thumb_v2.jpg`,
-    thumbWidth: 500,
-    thumbHeight: 355,
-    images: [`${SITES}/dhlaw-1_v2.png`],
-    description: '<p>Site para o escritório de advocacia DH Law. Feito em <b>Wordpress</b>, possui versões em <b>inglês e português</b>, <b>área exclusiva para clientes</b> e outras informações como equipe, áreas de atuação, contato e um blog com notícias e artigos sobre direito.</p>',
-    technologies: ['Design', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Wordpress'],
-    link: 'https://dhlaw.com.br/',
-  },
-  {
-    id: 'site-fora',
-    title: 'Fora dos Autos',
-    thumb: `${SITES}/fora-thumb_v2.jpg`,
-    thumbWidth: 500,
-    thumbHeight: 355,
-    images: [`${SITES}/fora-1_v2.png`],
-    description: '<p>Landing page para divulgação do programa <b>Fora dos Autos</b> da <b>Gazeta do Povo</b>. Possui campo para captação de leads e integração com o CRM do jornal.</p>',
-    technologies: ['Design', 'HTML', 'CSS', 'JavaScript'],
-    link: 'https://especiais.gazetadopovo.com.br/lp/fora-dos-autos/',
-  },    
-  {
-    id: 'site-psicodelia',
-    title: 'Psicodelia',
-    thumb: `${SITES}/psicodelia-thumb2_v2.png`,
-    thumbWidth: 500,
-    thumbHeight: 355,
-    images: [`${SITES}/psicodelia-1_v2.jpg`, `${SITES}/psicodelia-2_v2.jpg`],
-    description: '<p>O Psicodelia é um site de notícias sobre música eletrônica e loja de produtos como camisetas, canecas e acessórios. Criei a <b>identidade visual</b>, <b>layout</b> e desenvolvi o site em <b>Wordpress</b> e <b>Woocommerce</b>.</p>',
-    technologies: ['Identidade Visual', 'Design', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Wordpress', 'Woocommerce'],
-    link: 'https://psicodelia.org/',
-  },
-  {
-    id: 'site-pura',
-    title: 'Pura Web',
-    thumb: `${SITES}/pura-thumb_v2.jpg`,
-    thumbWidth: 500,
-    thumbHeight: 355,
-    images: [`${SITES}/pura-1_v2.jpg`, `${SITES}/pura-3_v2.jpg`],
-    description: '<p>Landing page para a agência de marketing digital Pura Web. O objetivo foi destacar o serviço de sites rápidos e de baixo custo. Criei a <b>identidade visual</b>, <b>layout</b> e desenvolvi o site em <b>NextJS</b>.</p>',
-    technologies: ['Identidade Visual', 'Design', 'NextJS'],
-    link: 'https://puraweb.com.br/',
-  },
-  {
     id: 'site-retail',
     title: 'Retail Media Assaí',
+    category: 'Portal',
     thumb: `${SITES}/retail-thumb_v2.png`,
     thumbWidth: 500,
     thumbHeight: 355,
@@ -114,20 +61,45 @@ export const portfolioItems: PortfolioItem[] = [
     link: 'https://megamidiagroup.com.br/retailmedia10/',
   },
   {
-    id: 'site-task',
-    title: 'Task List',
-    // thumb e interna são o mesmo arquivo
-    thumb: `${SITES}/task-thumb2_v2.jpg`,
+    id: 'site-fort',
+    title: 'Fort Atacadista',
+    category: 'Varejo',
+    thumb: `${SITES}/fort-thumb_v2.png`,
     thumbWidth: 500,
     thumbHeight: 355,
-    images: [`${SITES}/task-1_v2.jpg`, `${SITES}/task-2_v2.jpg`],
-    description: '<p>Landing page para o lançamento do Task List, um app para gerenciamento de tarefas e equipes de reposição de produtos em supermercados. Além de programar a página, também criei a <b>identidade visual</b> e <b>layout</b>.</p>',
-    technologies: ['Identidade Visual', 'Design', 'HTML', 'CSS', 'JavaScript'],
-    link: 'https://ecwd.cloud/task/',
+    images: [`${SITES}/fort-1_v2.png`],
+    description: '<p>Site para a ação promocional <b>Amigo Todo Dia</b> do Fort Atacadista. O site conta com área exclusiva para clientes, formulário integradom com o CRM do Fort além de notícias voltadas para difeerentes atividades de comércio.</p>',
+    technologies: ['Design', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Wordpress'],
+    link: 'https://www.amigotododia.com.br/',
+  },
+  {
+    id: 'site-psicodelia',
+    title: 'Psicodelia',
+    category: 'Loja virtual',
+    thumb: `${SITES}/psicodelia-thumb2_v2.png`,
+    thumbWidth: 500,
+    thumbHeight: 355,
+    images: [`${SITES}/psicodelia-1_v2.jpg`, `${SITES}/psicodelia-2_v2.jpg`],
+    description: '<p>O Psicodelia é um site de notícias sobre música eletrônica e loja de produtos como camisetas, canecas e acessórios. Criei a <b>identidade visual</b>, <b>layout</b> e desenvolvi o site em <b>Wordpress</b> e <b>Woocommerce</b>.</p>',
+    technologies: ['Identidade Visual', 'Design', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Wordpress', 'Woocommerce'],
+    link: 'https://psicodelia.org/',
+  },
+  {
+    id: 'site-dhlaw',
+    title: 'DH Law',
+    category: 'Site institucional',
+    thumb: `${SITES}/dhlaw-thumb_v2.jpg`,
+    thumbWidth: 500,
+    thumbHeight: 355,
+    images: [`${SITES}/dhlaw-1_v2.png`],
+    description: '<p>Site para o escritório de advocacia DH Law. Feito em <b>Wordpress</b>, possui versões em <b>inglês e português</b>, <b>área exclusiva para clientes</b> e outras informações como equipe, áreas de atuação, contato e um blog com notícias e artigos sobre direito.</p>',
+    technologies: ['Design', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Wordpress'],
+    link: 'https://dhlaw.com.br/',
   },
   {
     id: 'detail',
     title: 'Casa das Capotas',
+    category: 'Site institucional',
     // thumb e interna são o mesmo arquivo
     thumb: `${SITES}/detail-thumb_v2.jpg`,
     thumbWidth: 500,
@@ -138,22 +110,34 @@ export const portfolioItems: PortfolioItem[] = [
     link: 'https://eliel.dev/detail/',
   },
   {
-    id: 'site-fort',
-    title: 'Fort Atacadista',
-    thumb: `${SITES}/fort-thumb_v2.png`,
+    id: 'site-task',
+    title: 'Task List',
+    category: 'App',
+    // thumb e interna são o mesmo arquivo
+    thumb: `${SITES}/task-thumb2_v2.jpg`,
     thumbWidth: 500,
     thumbHeight: 355,
-    images: [`${SITES}/fort-1_v2.png`],
-    description: '<p>Site para a ação promocional <b>Amigo Todo Dia</b> do Fort Atacadista. O site conta com área exclusiva para clientes, formulário integradom com o CRM do Fort além de notícias voltadas para difeerentes atividades de comércio.</p>',
-    technologies: ['Design', 'HTML', 'CSS', 'JavaScript', 'PHP', 'Wordpress'],
-    link: 'https://www.amigotododia.com.br/',
+    images: [`${SITES}/task-1_v2.jpg`, `${SITES}/task-2_v2.jpg`],
+    description: '<p>Landing page para o lançamento do Task List, um app para gerenciamento de tarefas e equipes de reposição de produtos em supermercados. Além de programar a página, também criei a <b>identidade visual</b> e <b>layout</b>.</p>',
+    technologies: ['Identidade Visual', 'Design', 'HTML', 'CSS', 'JavaScript'],
+    link: 'https://ecwd.cloud/task/',
   },
-
-
-  // ----------------------------------------------------- Projetos pessoais
+  {
+    id: 'site-fora',
+    title: 'Fora dos Autos',
+    category: 'Site editorial',
+    thumb: `${SITES}/fora-thumb_v2.jpg`,
+    thumbWidth: 500,
+    thumbHeight: 355,
+    images: [`${SITES}/fora-1_v2.png`],
+    description: '<p>Landing page para divulgação do programa <b>Fora dos Autos</b> da <b>Gazeta do Povo</b>. Possui campo para captação de leads e integração com o CRM do jornal.</p>',
+    technologies: ['Design', 'HTML', 'CSS', 'JavaScript'],
+    link: 'https://especiais.gazetadopovo.com.br/lp/fora-dos-autos/',
+  },
   {
     id: 'projeto-chat',
     title: 'Chatbot + IA',
+    category: 'Inteligência artificial',
     thumb: `${PROJETOS}/chat-thumb_v2.jpg`,
     thumbWidth: 500,
     thumbHeight: 355,
@@ -161,10 +145,35 @@ export const portfolioItems: PortfolioItem[] = [
     description: '<p>Chatbot integrado com a API do ChatGPT e banco de dados do cliente, desenvolvido para responder perguntas específicas sobre casas e apartamentos comercializados por uma imobiliária.</p>',
     technologies: ['N8N', 'ChatGPT', 'React'],
     link: 'https://ecwd.cloud/chatbot/',
-  }, 
+  },
+  {
+    id: 'site-churrasco',
+    title: 'Churrasco Assaí',
+    category: 'Hotsite',
+    thumb: `${SITES}/churrasco-thumb_v2.jpg`,
+    thumbWidth: 500,
+    thumbHeight: 355,
+    images: [`${SITES}/churrasco-1_v2.jpg`],
+    description: '<p>Site para ação promocional do setor de carnes do Assaí Atacadista. Além do conteúdo com receitas e dicas de churrasco, conta com um "Churrascômetro", um app para calcular a quantidade de carne, bebidas e outros produtos necessários para um churrasco.</p>',
+    technologies: ['HTML', 'CSS', 'JavaScript', 'PHP', 'VueJS', 'Wordpress'],
+    link: 'https://www.assai.com.br/churrascoassai/',
+  },
+  {
+    id: 'site-pura',
+    title: 'Pura Web',
+    category: 'Site institucional',
+    thumb: `${SITES}/pura-thumb_v2.jpg`,
+    thumbWidth: 500,
+    thumbHeight: 355,
+    images: [`${SITES}/pura-1_v2.jpg`, `${SITES}/pura-3_v2.jpg`],
+    description: '<p>Landing page para a agência de marketing digital Pura Web. O objetivo foi destacar o serviço de sites rápidos e de baixo custo. Criei a <b>identidade visual</b>, <b>layout</b> e desenvolvi o site em <b>NextJS</b>.</p>',
+    technologies: ['Identidade Visual', 'Design', 'NextJS'],
+    link: 'https://puraweb.com.br/',
+  },
   {
     id: 'site-mcdonalds',
     title: "McDonald's",
+    category: 'Campanha',
     // thumb e interna são o mesmo arquivo, então a galeria tem uma imagem só
     thumb: `${SITES}/mcdonalds-thumb_v2.jpg`,
     thumbWidth: 1231,
@@ -177,6 +186,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 'projeto-hublink',
     title: 'HubLink',
+    category: 'App',
     thumb: `${PROJETOS}/hublink-thumb_v2.jpg`,
     thumbWidth: 500,
     thumbHeight: 355,
@@ -184,10 +194,11 @@ export const portfolioItems: PortfolioItem[] = [
     description: '<p>O Hublink surgiu para ser uma alternativa a sistemas como o LinkTree. Funciona como um agregador de links, porém com uma interface mais amigável e mais possibilidades de design na página.</p>',
     technologies: ['Design', 'React', 'NodeJS', 'Prisma', 'MySQL'],
     link: 'https://hublink.ecwd.cloud/',
-  }, 
+  },
   {
     id: 'projeto-safe',
     title: 'Safe',
+    category: 'App',
     thumb: `${PROJETOS}/safe-thumb_v2.jpg`,
     thumbWidth: 500,
     thumbHeight: 355,
@@ -199,6 +210,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: 'projeto-scriby',
     title: 'Scriby',
+    category: 'App',
     thumb: `${PROJETOS}/scriby-thumb_v2.jpg`,
     thumbWidth: 500,
     thumbHeight: 355,
@@ -206,5 +218,5 @@ export const portfolioItems: PortfolioItem[] = [
     description: '<p>O Scriby é um projeto de <b>CMS</b> integrado com <b>IA</b> e agregador de feeds de notícias. Em poucos cliques, o usuário consegue transformar a notícia de um site concorrente em um conteúdo totalmente novo e original usando IA. Na ausência de pautas, o sistema também disponibiliza uma janela de chat com IA para geração de conteúdo.</p>',
     technologies: ['Identidade Visual', 'Design', 'React', 'NodeJS', 'Prisma', 'MySQL', 'OpenAI'],
     link: '',
-  }
+  },
 ];

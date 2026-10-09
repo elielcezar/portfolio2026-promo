@@ -1,0 +1,53 @@
+.footer {
+  background: var(--ink);
+  color: var(--dark-text);
+}
+
+.footer-inner {
+  padding-top: 32px;
+  padding-bottom: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  font-size: 15px;
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-mark {
+  width: 32px;
+  height: 32px;
+  border-radius: 9px;
+  background: var(--accent);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+}
+
+.footer-copy {
+  color: var(--dark-muted);
+}
+
+.footer-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 24px;
+  font-weight: 600;
+}
+
+.footer-nav a,
+.footer-nav a:hover {
+  color: var(--dark-text);
+  text-decoration: none;
+  padding: 10px 0;
+}

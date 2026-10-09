@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Mockup de referência do redesign (inclui React vendorizado)
+    "v2027/**",
   ]),
 ]);
 

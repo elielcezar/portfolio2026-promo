@@ -4,7 +4,6 @@ import Image from "next/image";
 import Modal from "./Modal";
 import { useModal } from "../../hooks/useModal";
 import { portfolioItems } from "@/lib/portfolio";
-import { ArrowRight } from "lucide-react";
 
 import "./Portfolio.css";
 
@@ -12,34 +11,46 @@ export default function Portfolio() {
   const modal = useModal();
 
   return (
-    <section id="portfolio">   
+    <section id="portfolio">
+      <div className="container section-pad portfolio-inner">
+        <div className="section-head">
+          <div className="section-head-main">
+            <h2 className="section-title">Projetos que já saíram do papel</h2>
+          </div>
+        </div>
 
-      <h2>Portfólio <ArrowRight className="arrow-right" /></h2>   
+        <div className="portfolio-grid">
+          {portfolioItems.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              className="portfolio-item"
+              onClick={() => modal.openModal(item)}
+              aria-label={`Ver detalhes de ${item.title}`}
+            >
+              {/* Moldura de janela de navegador em volta do print */}
+              <div className="portfolio-window">
+                <div className="portfolio-window-bar" aria-hidden>
+                  <span /><span /><span />
+                </div>
+                <div className="portfolio-item-image">
+                  <Image
+                    src={item.thumb}
+                    alt={item.title}
+                    width={item.thumbWidth}
+                    height={item.thumbHeight}
+                    sizes="(max-width: 720px) 100vw, 384px"
+                  />
+                </div>
+              </div>
 
-      <div className="portfolio-grid">
-        {portfolioItems.map((item) => (
-          <button
-            key={item.id}
-            type="button"
-            className="portfolio-item"
-            onClick={() => modal.openModal(item)}
-            aria-label={`Ver detalhes de ${item.title}`}
-          >
-            {/* O scale no hover transborda o card de propósito */}
-            <div className="portfolio-item-image">
-              <Image
-                src={item.thumb}
-                alt={item.title}
-                width={item.thumbWidth}
-                height={item.thumbHeight}
-              />
-            </div>
-
-            <div className="portfolio-item-content">
-              <h4>{item.title}</h4>
-            </div>
-          </button>
-        ))}
+              <div className="portfolio-item-content">
+                <span className="portfolio-item-title">{item.title}</span>
+                <span className="portfolio-item-category">{item.category}</span>
+              </div>
+            </button>
+          ))}
+        </div>
       </div>
 
       {modal.isOpen && modal.currentItem && (

@@ -1,43 +1,182 @@
+/* Tokens tirados do mockup em v2027/index.html */
 :root {
-  --black: #181818;
-  --yellow: #e4ca29;
-}
+  --ink: #121212;
+  --paper: #FFFFFF;
+  --text-2: #3D3D3A;
+  --text-3: #5C5C57;
+  --line: #E6E5E0;
+  --line-soft: #ECEBE6;
+  --soft: #F3F3F0;
+  --accent: #FDC438;
 
-body {
-  font-family: var(--font-plus-jakarta-sans);
-  margin: 0;
-  background-color: #111;
+  /* Blocos escuros (portfólio, rodapé) */
+  --dark-text: #F2F2EF;
+  --dark-muted: #A6A6A0;
+  --dark-card: #1D1D1C;
+  --dark-line: #2E2E2C;
+
+  /* Marca-texto: faixa de accent atrás da metade de baixo das letras */
+  --highlight: linear-gradient(transparent 58%, var(--accent) 58%, var(--accent) 92%, transparent 92%);
+
+  --font-display: var(--font-bricolage), sans-serif;
+  --font-body: var(--font-hanken), sans-serif;
+  --font-mono: var(--font-jetbrains), monospace;
 }
 
 * {
   box-sizing: border-box;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
+html {
+  scroll-behavior: smooth;
 }
 
-.row {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
 }
 
-.col-1 {
-  width: 50%;
+a {
+  color: var(--ink);
 }
 
-.col-2 {
-  width: 50%;
+a:hover {
+  color: #000000;
 }
 
 img {
   max-width: 100%;
   height: auto;
+}
+
+/* Ícones de traço (Feather), mesmo padrão do mockup */
+.i {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.s {
+  fill: currentColor;
+  stroke: none;
+  flex-shrink: 0;
+}
+
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Espaçamento vertical padrão das seções */
+.section-pad {
+  padding-top: clamp(72px, 8vw, 112px);
+  padding-bottom: clamp(72px, 8vw, 112px);
+}
+
+.eyebrow {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-3);
+}
+
+/* Trecho com marca-texto nos títulos (h1 do hero, títulos de seção) */
+.highlight {
+  background-image: var(--highlight);
+  padding: 0 4px;
+}
+
+.section-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(34px, 4.2vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+/* Cabeçalho de seção com título à esquerda e texto/link à direita */
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px 48px;
+}
+
+.section-head-main {
+  flex: 1 1 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Botões em pílula */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-accent {
+  min-height: 56px;
+  padding: 0 28px;
+  background: var(--accent);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+/* Hover do botão accent: fundo preto, conteúdo branco */
+.btn-accent:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn-outline {
+  border: 1.5px solid var(--ink);
+  font-weight: 600;
+}
+
+/* Hover do botão de contorno: fundo accent, conteúdo e borda continuam pretos */
+.btn-outline:hover {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.btn-dark {
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+}
+
+/* Hover do botão escuro: fundo accent, conteúdo preto */
+.btn-dark:hover {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }

@@ -1,27 +1,30 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Space_Grotesk } from "next/font/google";
-import { Plus_Jakarta_Sans } from "next/font/google";
-import { Inter } from "next/font/google";
+import { Bricolage_Grotesque, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 
 import "./globals.css";
 
-const spaceGrotesk = Space_Grotesk({
+// Variável com o eixo opsz: sem ele os títulos saem ~4% mais largos que no
+// design e quebram linha em lugares diferentes
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  axes: ["opsz"],
+  variable: "--font-bricolage",
 });
 
-const plusJakartaSans = Plus_Jakarta_Sans({
+const hanken = Hanken_Grotesk({
   subsets: ["latin"],
-  variable: "--font-plus-jakarta-sans",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-hanken",
 });
 
-const inter = Inter({
+const jetbrains = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["500"],
+  variable: "--font-jetbrains",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   metadataBase: new URL('https://elielcezar.com'),
   title: {
     default: 'Eliel Cezar - Desenvolvedor Front End & UI Designer - Programador Web',
@@ -82,8 +85,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body className={`${plusJakartaSans.variable} ${inter.variable}`}>
+    // As variáveis das fontes ficam no <html> porque os tokens em :root
+    // (--font-display etc.) são resolvidos ali, e não no <body>
+    <html lang="pt-BR" className={`${bricolage.variable} ${hanken.variable} ${jetbrains.variable}`}>
+      <body>
         {/* Google Analytics */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-X9E0GD719W"
