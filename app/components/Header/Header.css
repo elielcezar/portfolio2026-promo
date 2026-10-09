@@ -99,3 +99,150 @@
   padding: 0 20px;
   font-size: 15px;
 }
+
+/* ---------------------------------------------------------- Menu mobile */
+
+/* Ícone sanduíche: só aparece abaixo de 1024px */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--ink);
+}
+
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1400;
+  background: rgba(18, 18, 18, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-menu-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Painel: entra da direita para a esquerda. O visibility espera a saída
+   terminar para esconder o painel. */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1500;
+  width: min(400px, 100%);
+  padding: 80px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  overflow-y: auto;
+  background: var(--ink);
+  color: var(--paper);
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.mobile-menu.open {
+  transform: none;
+  visibility: visible;
+  transition: transform 0.3s ease;
+}
+
+/* Mesma posição do ícone sanduíche no header (18px do topo, 24px da direita) */
+.mobile-menu-close {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mobile-menu-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Linhas finas amarelas entre os itens */
+.mobile-menu-list li + li {
+  border-top: 1px solid var(--accent);
+}
+
+.mobile-menu-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 0;
+  color: var(--paper);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 24px;
+  /* Altura inteira (30px): com line-height normal as linhas de 1px caíam em
+     posições fracionárias e saíam esmaecidas */
+  line-height: 30px;
+  letter-spacing: -0.01em;
+}
+
+.mobile-menu-list a:hover {
+  color: var(--accent);
+}
+
+.mobile-menu-cta {
+  align-self: flex-start;
+}
+
+@media (max-width: 1023px) {
+  .header-nav,
+  .header-cta {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mobile-menu,
+  .mobile-menu-backdrop {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu,
+  .mobile-menu.open,
+  .mobile-menu-backdrop {
+    transition: none;
+  }
+}
