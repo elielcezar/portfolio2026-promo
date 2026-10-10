@@ -12,6 +12,9 @@ import "./Portfolio.css";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
+/** Mesmo valor do @media em Portfolio.css: abaixo disso a seção é uma grade simples */
+const DESKTOP_QUERY = "(min-width: 1024px)";
+
 export default function Portfolio() {
   const modal = useModal();
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -19,6 +22,7 @@ export default function Portfolio() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
     align: "center",
+    breakpoints: { "(max-width: 1023px)": { active: false } },
   });
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
@@ -44,7 +48,7 @@ export default function Portfolio() {
         </div>
       </div>
 
-      {/* O carrossel ocupa a largura toda da tela, fora do .container */}
+      {/* No desktop o carrossel ocupa a largura toda da tela, fora do .container */}
       <div className="portfolio-carousel" ref={emblaRef}>
         <div className="portfolio-carousel-track">
           {portfolioItems.map((item, i) => {
@@ -54,12 +58,17 @@ export default function Portfolio() {
                 key={item.id}
                 className={`portfolio-slide${isSelected ? " is-selected" : ""}`}
               >
-                {/* O item central abre o modal; os laterais só vêm para o centro */}
+                {/* Na grade (mobile) e no item central abre o modal; no carrossel,
+                    os itens laterais só vêm para o centro */}
                 <button
                   type="button"
                   className="portfolio-item"
-                  onClick={() => (isSelected ? modal.openModal(item) : emblaApi?.scrollTo(i))}
-                  aria-label={isSelected ? `Ver detalhes de ${item.title}` : `Mostrar ${item.title}`}
+                  onClick={() =>
+                    isSelected || !window.matchMedia(DESKTOP_QUERY).matches
+                      ? modal.openModal(item)
+                      : emblaApi?.scrollTo(i)
+                  }
+                  aria-label={`Ver detalhes de ${item.title}`}
                 >
                   {/* Moldura de janela de navegador em volta do print */}
                   <div className="portfolio-window">
@@ -72,7 +81,7 @@ export default function Portfolio() {
                         alt={item.title}
                         width={item.thumbWidth}
                         height={item.thumbHeight}
-                        sizes="(max-width: 767px) 75vw, (max-width: 1099px) 40vw, 25vw"
+                        sizes="(max-width: 720px) 100vw, (max-width: 1023px) 50vw, 30vw"
                       />
                     </div>
                   </div>

@@ -4,47 +4,19 @@
 }
 
 /*
- * Carrossel: 5 itens na tela, o central 20% maior (scale 1.2) e os demais com
- * opacidade 0.8. O scale não mexe no layout do Embla, então cada slide reserva
- * respiro lateral (padding em % da largura do trilho) maior que os 10% que o
- * item central cresce de cada lado — assim ele não encosta nos vizinhos.
+ * Abaixo de 1024px a seção é a grade simples (o Embla fica desligado pela
+ * opção `breakpoints` em Portfolio.tsx), alinhada ao .container.
  */
 .portfolio-carousel {
-  --slide: 20%;
-  --slide-gap: 1.5%;
-  overflow: hidden;
-  margin-top: 48px;
-  /* Espaço vertical para o item central crescer sem ser cortado pelo overflow */
-  padding: calc(1.6vw + 8px) 0;
+  max-width: 1260px;
+  margin: 48px auto 0;
+  padding: 0 24px;
 }
 
 .portfolio-carousel-track {
-  display: flex;
-  touch-action: pan-y pinch-zoom;
-}
-
-.portfolio-slide {
-  flex: 0 0 var(--slide);
-  min-width: 0;
-  padding: 0 var(--slide-gap);
-}
-
-@media (max-width: 1099px) {
-  .portfolio-carousel {
-    --slide: 33.333%;
-    --slide-gap: 2.5%;
-    padding: calc(2.6vw + 8px) 0;
-  }
-}
-
-/* Mobile: um item central com as bordas dos vizinhos aparecendo */
-@media (max-width: 767px) {
-  .portfolio-carousel {
-    --slide: 72%;
-    --slide-gap: 4.5%;
-    margin-top: 32px;
-    padding: calc(5.5vw + 8px) 0;
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
+  gap: 40px 24px;
 }
 
 /* O card é um <button> (abre o modal), então zera o estilo nativo */
@@ -60,18 +32,6 @@
   font-family: inherit;
   text-align: left;
   cursor: pointer;
-  opacity: 0.8;
-  transform: scale(1);
-  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s;
-}
-
-.portfolio-slide:not(.is-selected) .portfolio-item:hover {
-  opacity: 1;
-}
-
-.portfolio-slide.is-selected .portfolio-item {
-  opacity: 1;
-  transform: scale(1.2);
 }
 
 .portfolio-item:focus-visible {
@@ -81,19 +41,103 @@
 }
 
 .portfolio-window {
-  aspect-ratio: 4 / 3;
+  height: 280px;
   border-radius: 16px;
   background: var(--dark-card);
   border: 1px solid var(--dark-line);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.3s, transform 0.3s;
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.45s;
 }
 
-.portfolio-slide.is-selected .portfolio-item:hover .portfolio-window {
-  border-color: #4A4A46;
-  transform: translateY(-4px);
+.portfolio-controls {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .portfolio-item:hover .portfolio-window {
+    border-color: #4A4A46;
+    transform: translateY(-4px);
+  }
+
+  .portfolio-item:hover .portfolio-item-image img {
+    transform: scale(1.04);
+  }
+}
+
+/*
+ * Desktop — carrossel: 5 itens na tela, o central ampliado (scale 1.44) e os
+ * demais com opacidade 0.7. O scale não mexe no layout do Embla, então o item
+ * central avança por cima dos vizinhos — por isso o slide ativo sobe para
+ * z-index 10. O carrossel ocupa a largura toda da tela.
+ */
+@media (min-width: 1024px) {
+  .portfolio-carousel {
+    --slide: 20%;
+    --slide-gap: 0.5%;
+    /* Folga extra para a sombra do item ativo; as margens negativas a compensam */
+    --shadow-room: 72px;
+    max-width: none;
+    overflow: hidden;
+    margin: calc(48px - var(--shadow-room)) 0 calc(-1 * var(--shadow-room));
+    /* Espaço vertical para o item central crescer sem ser cortado pelo overflow */
+    padding: calc(3.2vw + 12px + var(--shadow-room)) 0;
+  }
+
+  .portfolio-carousel-track {
+    display: flex;
+    gap: 0;
+    touch-action: pan-y pinch-zoom;
+  }
+
+  .portfolio-slide {
+    flex: 0 0 var(--slide);
+    min-width: 0;
+    padding: 0 var(--slide-gap);
+  }
+
+  .portfolio-slide.is-selected {
+    position: relative;
+    z-index: 10;
+  }
+
+  .portfolio-item {
+    opacity: 0.7;
+    transform: scale(1);
+    transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s;
+  }
+
+  .portfolio-slide:not(.is-selected) .portfolio-item:hover {
+    opacity: 1;
+  }
+
+  .portfolio-slide.is-selected .portfolio-item {
+    opacity: 1;
+    transform: scale(1.44);
+  }
+
+  .portfolio-window {
+    height: auto;
+    aspect-ratio: 4 / 3;
+  }
+
+  .portfolio-slide.is-selected .portfolio-window {
+    box-shadow: 0px 5px 30px 15px rgb(0 0 0 / 75%);
+  }
+
+  .portfolio-slide.is-selected .portfolio-item:hover .portfolio-window {
+    border-color: #4A4A46;
+    transform: translateY(-4px);
+  }
+
+  .portfolio-slide.is-selected .portfolio-item:hover .portfolio-item-image img {
+    transform: scale(1.04);
+  }
+
+  .portfolio-controls {
+    display: flex;
+  }
 }
 
 .portfolio-window-bar {
@@ -141,10 +185,6 @@
   transition: transform 0.3s;
 }
 
-.portfolio-slide.is-selected .portfolio-item:hover .portfolio-item-image img {
-  transform: scale(1.04);
-}
-
 .portfolio-item-content {
   display: flex;
   justify-content: space-between;
@@ -167,9 +207,8 @@
   text-align: right;
 }
 
-/* Navegação abaixo do carrossel */
+/* Navegação abaixo do carrossel (só no desktop) */
 .portfolio-controls {
-  display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
