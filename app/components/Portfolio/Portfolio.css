@@ -3,16 +3,48 @@
   color: var(--dark-text);
 }
 
-.portfolio-inner {
-  display: flex;
-  flex-direction: column;
-  gap: 48px;
+/*
+ * Carrossel: 5 itens na tela, o central 20% maior (scale 1.2) e os demais com
+ * opacidade 0.8. O scale não mexe no layout do Embla, então cada slide reserva
+ * respiro lateral (padding em % da largura do trilho) maior que os 10% que o
+ * item central cresce de cada lado — assim ele não encosta nos vizinhos.
+ */
+.portfolio-carousel {
+  --slide: 20%;
+  --slide-gap: 1.5%;
+  overflow: hidden;
+  margin-top: 48px;
+  /* Espaço vertical para o item central crescer sem ser cortado pelo overflow */
+  padding: calc(1.6vw + 8px) 0;
 }
 
-.portfolio-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr));
-  gap: 40px 24px;
+.portfolio-carousel-track {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.portfolio-slide {
+  flex: 0 0 var(--slide);
+  min-width: 0;
+  padding: 0 var(--slide-gap);
+}
+
+@media (max-width: 1099px) {
+  .portfolio-carousel {
+    --slide: 33.333%;
+    --slide-gap: 2.5%;
+    padding: calc(2.6vw + 8px) 0;
+  }
+}
+
+/* Mobile: um item central com as bordas dos vizinhos aparecendo */
+@media (max-width: 767px) {
+  .portfolio-carousel {
+    --slide: 72%;
+    --slide-gap: 4.5%;
+    margin-top: 32px;
+    padding: calc(5.5vw + 8px) 0;
+  }
 }
 
 /* O card é um <button> (abre o modal), então zera o estilo nativo */
@@ -20,6 +52,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 100%;
   padding: 0;
   border: none;
   background: none;
@@ -27,6 +60,18 @@
   font-family: inherit;
   text-align: left;
   cursor: pointer;
+  opacity: 0.8;
+  transform: scale(1);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s;
+}
+
+.portfolio-slide:not(.is-selected) .portfolio-item:hover {
+  opacity: 1;
+}
+
+.portfolio-slide.is-selected .portfolio-item {
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 .portfolio-item:focus-visible {
@@ -36,7 +81,7 @@
 }
 
 .portfolio-window {
-  height: 280px;
+  aspect-ratio: 4 / 3;
   border-radius: 16px;
   background: var(--dark-card);
   border: 1px solid var(--dark-line);
@@ -46,7 +91,7 @@
   transition: border-color 0.3s, transform 0.3s;
 }
 
-.portfolio-item:hover .portfolio-window {
+.portfolio-slide.is-selected .portfolio-item:hover .portfolio-window {
   border-color: #4A4A46;
   transform: translateY(-4px);
 }
@@ -96,7 +141,7 @@
   transition: transform 0.3s;
 }
 
-.portfolio-item:hover .portfolio-item-image img {
+.portfolio-slide.is-selected .portfolio-item:hover .portfolio-item-image img {
   transform: scale(1.04);
 }
 
@@ -120,4 +165,56 @@
   text-transform: uppercase;
   color: var(--accent);
   text-align: right;
+}
+
+/* Navegação abaixo do carrossel */
+.portfolio-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.portfolio-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1.5px solid var(--dark-line);
+  background: none;
+  color: var(--dark-text);
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
+}
+
+.portfolio-controls button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--ink);
+}
+
+.portfolio-controls button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.portfolio-counter {
+  min-width: 72px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-align: center;
+  color: var(--dark-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .portfolio-item,
+  .portfolio-window,
+  .portfolio-item-image img {
+    transition: none;
+  }
 }
