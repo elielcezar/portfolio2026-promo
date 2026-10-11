@@ -78,6 +78,19 @@ export const metadata: Metadata = {
   },
 }
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: "Eliel Cezar",
+  jobTitle: "Front End Developer & UI Designer",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Curitiba",
+    addressRegion: "PR",
+  },
+  url: "https://elielcezar.com",
+  description: "Desenvolvedor web com 15 anos de experiência, especializado em Front End, Mobile e UI Design.",
+};
 
 export default function RootLayout({
   children,
@@ -102,23 +115,11 @@ export default function RootLayout({
             gtag('config', 'G-X9E0GD719W');
           `}
         </Script>
-        <Script id="json-ld" type="application/ld+json">
-          {`
-            {
-              "@context": "https://schema.org",
-              "@type": "ProfessionalService",
-              "name": "Eliel Cezar",
-              "jobTitle": "Front End Developer & UI Designer",
-              "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "Curitiba",
-                "addressRegion": "PR"
-              },
-              "url": "https://elielcezar.com",
-              "description": "Desenvolvedor web com 15 anos de experiência, especializado em Front End, Mobile e UI Design."
-            }
-          `}
-        </Script>
+        {/* Dado estruturado vai direto no HTML (recomendação do Next), sem JS */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
+        />
         {children}
       </body>
     </html>

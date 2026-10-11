@@ -3,7 +3,7 @@ import "./WhatsappButton.css";
 export default function WhatsappButton() {
     return (
         <div className="btn-circle">
-            <a href="https://wa.me/5541999631609" target="_blank" rel="noopener noreferrer">            
+            <a href="https://wa.me/5541999631609" target="_blank" rel="noopener noreferrer" aria-label="Falar no WhatsApp">            
                 <svg 
                     width="100%" 
                     height="100%" 
