@@ -12,6 +12,30 @@ function subscribeDesktop(onChange: () => void) {
   return () => query.removeEventListener("change", onChange);
 }
 
+/**
+ * WebGL com aceleração de hardware? Sem ela o navegador desenha pelo
+ * processador (SwiftShader etc.: aceleração desligada, máquina virtual,
+ * servidor do PageSpeed) e cada quadro da cena vira uma tarefa longa que trava
+ * a página. Nesse caso a cena não roda.
+ */
+function hasHardwareWebGL() {
+  const canvas = document.createElement("canvas");
+  // O navegador devolve null se o contexto for muito mais lento que o normal
+  const gl = canvas.getContext("webgl2", { failIfMajorPerformanceCaveat: true });
+  if (!gl) return false;
+
+  // Reforço pelo nome do renderizador. O Chrome só o informa pela extensão;
+  // o Firefox já o dá em RENDERER (e marca a extensão como obsoleta)
+  let renderer = String(gl.getParameter(gl.RENDERER));
+  if (renderer === "WebKit WebGL") {
+    const info = gl.getExtension("WEBGL_debug_renderer_info");
+    if (info) renderer = String(gl.getParameter(info.UNMASKED_RENDERER_WEBGL));
+  }
+  gl.getExtension("WEBGL_lose_context")?.loseContext();
+
+  return !/swiftshader|llvmpipe|software|basic render/i.test(renderer);
+}
+
 const COLOR = 0xa8a8a8;
 const OPACITY = 0.4;
 
@@ -151,7 +175,7 @@ export default function HeroScene() {
 
   useEffect(() => {
     const mount = mountRef.current;
-    if (!enabled || !mount) return;
+    if (!enabled || !mount || !hasHardwareWebGL()) return;
 
     let disposed = false;
     let teardown = () => {};
