@@ -73,6 +73,10 @@
  * z-index 10. O carrossel ocupa a largura toda da tela.
  */
 @media (min-width: 1024px) {
+
+  #portfolio h2.section-title{
+    text-align: center;    
+  }
   .portfolio-carousel {
     --slide: 20%;
     --slide-gap: 0.5%;
@@ -129,10 +133,6 @@
   .portfolio-slide.is-selected .portfolio-item:hover .portfolio-window {
     border-color: #4A4A46;
     transform: translateY(-4px);
-  }
-
-  .portfolio-slide.is-selected .portfolio-item:hover .portfolio-item-image img {
-    transform: scale(1.04);
   }
 
   .portfolio-controls {

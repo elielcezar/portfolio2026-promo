@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  images: {
+    // 90 é usado nas thumbs do portfólio: prints com texto pequeno perdem nitidez em 75
+    qualities: [75, 90],
+  },
   async headers() {
     return [
       {

@@ -16,12 +16,53 @@ const links = [
 /** Mesmo valor do @media em Header.css: abaixo disso o menu vira sanduíche */
 const DESKTOP_QUERY = "(min-width: 1024px)";
 
+/** Rolagens menores que isso (px) não mudam o estado, para o header não piscar */
+const SCROLL_THRESHOLD = 8;
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
 
   const closeMenu = () => setMenuOpen(false);
+
+  // Rolando para baixo o header sai da tela; para cima, volta
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      const y = window.scrollY;
+      setScrolled(y > 0);
+
+      // Perto do topo fica sempre visível
+      if (y <= (headerRef.current?.offsetHeight ?? 0)) {
+        setHidden(false);
+        lastY = y;
+        return;
+      }
+
+      const delta = y - lastY;
+      if (Math.abs(delta) < SCROLL_THRESHOLD) return;
+      setHidden(delta > 0);
+      lastY = y;
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -50,7 +91,14 @@ export default function Header() {
   }, [menuOpen]);
 
   return (
-    <header className="header">
+    // Com o menu aberto o header nunca some: o transform de .is-hidden viraria
+    // referência para o position: fixed do painel. O foco por teclado também o
+    // traz de volta.
+    <header
+      ref={headerRef}
+      className={`header${scrolled ? " is-scrolled" : ""}${hidden && !menuOpen ? " is-hidden" : ""}`}
+      onFocus={() => setHidden(false)}
+    >
       <div className="container header-bar">
         <a href="#topo" className="logo">
           <span className="logo-mark">ec</span>

@@ -81,6 +81,7 @@ export default function Portfolio() {
                         alt={item.title}
                         width={item.thumbWidth}
                         height={item.thumbHeight}
+                        quality={90}
                         sizes="(max-width: 720px) 100vw, (max-width: 1023px) 50vw, 30vw"
                       />
                     </div>

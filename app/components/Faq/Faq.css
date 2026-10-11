@@ -40,15 +40,30 @@
   gap: 12px;
 }
 
-.faq-list details {
+.faq-item {
   background: var(--paper);
   border: 1px solid var(--line);
   border-radius: 18px;
   padding: 0 24px;
+  transition: background 0.2s, border-color 0.2s;
 }
 
-.faq-list summary {
-  list-style: none;
+/* Hover só nos itens fechados; (hover: hover) evita o amarelo "preso" após o toque no celular */
+@media (hover: hover) {
+  .faq-item:not(.is-open):hover {
+    background: var(--accent);
+    border-color: var(--accent);
+  }
+}
+
+/* O título é um <button>, então zera o estilo nativo */
+.faq-question {
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ink);
+  text-align: left;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -60,22 +75,46 @@
   font-size: 20px;
 }
 
-.faq-list summary::-webkit-details-marker {
-  display: none;
+.faq-question:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
 .faq-plus {
-  transition: transform 0.2s;
+  transition: transform 0.3s;
 }
 
-.faq-list details[open] .faq-plus {
+.faq-item.is-open .faq-plus {
   transform: rotate(45deg);
 }
 
-.faq-list details p {
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.faq-item.is-open .faq-answer {
+  grid-template-rows: 1fr;
+}
+
+.faq-answer-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.faq-answer p {
   margin: 0;
   padding: 0 0 24px;
   font-size: 17px;
   line-height: 1.6;
   color: var(--text-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-plus,
+  .faq-answer {
+    transition: none;
+  }
 }

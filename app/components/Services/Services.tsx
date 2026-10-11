@@ -19,7 +19,7 @@ const services = [
     icon: IconPen,
     items: [
       "Logo e identidade visual",
-      "Layout desenhado no Figma e aprovado por você antes de programar",
+      "Layout desenhado no Figma e protótipo testado e aprovado por você antes de programar",
       "Navegação pensada para o seu cliente (UX)",
     ],
   },
@@ -52,7 +52,7 @@ export default function Services() {
       <div className="container section-pad services-inner">
         <div className="section-head">
           <div className="section-head-main">
-            <h2 className="section-title">O pacote completo para o seu site dar <span className="highlight">resultado</span></h2>
+            <h2 className="section-title">O pacote completo para o seu site começar a dar <span className="highlight">resultado</span></h2>
           </div>
           {/* Espaço vazio onde ficava o texto de apoio; mantém a largura do título */}
           <div className="services-head-spacer" aria-hidden />

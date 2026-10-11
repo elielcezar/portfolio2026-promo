@@ -1,10 +1,38 @@
+/* Grudado no topo. Transparente enquanto a página está no topo (o fundo do
+   hero passa por trás); depois de rolar ganha fundo e some/volta conforme a
+   direção da rolagem (Header.tsx). z-index acima do botão do WhatsApp (1000)
+   e abaixo do modal do portfólio (2000). */
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1300;
   border-bottom: 1px solid var(--line);
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s;
+}
+
+.header.is-scrolled {
+  background: var(--paper);
+}
+
+/* Mobile: sempre fixo, com fundo branco desde o topo. z-index logo abaixo do
+   modal do portfólio (2000), para o modal continuar cobrindo o header */
+@media (max-width: 1023px) {
+  .header {
+    z-index: 1900;
+    background: var(--paper);
+  }
+}
+
+/* Só no desktop ele some */
+@media (min-width: 1024px) {
+  .header.is-hidden {
+    transform: translateY(-100%);
+  }
 }
 
 .header-bar {
-  padding-top: 18px;
-  padding-bottom: 18px;
+  padding-top: 8px;
+  padding-bottom: 8px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -45,7 +73,7 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 4px 28px;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
 }
 
@@ -201,12 +229,12 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 18px 0;
+  padding: 14px 0;
   color: var(--paper);
   text-decoration: none;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 24px;
+  font-size: 22px;
   /* Altura inteira (30px): com line-height normal as linhas de 1px caíam em
      posições fracionárias e saíam esmaecidas */
   line-height: 30px;
@@ -240,6 +268,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .header,
   .mobile-menu,
   .mobile-menu.open,
   .mobile-menu-backdrop {

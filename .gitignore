@@ -43,3 +43,7 @@ next-env.d.ts
 # referência do redesign e capturas dos scripts de verificação
 /v2027/
 /tmp/
+
+# kit de engenharia reversa para o Figma e documentos gerados por ele
+/figma-ds-kit/
+/docs/

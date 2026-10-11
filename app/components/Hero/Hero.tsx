@@ -23,7 +23,7 @@ export default function Hero() {
           </h1>
 
           <p className="hero-lead">
-            Olá! Meu nome é Eliel. Sou designer gráfico e programador há 15 anos. Eu crio e programo sites, landing pages e lojas virtuais para pequenas empresas — com o mesmo cuidado que já dediquei a marcas como Assaí e Subway.
+            Olá! Meu nome é Eliel. Sou designer gráfico e programador há 15 anos. Posso criar um <strong>site, uma landing page ou uma loja virtual</strong> para a sua empresa com o mesmo cuidado que já dediquei a marcas como Assaí, McDonald&apos;s e Subway.
           </p>
 
           <div className="hero-actions">

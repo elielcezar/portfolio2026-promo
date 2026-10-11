@@ -3,13 +3,13 @@ import "./About.css";
 
 const facts = [
   { label: "Formação", value: "Design Gráfico · UTFPR" },
-  { label: "Pós-graduação", value: "Software para Dispositivos Móveis" },
+  { label: "Pós-graduação", value: "Software para Dispositivos Móveis - UTFPR" },
 ];
 
 const differentials = [
   {
-    title: "Design e código na mesma pessoa",
-    text: "Eu desenho no Figma e eu mesmo programo. Nada se perde no caminho entre o designer e o programador.",
+    title: "Design e código com uma só pessoa",
+    text: "Eu crio o design e eu mesmo programo. Agilidade e eficiência garantidas, nada se perde no caminho entre o designer e o programador.",
   },
   {
     title: "Projeto de ponta a ponta",
@@ -21,7 +21,7 @@ const differentials = [
   },
 ];
 
-const tools = ["Figma", "Photoshop", "Illustrator", "WordPress", "React", "Next.js", "Vue.js", "Tailwind CSS", "Node.js", "PHP", "MySQL", "Google Ads"];
+const tools = ["Figma", "Photoshop", "Illustrator", "WordPress", "Drupal", "JavaScript", "CSS", "HTML", "React", "Next.js", "Vue.js", "Tailwind", "Node.js", "PHP", "Node.js", "MySQL", "Google Ads"];
 
 export default function About() {
   return (
@@ -48,11 +48,11 @@ export default function About() {
         </div>
 
         <div className="about-main">
-          <h2 className="section-title">Olá! Meu nome é Eliel.</h2>
+          <h2 className="section-title">Olá! Meu nome é Eliel</h2>
 
           <div className="about-text">
-            <p>Sou formado em Design Gráfico pela UTFPR, tenho pós-graduação em Desenvolvimento de Software para Dispositivos Móveis e trabalho há mais de 15 anos com desenvolvimento web. Hoje também sou Tech Lead de um time de 5 desenvolvedores.</p>
-            <p>Já atendi marcas do varejo e do e-commerce como Assaí, Muffato, Lojas Americanas e Subway. Agora coloco essa experiência a serviço de quem está construindo o próprio negócio.</p>
+            <p>Sou formado em <strong>Design Gráfico</strong> pela UTFPR, tenho <strong>Pós-graduação em Desenvolvimento de Software para Dispositivos Móveis</strong> e trabalho há mais de 15 anos com desenvolvimento web.</p>
+            <p>Já desenvolvi projetos para como <strong>Assaí, McDonald&apos;s, Muffato, Lojas Americanas, Rede RPC e Subway</strong>. Agora coloco essa experiência a serviço de quem está construindo o próprio negócio.</p>
           </div>
 
           <div className="about-differentials">
