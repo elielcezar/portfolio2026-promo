@@ -17,8 +17,22 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.VPS_PORT }}
           script: |
+            set -e
             cd ~/htdocs/elielcezar.com
             git pull origin main
             npm install
-            npm run build
+            # Build limpo; se o Turbopack falhar no servidor, tenta com webpack.
+            # Com set -e, o pm2 só reinicia se algum dos dois builds passar.
+            rm -rf .next
+            npm run build || npx next build --webpack
             pm2 restart portfolio
+            for i in $(seq 1 20); do
+              if curl -fsS -o /dev/null http://127.0.0.1:3011; then
+                echo "Site respondendo na porta 3011"
+                exit 0
+              fi
+              sleep 3
+            done
+            echo "O site não respondeu depois do restart"
+            pm2 logs portfolio --lines 60 --nostream
+            exit 1
