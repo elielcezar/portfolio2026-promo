@@ -1,0 +1,253 @@
+/* Tokens e estilos do hero, extraídos do site para ficar autocontido. */
+
+:root {
+  --ink: #121212;
+  --paper: #FFFFFF;
+  --text-2: #3D3D3A;
+  --text-3: #5C5C57;
+  --line: #E6E5E0;
+  --accent: #FDC438;
+
+  /* Marca-texto: faixa de accent atrás da metade de baixo das letras */
+  --highlight: linear-gradient(transparent 58%, var(--accent) 58%, var(--accent) 92%, transparent 92%);
+
+  /* Aspas para o canvas e o document.fonts.load aceitarem o nome com espaço */
+  --font-bricolage: "Bricolage Grotesque";
+  --font-display: var(--font-bricolage), sans-serif;
+  --font-body: "Hanken Grotesk", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--ink);
+}
+
+a:hover {
+  color: #000000;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.i {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.s {
+  fill: currentColor;
+  stroke: none;
+  flex-shrink: 0;
+}
+
+.container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.highlight {
+  background-image: var(--highlight);
+  padding: 0 4px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--ink);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-accent {
+  min-height: 56px;
+  padding: 0 28px;
+  background: var(--accent);
+  font-weight: 700;
+  font-size: 17px;
+}
+
+.btn-accent:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn-outline {
+  border: 1.5px solid var(--ink);
+  font-weight: 600;
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: var(--ink);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.hero {
+  padding-top: 72px;
+  padding-bottom: 88px;
+}
+
+/* Cena three.js: fundo interativo atrás do conteúdo (z-index -1).
+   Nenhum ancestral é posicionado, então a camada começa no topo da página
+   e ocupa os 60% da direita. O fade na borda esquerda esconde o corte. */
+.hero-scene-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  width: 60%;
+  height: 1300px;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 15%);
+  mask-image: linear-gradient(to right, transparent, #000 15%);
+}
+
+.hero-scene {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-scene canvas {
+  display: block;
+}
+
+@media (max-width: 1300px) {
+  .hero-scene-layer {
+    display: none;
+  }
+}
+
+.hero-text {
+  min-width: 0;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(44px, 7vw, 5rem);
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+@media (max-width: 767px) {
+  .hero-title {
+    font-size: 2.9rem;
+  }
+}
+
+.hero-lead {
+  margin: 0;
+  max-width: 560px;
+  font-size: 20px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-secondary {
+  min-height: 56px;
+  padding: 0 26px;
+  font-size: 17px;
+}
+
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-stat-value {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 36px;
+  letter-spacing: -0.02em;
+}
+
+.hero-stat-small {
+  font-size: 20px;
+  color: var(--text-3);
+}
+
+.hero-stat-rating {
+  flex-direction: row;
+  align-items: center;
+  gap: 12px;
+}
+
+.hero-stat-people {
+  display: block;
+  width: 108px;
+  height: auto;
+}
+
+.hero-stat-rating-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.hero-stat-rating .hero-stat-value {
+  line-height: 1;
+}
+
+.hero-stat-label {
+  font-size: 15px;
+  color: var(--text-3);
+}
+
+.hero-stars {
+  display: flex;
+  gap: 2px;
+  color: var(--ink);
+}

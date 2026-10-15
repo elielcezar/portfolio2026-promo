@@ -1,44 +1,31 @@
 .hero {
   padding-top: 72px;
   padding-bottom: 88px;
+  display: grid;
+  gap: 40px;
 }
 
-/* Cena three.js (experimento): fundo interativo atrás de todo o conteúdo
-   (z-index -1). Nenhum ancestral é posicionado, então a camada começa no topo
-   da página e ocupa os 60% da direita; as formas ficam no meio dela (CENTER_Y,
-   centerX no HeroScene.tsx). O fade na borda esquerda esconde o corte das
-   partículas que passam do limite da camada. */
-.hero-scene-layer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  width: 60%;
-  height: 1300px;
-  overflow: hidden;
-  pointer-events: none;
-  -webkit-mask-image: linear-gradient(to right, transparent, #000 15%);
-  mask-image: linear-gradient(to right, transparent, #000 15%);
-}
-
-.hero-scene {
-  width: 100%;
-  height: 100%;
-}
-
-.hero-scene canvas {
-  display: block;
-}
-
-@media (max-width: 1300px) {
-  .hero-scene-layer {
-    display: none;
+/* Desktop: o título ocupa as duas colunas; os cards ficam na linha de baixo, à direita */
+@media (min-width: 1024px) {
+  .hero {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    grid-template-areas:
+      "title title"
+      "text visual"
+      "stats visual";
+    column-gap: 64px;
+    row-gap: 32px;
+    align-items: center;
   }
+
+  .hero-title { grid-area: title; }
+  .hero-text { grid-area: text; }
+  .hero-visual { grid-area: visual; }
+  .hero-stats { grid-area: stats; align-self: start; }
 }
 
 .hero-text {
   min-width: 0;
-  padding-top: 40px;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -53,6 +40,10 @@
   font-size: clamp(44px, 7vw, 5rem);
   line-height: 1;
   letter-spacing: -0.035em;
+}
+
+.hero-title > span {
+  display: block;
 }
 
 @media (max-width: 767px) {
@@ -81,6 +72,61 @@
   font-size: 17px;
 }
 
+/* Dois prints em janela: o da frente e outro atrás, girado, no canto */
+.hero-visual {
+  position: relative;
+  isolation: isolate;
+  min-width: 0;
+  margin: -40px 0 0 0;
+  padding-right: 10%;
+  padding-bottom: 12%;
+  transform: rotate(7deg);
+}
+
+.hero-window {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #121212;
+  box-shadow: 0 2px 4px rgb(18 18 18 / 0.06), 0 16px 40px rgb(18 18 18 / 0.14);
+}
+
+.hero-window img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 900 / 600;
+  object-fit: cover;
+  object-position: top;
+}
+
+.hero-window-back {
+  position: absolute;
+  z-index: 0;
+  right: 0;
+  bottom: 0;
+  width: 62%;
+  transform: rotate(3deg);
+}
+
+.hero-window-bar {
+  display: flex;
+  gap: 6px;
+  padding: 10px 12px;
+}
+
+.hero-window-bar span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2e2e2c;
+}
+
+.hero-window-bar span:first-child {
+  background: var(--accent);
+}
+
 .hero-stats {
   display: flex;
   flex-wrap: wrap;
@@ -107,23 +153,17 @@
   color: var(--text-3);
 }
 
-/* Terceiro item: fotos de clientes + estrelas sobre a nota */
-.hero-stat-rating {
-  flex-direction: row;
+/* Terceiro item: fotos, nota e estrelas na mesma linha; o rótulo fica embaixo */
+.hero-stat-rating-row {
+  display: flex;
   align-items: center;
   gap: 12px;
 }
 
 .hero-stat-people {
   display: block;
-  width: 108px;
+  width: 84px;
   height: auto;
-}
-
-.hero-stat-rating-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
 }
 
 .hero-stat-rating .hero-stat-value {

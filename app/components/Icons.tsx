@@ -26,6 +26,13 @@ export const IconArrowRight = (p: IconProps) => (
   </Stroke>
 );
 
+export const IconArrowDown = (p: IconProps) => (
+  <Stroke {...p}>
+    <line x1="12" y1="5" x2="12" y2="19" />
+    <polyline points="6 13 12 19 18 13" />
+  </Stroke>
+);
+
 export const IconCheck = (p: IconProps) => (
   <Stroke {...p}>
     <polyline points="20 6 9 17 4 12" />
