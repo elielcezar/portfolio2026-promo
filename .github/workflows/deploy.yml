@@ -25,7 +25,9 @@ jobs:
             # Com set -e, o pm2 só reinicia se algum dos dois builds passar.
             rm -rf .next
             npm run build || npx next build --webpack
-            pm2 restart portfolio
+            # Cria o processo se o PM2 tiver perdido a lista (ex.: reboot do servidor)
+            pm2 startOrRestart ecosystem.config.js
+            pm2 save
             for i in $(seq 1 20); do
               if curl -fsS -o /dev/null http://127.0.0.1:3011; then
                 echo "Site respondendo na porta 3011"
