@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 137 143" width="137" height="143" role="img" aria-label="Mascote">
+  <style>
+    .look  { animation: look 12s ease-in-out infinite; }
+    .blink { animation: blink 12s linear infinite; transform-box: fill-box; transform-origin: center; }
+    .blink.r { animation-delay: .03s; }
+
+    /* olhar: direita (~2,8s–5s) e depois baixo (~5,9s–7,6s); resto do tempo parado */
+    @keyframes look {
+      0%, 20%   { transform: translate(0, 0); }
+      24%, 38%  { transform: translate(9px, 0); }
+      42%, 48%  { transform: translate(0, 0); }
+      52%, 62%  { transform: translate(0, 9px); }
+      66%, 100% { transform: translate(0, 0); }
+    }
+
+    /* piscadas: uma simples no início, uma dupla depois de olhar para baixo */
+    @keyframes blink {
+      0%, 8%    { transform: scaleY(1); }
+      9%        { transform: scaleY(.08); }
+      10.5%     { transform: scaleY(1); }
+      70%       { transform: scaleY(1); }
+      71%       { transform: scaleY(.08); }
+      72.5%     { transform: scaleY(1); }
+      73.5%     { transform: scaleY(1); }
+      74.5%     { transform: scaleY(.08); }
+      76%, 100% { transform: scaleY(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .look, .blink { animation: none; }
+    }
+  </style>
+
+  <rect width="137" height="143" rx="27" fill="#FDC438"/>
+  <g class="look" fill="#1C1C1C">
+    <rect class="blink"   x="39" y="58" width="18" height="55" rx="9"/>
+    <rect class="blink r" x="84" y="58" width="18" height="55" rx="9"/>
+  </g>
+</svg>

@@ -101,7 +101,8 @@ export default function Header() {
     >
       <div className="container header-bar">
         <a href="#topo" className="logo">
-          <span className="logo-mark">ec</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/mascote-animado.svg" alt="" width={34} height={36} className="logo-mark" />
           <span className="logo-name">Eliel Cezar</span>
         </a>
 

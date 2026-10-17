@@ -49,16 +49,9 @@
 }
 
 .logo-mark {
-  width: 36px;
+  display: block;
+  width: auto;
   height: 36px;
-  border-radius: 10px;
-  background: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 18px;
 }
 
 .logo-name {
