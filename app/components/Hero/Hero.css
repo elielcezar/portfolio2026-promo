@@ -83,6 +83,12 @@
   transform: rotate(7deg);
 }
 
+@media (max-width: 767px) {
+  .hero-visual {
+    display: none;
+  }
+}
+
 .hero-window {
   position: relative;
   z-index: 1;

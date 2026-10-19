@@ -6,7 +6,8 @@ export default function Footer() {
     <footer className="footer">
       <div className="container footer-inner">
         <div className="footer-brand">
-          <span className="footer-mark">ec</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/mascote-animado.svg" alt="" width={30} height={32} className="footer-mark" />
           <span className="footer-copy">© {new Date().getFullYear()} Eliel Cezar · Designer &amp; Programador Web</span>
         </div>
         <nav aria-label="Redes" className="footer-nav">
